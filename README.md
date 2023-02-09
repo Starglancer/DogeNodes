@@ -4,7 +4,7 @@
 
 ## Description
 
-A winforms based application to analyse the Dogecoin blockchain network and monitor the status of an individual node
+A Windows Forms based application to analyse the Dogecoin blockchain network and monitor the status of an individual node
 
 ## Screenshots
 
@@ -32,3 +32,13 @@ A winforms based application to analyse the Dogecoin blockchain network and moni
 
  - Network connection to the internet
  - No inbound ports need to be opened
+ - Microsoft Windows operating system (I have tested on Windows 10 only)
+ - Dot Net Framework 4.7.2
+ 
+## Acknowledgements
+
+Thanks to the following API providers used as the source of data for this application
+
+- https://blockchair.com/
+- https://ip-api.com/
+- https://github.com/
