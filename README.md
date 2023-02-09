@@ -17,3 +17,17 @@ A winforms based application to analyse the Dogecoin blockchain network and moni
 ![NodeMap](https://user-images.githubusercontent.com/124823644/217804002-fe2e975d-7b75-4d68-b800-3a7e7596ad96.png)
 
 ![NodeStatus](https://user-images.githubusercontent.com/124823644/217804034-1388326c-89ac-45b7-aa31-ac52fd766595.png)
+
+## Features
+
+ - Summary of total active nodes
+ - Breakdown of nodes by country, block height, agent version and nextwork protocol
+ - Filterable list of all nodes
+ - Ability to select detailed status of any node 
+ - Monitoring of selected node status including pop up alerts and email alerts if any issues arise
+ - Highly configurable behaviour including start with windows, minimize to tray and minimise on close
+ 
+## Requirements
+
+ - Network connection to the internet
+ - No inbound ports need to be opened
