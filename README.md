@@ -8,3 +8,12 @@ A winforms based application to analyse the Dogecoin blockchain network and moni
 
 ## Screenshots
 
+![Summary](https://user-images.githubusercontent.com/124823644/217803867-00c8ce45-270b-45d8-97d3-bc44e2ef20ed.png)
+
+![Statistics](https://user-images.githubusercontent.com/124823644/217803935-ae6e0c80-a2a9-4f69-9b18-4dcaa5370bc5.png)
+
+![NodeList](https://user-images.githubusercontent.com/124823644/217803981-e7b9523e-77f0-4b33-9051-5e273533ceac.png)
+
+![NodeMap](https://user-images.githubusercontent.com/124823644/217804002-fe2e975d-7b75-4d68-b800-3a7e7596ad96.png)
+
+![NodeStatus](https://user-images.githubusercontent.com/124823644/217804034-1388326c-89ac-45b7-aa31-ac52fd766595.png)
