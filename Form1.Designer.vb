@@ -143,8 +143,6 @@ Partial Class Form1
         Me.gbxThresholdSettings = New System.Windows.Forms.GroupBox()
         Me.lblYellowRed = New System.Windows.Forms.Label()
         Me.lblGreenYellow = New System.Windows.Forms.Label()
-        Me.txtYellowToRed = New System.Windows.Forms.TextBox()
-        Me.txtGreenToYellow = New System.Windows.Forms.TextBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.sslAPIProgressBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.sslLastUpdate = New System.Windows.Forms.ToolStripStatusLabel()
@@ -154,6 +152,10 @@ Partial Class Form1
         Me.timClearError = New System.Windows.Forms.Timer(Me.components)
         Me.dlgSelectLogFileLocation = New System.Windows.Forms.FolderBrowserDialog()
         Me.timUpdateCache = New System.Windows.Forms.Timer(Me.components)
+        Me.trkGreenToYellow = New System.Windows.Forms.TrackBar()
+        Me.trkYellowToRed = New System.Windows.Forms.TrackBar()
+        Me.lblGreenToYellow = New System.Windows.Forms.Label()
+        Me.lblYellowToRed = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.tabSummary.SuspendLayout()
         CType(Me.pbxDogecoin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,6 +180,8 @@ Partial Class Form1
         Me.gbxWindow.SuspendLayout()
         Me.gbxThresholdSettings.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
+        CType(Me.trkGreenToYellow, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.trkYellowToRed, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -1389,13 +1393,15 @@ Partial Class Form1
         '
         'gbxThresholdSettings
         '
+        Me.gbxThresholdSettings.Controls.Add(Me.lblYellowToRed)
+        Me.gbxThresholdSettings.Controls.Add(Me.lblGreenToYellow)
+        Me.gbxThresholdSettings.Controls.Add(Me.trkYellowToRed)
+        Me.gbxThresholdSettings.Controls.Add(Me.trkGreenToYellow)
         Me.gbxThresholdSettings.Controls.Add(Me.lblYellowRed)
         Me.gbxThresholdSettings.Controls.Add(Me.lblGreenYellow)
-        Me.gbxThresholdSettings.Controls.Add(Me.txtYellowToRed)
-        Me.gbxThresholdSettings.Controls.Add(Me.txtGreenToYellow)
         Me.gbxThresholdSettings.Location = New System.Drawing.Point(28, 712)
         Me.gbxThresholdSettings.Name = "gbxThresholdSettings"
-        Me.gbxThresholdSettings.Size = New System.Drawing.Size(715, 57)
+        Me.gbxThresholdSettings.Size = New System.Drawing.Size(715, 76)
         Me.gbxThresholdSettings.TabIndex = 0
         Me.gbxThresholdSettings.TabStop = False
         Me.gbxThresholdSettings.Text = "Block Height Threshold"
@@ -1403,7 +1409,7 @@ Partial Class Form1
         'lblYellowRed
         '
         Me.lblYellowRed.AutoSize = True
-        Me.lblYellowRed.Location = New System.Drawing.Point(420, 25)
+        Me.lblYellowRed.Location = New System.Drawing.Point(396, 32)
         Me.lblYellowRed.Name = "lblYellowRed"
         Me.lblYellowRed.Size = New System.Drawing.Size(73, 13)
         Me.lblYellowRed.TabIndex = 3
@@ -1412,27 +1418,11 @@ Partial Class Form1
         'lblGreenYellow
         '
         Me.lblGreenYellow.AutoSize = True
-        Me.lblGreenYellow.Location = New System.Drawing.Point(55, 22)
+        Me.lblGreenYellow.Location = New System.Drawing.Point(87, 32)
         Me.lblGreenYellow.Name = "lblGreenYellow"
         Me.lblGreenYellow.Size = New System.Drawing.Size(82, 13)
         Me.lblGreenYellow.TabIndex = 2
         Me.lblGreenYellow.Text = "Green to Yellow"
-        '
-        'txtYellowToRed
-        '
-        Me.txtYellowToRed.Location = New System.Drawing.Point(514, 22)
-        Me.txtYellowToRed.Name = "txtYellowToRed"
-        Me.txtYellowToRed.Size = New System.Drawing.Size(100, 20)
-        Me.txtYellowToRed.TabIndex = 1
-        Me.txtYellowToRed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtGreenToYellow
-        '
-        Me.txtGreenToYellow.Location = New System.Drawing.Point(143, 19)
-        Me.txtGreenToYellow.Name = "txtGreenToYellow"
-        Me.txtGreenToYellow.Size = New System.Drawing.Size(100, 20)
-        Me.txtGreenToYellow.TabIndex = 0
-        Me.txtGreenToYellow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'StatusStrip1
         '
@@ -1493,6 +1483,41 @@ Partial Class Form1
         '
         Me.timUpdateCache.Interval = 3000
         '
+        'trkGreenToYellow
+        '
+        Me.trkGreenToYellow.Location = New System.Drawing.Point(172, 25)
+        Me.trkGreenToYellow.Maximum = 15
+        Me.trkGreenToYellow.Minimum = 1
+        Me.trkGreenToYellow.Name = "trkGreenToYellow"
+        Me.trkGreenToYellow.Size = New System.Drawing.Size(104, 45)
+        Me.trkGreenToYellow.TabIndex = 4
+        Me.trkGreenToYellow.Value = 6
+        '
+        'trkYellowToRed
+        '
+        Me.trkYellowToRed.Location = New System.Drawing.Point(475, 25)
+        Me.trkYellowToRed.Maximum = 30
+        Me.trkYellowToRed.Minimum = 1
+        Me.trkYellowToRed.Name = "trkYellowToRed"
+        Me.trkYellowToRed.Size = New System.Drawing.Size(104, 45)
+        Me.trkYellowToRed.TabIndex = 5
+        Me.trkYellowToRed.TickFrequency = 2
+        Me.trkYellowToRed.Value = 16
+        '
+        'lblGreenToYellow
+        '
+        Me.lblGreenToYellow.Location = New System.Drawing.Point(282, 32)
+        Me.lblGreenToYellow.Name = "lblGreenToYellow"
+        Me.lblGreenToYellow.Size = New System.Drawing.Size(33, 23)
+        Me.lblGreenToYellow.TabIndex = 6
+        '
+        'lblYellowToRed
+        '
+        Me.lblYellowToRed.Location = New System.Drawing.Point(585, 32)
+        Me.lblYellowToRed.Name = "lblYellowToRed"
+        Me.lblYellowToRed.Size = New System.Drawing.Size(30, 23)
+        Me.lblYellowToRed.TabIndex = 7
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1543,6 +1568,8 @@ Partial Class Form1
         Me.gbxThresholdSettings.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        CType(Me.trkGreenToYellow, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.trkYellowToRed, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1607,8 +1634,6 @@ Partial Class Form1
     Friend WithEvents gbxThresholdSettings As GroupBox
     Friend WithEvents lblYellowRed As Label
     Friend WithEvents lblGreenYellow As Label
-    Friend WithEvents txtYellowToRed As TextBox
-    Friend WithEvents txtGreenToYellow As TextBox
     Friend WithEvents btnRestoreDefaults As Button
     Friend WithEvents NotifyIcon1 As NotifyIcon
     Friend WithEvents gbxWindow As GroupBox
@@ -1673,4 +1698,8 @@ Partial Class Form1
     Friend WithEvents chkDesktopShortcut As CheckBox
     Friend WithEvents chkStartWithWindows As CheckBox
     Friend WithEvents lblDogeNodesVersion As Label
+    Friend WithEvents trkYellowToRed As TrackBar
+    Friend WithEvents trkGreenToYellow As TrackBar
+    Friend WithEvents lblYellowToRed As Label
+    Friend WithEvents lblGreenToYellow As Label
 End Class

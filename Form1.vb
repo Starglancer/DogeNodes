@@ -80,8 +80,8 @@ Public Class Form1
             'Load remaining persistent settings
             CurrentAgentVersion = My.Settings.CurrentAgentVersion
             comStatistics.Text = My.Settings.Statistics
-            txtGreenToYellow.Text = My.Settings.GreenToYellow
-            txtYellowToRed.Text = My.Settings.YellowToRed
+            lblGreenToYellow.Text = My.Settings.GreenToYellow
+            lblYellowToRed.Text = My.Settings.YellowToRed
             txtIPAddress.Text = My.Settings.IPAddress
             txtPort.Text = My.Settings.NodePort
             chkHideTrayIcon.Checked = My.Settings.HideTrayIcon
@@ -97,6 +97,10 @@ Public Class Form1
             chkStartMinimised.Checked = My.Settings.StartMinimised
             chkStartWithWindows.Checked = My.Settings.StartWithWindows
             chkDesktopShortcut.Checked = My.Settings.DesktopShortcut
+
+            'Update sliders to persistent values
+            trkGreenToYellow.Value = lblGreenToYellow.Text
+            trkYellowToRed.Value = lblYellowToRed.Text
 
             'Display application version
             lblDogeNodesVersion.Text = My.Settings.DogeNodesVersion
@@ -328,11 +332,11 @@ Public Class Form1
                         pbxUpToDate.Image = My.Resources.Grey
                         UpToDateColour = "Grey"
                         Notification_Display("Warning", "Node block height is invalid")
-                    ElseIf Lag >= 0 And Lag < txtGreenToYellow.Text Then
+                    ElseIf Lag >= 0 And Lag < lblGreenToYellow.Text Then
                         pbxUpToDate.Image = My.Resources.Green
                         UpToDateColour = "Green"
                         Notification_Display("Information", "Node block height is up to date")
-                    ElseIf Lag >= txtGreenToYellow.Text And Lag < txtYellowToRed.Text Then
+                    ElseIf Lag >= lblGreenToYellow.Text And Lag < lblYellowToRed.Text Then
                         pbxUpToDate.Image = My.Resources.Yellow
                         UpToDateColour = "Yellow"
                         Notification_Display("Warning", "Node block height is slightly behind")
@@ -1207,8 +1211,8 @@ Public Class Form1
         Try
             'Get Confirmation
             If Request_Confirmation("This will lose all your personalised settings") = True Then
-                txtGreenToYellow.Text = My.Settings.GreenToYellowDefault
-                txtYellowToRed.Text = My.Settings.YellowToRedDefault
+                lblGreenToYellow.Text = My.Settings.GreenToYellowDefault
+                lblYellowToRed.Text = My.Settings.YellowToRedDefault
                 chkHideTrayIcon.Checked = My.Settings.HideTrayIconDefault
                 chkMinimiseToTray.Checked = My.Settings.MinimiseToTrayDefault
                 chkMinimiseOnClose.Checked = My.Settings.MinimiseOnCloseDefault
@@ -1224,6 +1228,11 @@ Public Class Form1
                 chkStartMinimised.Checked = My.Settings.StartMinimisedDefault
                 chkStartWithWindows.Checked = My.Settings.StartWithWindowsDefault
                 chkDesktopShortcut.Checked = My.Settings.DesktopShortcutDefault
+
+                'Update sliders
+                trkGreenToYellow.Value = lblGreenToYellow.Text
+                trkYellowToRed.Value = lblYellowToRed.Text
+
                 Notification_Display("Information", "The default settings have been restored successfully")
             End If
 
@@ -1423,8 +1432,8 @@ Public Class Form1
             My.Settings.IPAddress = txtIPAddress.Text
             My.Settings.NodePort = txtPort.Text
             My.Settings.Statistics = comStatistics.Text
-            My.Settings.GreenToYellow = txtGreenToYellow.Text
-            My.Settings.YellowToRed = txtYellowToRed.Text
+            My.Settings.GreenToYellow = lblGreenToYellow.Text
+            My.Settings.YellowToRed = lblYellowToRed.Text
             My.Settings.HideTrayIcon = chkHideTrayIcon.Checked
             My.Settings.MinimiseToTray = chkMinimiseToTray.Checked
             My.Settings.MinimiseOnClose = chkMinimiseOnClose.Checked
@@ -1558,7 +1567,7 @@ Public Class Form1
             smtp.Send(mail)
 
         Catch
-            Display_MessageBox_Notification("There has been a critical error in the email notification process")
+            Display_MessageBox_Notification("There has been an error sending an email. Please check email settings")
         End Try
 
         Return True
@@ -1587,11 +1596,13 @@ Public Class Form1
                 btnDisplayLog.Enabled = True
                 btnClearLog.Enabled = True
                 comLogLvl.Enabled = True
+                btnCopyLog.Enabled = True
                 Notification_Display("Information", "The logging controls have been enabled")
             Else
                 btnDisplayLog.Enabled = False
                 btnClearLog.Enabled = False
                 comLogLvl.Enabled = False
+                btnCopyLog.Enabled = False
                 Notification_Display("Information", "The logging controls have been disabled")
             End If
 
@@ -2328,4 +2339,35 @@ Public Class Form1
 
     End Sub
 
+    Private Sub trkGreenToYellow_Scroll(sender As Object, e As EventArgs) Handles trkGreenToYellow.Scroll
+
+        Try
+            'Ensure Green to Yellow less than Yellow to Red
+            If trkGreenToYellow.Value >= trkYellowToRed.Value Then
+                trkGreenToYellow.Value = trkYellowToRed.Value - 1
+            End If
+
+            lblGreenToYellow.Text = trkGreenToYellow.Value
+
+        Catch
+            Notification_Display("Error", "There was an error changing the green to yellow threshold")
+        End Try
+
+    End Sub
+
+    Private Sub trkYellowToRed_Scroll(sender As Object, e As EventArgs) Handles trkYellowToRed.Scroll
+
+        Try
+            'Ensure Yellow to Red greater than Green to Yellow
+            If trkYellowToRed.Value <= trkGreenToYellow.Value Then
+                trkYellowToRed.Value = trkGreenToYellow.Value + 1
+            End If
+
+            lblYellowToRed.Text = trkYellowToRed.Value
+
+        Catch
+            Notification_Display("Error", "There was an error changing the yellow to red threshold")
+        End Try
+
+    End Sub
 End Class
