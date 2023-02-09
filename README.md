@@ -21,8 +21,9 @@ A winforms based application to analyse the Dogecoin blockchain network and moni
 ## Features
 
  - Summary of total active nodes
- - Breakdown of nodes by country, block height, agent version and nextwork protocol
+ - Breakdown of nodes by country, block height, agent version and network protocol
  - Filterable list of all nodes
+ - Global map of filtered node location
  - Ability to select detailed status of any node 
  - Monitoring of selected node status including pop up alerts and email alerts if any issues arise
  - Highly configurable behaviour including start with windows, minimize to tray and minimise on close
