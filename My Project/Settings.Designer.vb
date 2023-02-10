@@ -56,7 +56,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("77.98.70.134")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property IPAddress() As String
             Get
                 Return CType(Me("IPAddress"),String)
@@ -68,7 +68,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("22556")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property NodePort() As String
             Get
                 Return CType(Me("NodePort"),String)
@@ -365,7 +365,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Error Only")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Warning and Error")>  _
         Public Property EmailNotificationLevel() As String
             Get
                 Return CType(Me("EmailNotificationLevel"),String)
@@ -377,7 +377,7 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Error Only")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Warning and Error")>  _
         Public ReadOnly Property EmailNotificationLevelDefault() As String
             Get
                 Return CType(Me("EmailNotificationLevelDefault"),String)
