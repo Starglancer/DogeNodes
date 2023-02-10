@@ -23,11 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabSummary = New System.Windows.Forms.TabPage()
@@ -141,6 +141,10 @@ Partial Class Form1
         Me.chkHideTrayIcon = New System.Windows.Forms.CheckBox()
         Me.btnRestoreDefaults = New System.Windows.Forms.Button()
         Me.gbxThresholdSettings = New System.Windows.Forms.GroupBox()
+        Me.lblYellowToRed = New System.Windows.Forms.Label()
+        Me.lblGreenToYellow = New System.Windows.Forms.Label()
+        Me.trkYellowToRed = New System.Windows.Forms.TrackBar()
+        Me.trkGreenToYellow = New System.Windows.Forms.TrackBar()
         Me.lblYellowRed = New System.Windows.Forms.Label()
         Me.lblGreenYellow = New System.Windows.Forms.Label()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -152,10 +156,6 @@ Partial Class Form1
         Me.timClearError = New System.Windows.Forms.Timer(Me.components)
         Me.dlgSelectLogFileLocation = New System.Windows.Forms.FolderBrowserDialog()
         Me.timUpdateCache = New System.Windows.Forms.Timer(Me.components)
-        Me.trkGreenToYellow = New System.Windows.Forms.TrackBar()
-        Me.trkYellowToRed = New System.Windows.Forms.TrackBar()
-        Me.lblGreenToYellow = New System.Windows.Forms.Label()
-        Me.lblYellowToRed = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.tabSummary.SuspendLayout()
         CType(Me.pbxDogecoin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -179,9 +179,9 @@ Partial Class Form1
         CType(Me.pbxShow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxWindow.SuspendLayout()
         Me.gbxThresholdSettings.SuspendLayout()
-        Me.StatusStrip1.SuspendLayout()
-        CType(Me.trkGreenToYellow, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkYellowToRed, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.trkGreenToYellow, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -331,24 +331,24 @@ Partial Class Form1
         Me.grdStatistics.AllowUserToResizeColumns = False
         Me.grdStatistics.AllowUserToResizeRows = False
         Me.grdStatistics.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle36.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle36
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdStatistics.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Value, Me.Count, Me.BarChart})
-        DataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle38.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle38
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle3
         Me.grdStatistics.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdStatistics.GridColor = System.Drawing.Color.White
         Me.grdStatistics.Location = New System.Drawing.Point(72, 64)
@@ -377,10 +377,10 @@ Partial Class Form1
         '
         'BarChart
         '
-        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle37.ForeColor = System.Drawing.Color.Khaki
-        DataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.Khaki
-        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle37
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Khaki
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Khaki
+        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle2
         Me.BarChart.HeaderText = "Bar Chart"
         Me.BarChart.Name = "BarChart"
         Me.BarChart.ReadOnly = True
@@ -544,24 +544,24 @@ Partial Class Form1
         Me.grdNodeList.AllowUserToResizeColumns = False
         Me.grdNodeList.AllowUserToResizeRows = False
         Me.grdNodeList.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle39
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.grdNodeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdNodeList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2})
-        DataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle40.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle40
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle5
         Me.grdNodeList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdNodeList.GridColor = System.Drawing.Color.White
         Me.grdNodeList.Location = New System.Drawing.Point(399, 21)
@@ -1406,6 +1406,41 @@ Partial Class Form1
         Me.gbxThresholdSettings.TabStop = False
         Me.gbxThresholdSettings.Text = "Block Height Threshold"
         '
+        'lblYellowToRed
+        '
+        Me.lblYellowToRed.Location = New System.Drawing.Point(585, 32)
+        Me.lblYellowToRed.Name = "lblYellowToRed"
+        Me.lblYellowToRed.Size = New System.Drawing.Size(30, 23)
+        Me.lblYellowToRed.TabIndex = 7
+        '
+        'lblGreenToYellow
+        '
+        Me.lblGreenToYellow.Location = New System.Drawing.Point(282, 32)
+        Me.lblGreenToYellow.Name = "lblGreenToYellow"
+        Me.lblGreenToYellow.Size = New System.Drawing.Size(33, 23)
+        Me.lblGreenToYellow.TabIndex = 6
+        '
+        'trkYellowToRed
+        '
+        Me.trkYellowToRed.Location = New System.Drawing.Point(475, 25)
+        Me.trkYellowToRed.Maximum = 30
+        Me.trkYellowToRed.Minimum = 1
+        Me.trkYellowToRed.Name = "trkYellowToRed"
+        Me.trkYellowToRed.Size = New System.Drawing.Size(104, 45)
+        Me.trkYellowToRed.TabIndex = 5
+        Me.trkYellowToRed.TickFrequency = 2
+        Me.trkYellowToRed.Value = 16
+        '
+        'trkGreenToYellow
+        '
+        Me.trkGreenToYellow.Location = New System.Drawing.Point(172, 25)
+        Me.trkGreenToYellow.Maximum = 15
+        Me.trkGreenToYellow.Minimum = 1
+        Me.trkGreenToYellow.Name = "trkGreenToYellow"
+        Me.trkGreenToYellow.Size = New System.Drawing.Size(104, 45)
+        Me.trkGreenToYellow.TabIndex = 4
+        Me.trkGreenToYellow.Value = 6
+        '
         'lblYellowRed
         '
         Me.lblYellowRed.AutoSize = True
@@ -1483,41 +1518,6 @@ Partial Class Form1
         '
         Me.timUpdateCache.Interval = 3000
         '
-        'trkGreenToYellow
-        '
-        Me.trkGreenToYellow.Location = New System.Drawing.Point(172, 25)
-        Me.trkGreenToYellow.Maximum = 15
-        Me.trkGreenToYellow.Minimum = 1
-        Me.trkGreenToYellow.Name = "trkGreenToYellow"
-        Me.trkGreenToYellow.Size = New System.Drawing.Size(104, 45)
-        Me.trkGreenToYellow.TabIndex = 4
-        Me.trkGreenToYellow.Value = 6
-        '
-        'trkYellowToRed
-        '
-        Me.trkYellowToRed.Location = New System.Drawing.Point(475, 25)
-        Me.trkYellowToRed.Maximum = 30
-        Me.trkYellowToRed.Minimum = 1
-        Me.trkYellowToRed.Name = "trkYellowToRed"
-        Me.trkYellowToRed.Size = New System.Drawing.Size(104, 45)
-        Me.trkYellowToRed.TabIndex = 5
-        Me.trkYellowToRed.TickFrequency = 2
-        Me.trkYellowToRed.Value = 16
-        '
-        'lblGreenToYellow
-        '
-        Me.lblGreenToYellow.Location = New System.Drawing.Point(282, 32)
-        Me.lblGreenToYellow.Name = "lblGreenToYellow"
-        Me.lblGreenToYellow.Size = New System.Drawing.Size(33, 23)
-        Me.lblGreenToYellow.TabIndex = 6
-        '
-        'lblYellowToRed
-        '
-        Me.lblYellowToRed.Location = New System.Drawing.Point(585, 32)
-        Me.lblYellowToRed.Name = "lblYellowToRed"
-        Me.lblYellowToRed.Size = New System.Drawing.Size(30, 23)
-        Me.lblYellowToRed.TabIndex = 7
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1566,10 +1566,10 @@ Partial Class Form1
         Me.gbxWindow.PerformLayout()
         Me.gbxThresholdSettings.ResumeLayout(False)
         Me.gbxThresholdSettings.PerformLayout()
+        CType(Me.trkYellowToRed, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.trkGreenToYellow, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        CType(Me.trkGreenToYellow, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.trkYellowToRed, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
