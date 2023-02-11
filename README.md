@@ -20,10 +20,11 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
 
 ## Features
 
+ - Real time data updated every 10 minutes
  - Summary of total active nodes
  - Breakdown of nodes by country, block height, agent version and network protocol
  - Filterable list of all nodes
- - Global map of filtered node location
+ - Global map of filtered node location (Initial map load may take up to 1 hour, but after that it is cached)
  - Ability to select detailed status of any node 
  - Monitoring of selected node status including pop up alerts and email alerts if any issues arise
  - Highly configurable behaviour including start with windows, minimize to tray and minimise on close
@@ -34,6 +35,14 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  - No inbound ports need to be opened
  - Microsoft Windows operating system (I have tested on Windows 10 only)
  - Dot Net Framework 4.7.2
+ 
+## To Do List
+
+- progress bar for initial map load
+- Test button for email configuration
+- Plot currently selected node location on map
+- Add tooltips
+- Additional help and documentation
  
 ## Acknowledgements
 
