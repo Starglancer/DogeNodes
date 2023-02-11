@@ -97,6 +97,7 @@ Public Class Form1
             chkStartMinimised.Checked = My.Settings.StartMinimised
             chkStartWithWindows.Checked = My.Settings.StartWithWindows
             chkDesktopShortcut.Checked = My.Settings.DesktopShortcut
+            chkShowTooltips.Checked = My.Settings.ShowTooltips
 
             'Update sliders to persistent values
             trkGreenToYellow.Value = lblGreenToYellow.Text
@@ -161,6 +162,9 @@ Public Class Form1
 
             'Start cache update process
             timUpdateCache.Enabled = True
+
+            'Set up tooltips
+            Configure_Tooltips()
 
             'Flag to indicate if form has finished loading. Used in error handling
             FormLoadComplete = True
@@ -1228,6 +1232,7 @@ Public Class Form1
                 chkStartMinimised.Checked = My.Settings.StartMinimisedDefault
                 chkStartWithWindows.Checked = My.Settings.StartWithWindowsDefault
                 chkDesktopShortcut.Checked = My.Settings.DesktopShortcutDefault
+                chkShowTooltips.Checked = My.Settings.ShowTooltipsDefault
 
                 'Update sliders
                 trkGreenToYellow.Value = lblGreenToYellow.Text
@@ -1456,6 +1461,7 @@ Public Class Form1
             My.Settings.StartMinimised = chkStartMinimised.Checked
             My.Settings.StartWithWindows = chkStartWithWindows.Checked
             My.Settings.DesktopShortcut = chkDesktopShortcut.Checked
+            My.Settings.ShowTooltips = chkShowTooltips.Checked
 
             My.Settings.Save()
 
@@ -2368,6 +2374,29 @@ Public Class Form1
         Catch
             Notification_Display("Error", "There was an error changing the yellow to red threshold")
         End Try
+
+    End Sub
+
+    Private Sub Configure_Tooltips()
+
+        Try
+            'Set up the tooltips
+            If chkShowTooltips.Checked = True Then
+                ToolTip1.Active = True
+            Else
+                ToolTip1.Active = False
+            End If
+
+            Notification_Display("Information", "Tooltips have been successfully configured")
+        Catch
+            Notification_Display("Error", "There was an error configuring the tooltips")
+        End Try
+
+    End Sub
+
+    Private Sub chkShowTooltips_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowTooltips.CheckedChanged
+
+        Configure_Tooltips()
 
     End Sub
 End Class

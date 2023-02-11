@@ -137,5 +137,11 @@
     <Setting Name="DogeNodesVersion" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Version 0.10 Beta</Value>
     </Setting>
+    <Setting Name="ShowTooltips" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ShowTooltipsDefault" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
