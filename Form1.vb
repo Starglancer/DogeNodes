@@ -1973,9 +1973,9 @@ Public Class Form1
                 System.IO.File.AppendAllText(MapCacheFileName, Row)
             Next
 
-            Notification_Display("Information", "Map cache successfully written to file")
         Catch
-            Notification_Display("Error", "There was an error writing the map cache to file")
+            'skip normal notification methods as this is run in a separate thread
+            MessageBox.Show("There was a problem writing the IP locations to a text file", "DogeNodes - Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -2033,7 +2033,7 @@ Public Class Form1
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
 
             'Display total nodes in cache
-            lblCacheNodesValue.Text = IPLocations.GetLength(1).ToString
+            lblCacheNodesValue.Text = (IPLocations.GetLength(1) - 1).ToString
 
             'Get first address in the array that has a blank location
             For i As Integer = 0 To IPLocations.GetLength(1) - 1
@@ -2045,8 +2045,14 @@ Public Class Form1
             Next
 
             'Display percentage of nodes populated
-            Percentage = 100 * (CacheIndex + 1) / IPLocations.GetLength(1)
-            lblPercentageNodesValue.Text = Percentage.ToString
+            If IPLocations.GetLength(1) = 1 Then
+                'Only the header row
+                Percentage = 0
+            Else
+                Percentage = 100 * (CacheIndex - 1) / (IPLocations.GetLength(1) - 1)
+                lblPercentageNodesValue.Text = Percentage.ToString
+            End If
+
 
             If IPAddress <> "" Then
 
@@ -2108,15 +2114,19 @@ Public Class Form1
         Try
             Dim Length As Integer = IPLocations.GetLength(1)
 
-            'Remove the second row (First is header) from cache by copying all rows up one place, and then rem dim to one line less
-            For i As Integer = 1 To Length - 2
-                IPLocations(0, i) = IPLocations(0, i + 1)
-                IPLocations(1, i) = IPLocations(1, i + 1)
-                IPLocations(2, i) = IPLocations(2, i + 1)
-            Next
-            ReDim Preserve IPLocations(2, Length - 2)
+            If Length > 2 Then
+                'Remove the second row (First is header) from cache by copying all rows up one place, and then rem dim to one line less
+                For i As Integer = 1 To Length - 2
+                    IPLocations(0, i) = IPLocations(0, i + 1)
+                    IPLocations(1, i) = IPLocations(1, i + 1)
+                    IPLocations(2, i) = IPLocations(2, i + 1)
+                Next
+                ReDim Preserve IPLocations(2, Length - 2)
+                Notification_Display("Information", "First row removed from cache")
+            Else
+                Notification_Display("Information", "No rows to remove from cache from cache")
+            End If
 
-            Notification_Display("Information", "First row removed from cache")
         Catch
             Notification_Display("Error", "There was an error removing the first row from the cache")
         End Try
@@ -2232,7 +2242,10 @@ Public Class Form1
             If Request_Confirmation("If you clear the cache, it will take approximately 1 hour to rebuild itself") = True Then
 
                 'Clear the cache keeping just the header row
-                ReDim Preserve IPLocations(2, 1)
+                ReDim Preserve IPLocations(2, 0)
+
+                'Repopulate map which will remove all points, but also add the IP addresses back into the cache
+                Populate_Node_Map()
 
                 Notification_Display("Information", "The map cache has been successfully cleared")
             End If
