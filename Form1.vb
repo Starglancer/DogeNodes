@@ -48,6 +48,7 @@ Public Class Form1
     Dim JSONFileName As String
     Dim IPLocations(,) As String
     Dim CacheCounter As Integer = 0
+    Dim MapRefreshCounter As Integer = 0
     Dim FileWriteThread As System.Threading.Thread
     Dim FormLoadComplete As Boolean = False
 
@@ -2021,6 +2022,8 @@ Public Class Form1
 
     Private Sub Update_Cache()
 
+        'Update the map cache when triggered by the timer every 3 seconds
+
         Dim parseIP As JObject 'JSON Object to hold API data
         Dim IPAddress As String = ""
         Dim Longitude As String
@@ -2032,7 +2035,7 @@ Public Class Form1
 
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
 
-            'Display total nodes in cache
+            'Display total nodes in cache in the settings page
             lblCacheNodesValue.Text = (IPLocations.GetLength(1) - 1).ToString
 
             'Get first address in the array that has a blank location
@@ -2044,7 +2047,7 @@ Public Class Form1
                 End If
             Next
 
-            'Display percentage of nodes populated
+            'Display percentage of nodes populated in the settings page
             If IPLocations.GetLength(1) = 1 Then
                 'Only the header row
                 Percentage = 0
@@ -2053,6 +2056,18 @@ Public Class Form1
                 lblPercentageNodesValue.Text = Percentage.ToString
             End If
 
+            'Display progress underneath the map if it is a long way behind (e.g. after cache clear or first installation)
+            If Percentage < 98 Then
+                lblMapUpdate.Text = "The map is currently updating - " + Percentage.ToString + "% complete - approx " + (Convert.ToInt32((100 - Percentage) / 2)).ToString + " minutes to go"
+                'Refresh the map every 30 seconds
+                MapRefreshCounter += 1
+                If MapRefreshCounter = 10 Then
+                    MapRefreshCounter = 0
+                    Populate_Node_Map()
+                End If
+            Else
+                lblMapUpdate.Text = ""
+            End If
 
             If IPAddress <> "" Then
 
