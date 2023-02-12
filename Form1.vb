@@ -145,7 +145,7 @@ Public Class Form1
             'Initial Check (Will be repeated at each timer tick)
             Check_For_API_Update()
 
-            'Display or hide Force Close Button in settings
+            'Enable or disable the Force Close Button in settings
             Set_Force_Close_Button_Visibility()
 
             'Set Force close flag to false
@@ -1358,9 +1358,9 @@ Public Class Form1
 
         Try
             If chkMinimiseOnClose.Checked = True Then
-                btnForceClose.Visible = True
+                btnForceClose.Enabled = True
             Else
-                btnForceClose.Visible = False
+                btnForceClose.Enabled = False
             End If
 
             Notification_Display("Information", "The force close button visibility has been successfully set")
@@ -2383,8 +2383,10 @@ Public Class Form1
             'Set up the tooltips
             If chkShowTooltips.Checked = True Then
                 ToolTip1.Active = True
+                StatusStrip1.ShowItemToolTips = True
             Else
                 ToolTip1.Active = False
+                StatusStrip1.ShowItemToolTips = False
             End If
 
             Notification_Display("Information", "Tooltips have been successfully configured")

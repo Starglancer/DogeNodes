@@ -23,11 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabSummary = New System.Windows.Forms.TabPage()
@@ -303,7 +303,7 @@ Partial Class Form1
         Me.tabStatistics.Controls.Add(Me.lblStatisticsSelect)
         Me.tabStatistics.Location = New System.Drawing.Point(4, 22)
         Me.tabStatistics.Name = "tabStatistics"
-        Me.tabStatistics.Size = New System.Drawing.Size(792, 424)
+        Me.tabStatistics.Size = New System.Drawing.Size(795, 404)
         Me.tabStatistics.TabIndex = 2
         Me.tabStatistics.Text = "Statistics"
         '
@@ -333,24 +333,24 @@ Partial Class Form1
         Me.grdStatistics.AllowUserToResizeColumns = False
         Me.grdStatistics.AllowUserToResizeRows = False
         Me.grdStatistics.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle46.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle46
+        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle36.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle36
         Me.grdStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdStatistics.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Value, Me.Count, Me.BarChart})
-        DataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle48.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle48
+        DataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle38.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle38
         Me.grdStatistics.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdStatistics.GridColor = System.Drawing.Color.White
         Me.grdStatistics.Location = New System.Drawing.Point(72, 64)
@@ -379,10 +379,10 @@ Partial Class Form1
         '
         'BarChart
         '
-        DataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle47.ForeColor = System.Drawing.Color.Khaki
-        DataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.Khaki
-        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle47
+        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle37.ForeColor = System.Drawing.Color.Khaki
+        DataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.Khaki
+        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle37
         Me.BarChart.HeaderText = "Bar Chart"
         Me.BarChart.Name = "BarChart"
         Me.BarChart.ReadOnly = True
@@ -398,6 +398,7 @@ Partial Class Form1
         Me.comStatistics.Name = "comStatistics"
         Me.comStatistics.Size = New System.Drawing.Size(121, 21)
         Me.comStatistics.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.comStatistics, "Select the breakdown of nodes by different properties")
         '
         'lblStatisticsSelect
         '
@@ -417,7 +418,7 @@ Partial Class Form1
         Me.tabNodeList.Controls.Add(Me.grdNodeList)
         Me.tabNodeList.Location = New System.Drawing.Point(4, 22)
         Me.tabNodeList.Name = "tabNodeList"
-        Me.tabNodeList.Size = New System.Drawing.Size(792, 424)
+        Me.tabNodeList.Size = New System.Drawing.Size(795, 404)
         Me.tabNodeList.TabIndex = 3
         Me.tabNodeList.Text = "Node List"
         '
@@ -475,6 +476,7 @@ Partial Class Form1
         Me.comNetwork.Name = "comNetwork"
         Me.comNetwork.Size = New System.Drawing.Size(77, 21)
         Me.comNetwork.TabIndex = 7
+        Me.ToolTip1.SetToolTip(Me.comNetwork, "Select the network protocol to use")
         '
         'btnClearFilters
         '
@@ -483,6 +485,7 @@ Partial Class Form1
         Me.btnClearFilters.Size = New System.Drawing.Size(75, 23)
         Me.btnClearFilters.TabIndex = 6
         Me.btnClearFilters.Text = "Clear Filters"
+        Me.ToolTip1.SetToolTip(Me.btnClearFilters, "Clear all the filters")
         Me.btnClearFilters.UseVisualStyleBackColor = True
         '
         'lblVersionFilter
@@ -520,6 +523,7 @@ Partial Class Form1
         Me.ComVersion.Name = "ComVersion"
         Me.ComVersion.Size = New System.Drawing.Size(197, 21)
         Me.ComVersion.TabIndex = 2
+        Me.ToolTip1.SetToolTip(Me.ComVersion, "Select the dogecoin node agent version to use")
         '
         'comHeight
         '
@@ -529,6 +533,7 @@ Partial Class Form1
         Me.comHeight.Name = "comHeight"
         Me.comHeight.Size = New System.Drawing.Size(77, 21)
         Me.comHeight.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.comHeight, "Select the blockheight filter to use")
         '
         'comCountry
         '
@@ -538,6 +543,7 @@ Partial Class Form1
         Me.comCountry.Name = "comCountry"
         Me.comCountry.Size = New System.Drawing.Size(77, 21)
         Me.comCountry.TabIndex = 0
+        Me.ToolTip1.SetToolTip(Me.comCountry, "Select the country filter to use")
         '
         'grdNodeList
         '
@@ -546,24 +552,24 @@ Partial Class Form1
         Me.grdNodeList.AllowUserToResizeColumns = False
         Me.grdNodeList.AllowUserToResizeRows = False
         Me.grdNodeList.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle49.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle49
+        DataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle39
         Me.grdNodeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdNodeList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2})
-        DataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle50.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle50.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle50
+        DataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle40.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle40
         Me.grdNodeList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdNodeList.GridColor = System.Drawing.Color.White
         Me.grdNodeList.Location = New System.Drawing.Point(399, 21)
@@ -596,7 +602,7 @@ Partial Class Form1
         Me.tabNodeMap.Controls.Add(Me.pbxMap)
         Me.tabNodeMap.Location = New System.Drawing.Point(4, 22)
         Me.tabNodeMap.Name = "tabNodeMap"
-        Me.tabNodeMap.Size = New System.Drawing.Size(792, 424)
+        Me.tabNodeMap.Size = New System.Drawing.Size(795, 404)
         Me.tabNodeMap.TabIndex = 5
         Me.tabNodeMap.Text = "Node Map"
         Me.tabNodeMap.UseVisualStyleBackColor = True
@@ -611,6 +617,8 @@ Partial Class Form1
         Me.pbxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbxMap.TabIndex = 0
         Me.pbxMap.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.pbxMap, "Global map of all active Dogecoin nodes. This is filtered by the settings on the " &
+        "Node List tab")
         '
         'tabNodestatus
         '
@@ -624,7 +632,7 @@ Partial Class Form1
         Me.tabNodestatus.Location = New System.Drawing.Point(4, 22)
         Me.tabNodestatus.Name = "tabNodestatus"
         Me.tabNodestatus.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabNodestatus.Size = New System.Drawing.Size(792, 424)
+        Me.tabNodestatus.Size = New System.Drawing.Size(795, 404)
         Me.tabNodestatus.TabIndex = 0
         Me.tabNodestatus.Text = "Node Status"
         Me.tabNodestatus.ToolTipText = "Display the information for a single node"
@@ -710,6 +718,7 @@ Partial Class Form1
         Me.lblISPValue.Size = New System.Drawing.Size(178, 20)
         Me.lblISPValue.TabIndex = 22
         Me.lblISPValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.lblISPValue, "Internet Service Provider for the node")
         '
         'lblZipCodeValue
         '
@@ -720,6 +729,7 @@ Partial Class Form1
         Me.lblZipCodeValue.Size = New System.Drawing.Size(178, 20)
         Me.lblZipCodeValue.TabIndex = 21
         Me.lblZipCodeValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.lblZipCodeValue, "Zip Code where the node is located")
         '
         'lblRegionValue
         '
@@ -730,6 +740,7 @@ Partial Class Form1
         Me.lblRegionValue.Size = New System.Drawing.Size(178, 20)
         Me.lblRegionValue.TabIndex = 20
         Me.lblRegionValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.lblRegionValue, "Region where the node is located")
         '
         'lblCityValue
         '
@@ -740,6 +751,7 @@ Partial Class Form1
         Me.lblCityValue.Size = New System.Drawing.Size(178, 20)
         Me.lblCityValue.TabIndex = 19
         Me.lblCityValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.lblCityValue, "City where the node is located")
         '
         'lblCountryNameValue
         '
@@ -750,6 +762,7 @@ Partial Class Form1
         Me.lblCountryNameValue.Size = New System.Drawing.Size(178, 20)
         Me.lblCountryNameValue.TabIndex = 18
         Me.lblCountryNameValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.lblCountryNameValue, "Country where the node is located")
         '
         'lblProtocolValue
         '
@@ -760,6 +773,7 @@ Partial Class Form1
         Me.lblProtocolValue.Size = New System.Drawing.Size(178, 20)
         Me.lblProtocolValue.TabIndex = 17
         Me.lblProtocolValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.lblProtocolValue, "Network protocol used by the node")
         '
         'lblHeightValue
         '
@@ -770,6 +784,7 @@ Partial Class Form1
         Me.lblHeightValue.Size = New System.Drawing.Size(178, 20)
         Me.lblHeightValue.TabIndex = 16
         Me.lblHeightValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.lblHeightValue, "Blockheight on the node")
         '
         'lblCountryValue
         '
@@ -780,6 +795,7 @@ Partial Class Form1
         Me.lblCountryValue.Size = New System.Drawing.Size(178, 20)
         Me.lblCountryValue.TabIndex = 15
         Me.lblCountryValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.lblCountryValue, "Country code for the nodes location")
         '
         'lblVersionValue
         '
@@ -790,6 +806,7 @@ Partial Class Form1
         Me.lblVersionValue.Size = New System.Drawing.Size(178, 20)
         Me.lblVersionValue.TabIndex = 14
         Me.lblVersionValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.lblVersionValue, "Node agent version")
         '
         'lblProtocol
         '
@@ -855,6 +872,8 @@ Partial Class Form1
         Me.pbxCurrent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbxCurrent.TabIndex = 8
         Me.pbxCurrent.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.pbxCurrent, "If the agent version is current based on Github details, this will be green. If n" &
+        "ot it will be red. Non-standard agents will be grey.")
         '
         'pbxUpToDate
         '
@@ -865,6 +884,9 @@ Partial Class Form1
         Me.pbxUpToDate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbxUpToDate.TabIndex = 7
         Me.pbxUpToDate.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.pbxUpToDate, "For an active node, this will be green, yellow or red dependent on how up to date" &
+        " the blockheight is on the node. The thresholds can be adjusted on the settings " &
+        "tab")
         '
         'pbxStatus
         '
@@ -875,6 +897,8 @@ Partial Class Form1
         Me.pbxStatus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbxStatus.TabIndex = 6
         Me.pbxStatus.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.pbxStatus, "If there is an active node at the specified IP address and port, this will be gre" &
+        "en, if not it will be red")
         '
         'lblVersionStatus
         '
@@ -928,6 +952,7 @@ Partial Class Form1
         Me.txtPort.Size = New System.Drawing.Size(206, 20)
         Me.txtPort.TabIndex = 2
         Me.txtPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ToolTip1.SetToolTip(Me.txtPort, "Port address of the node")
         '
         'txtIPAddress
         '
@@ -936,6 +961,7 @@ Partial Class Form1
         Me.txtIPAddress.Size = New System.Drawing.Size(249, 20)
         Me.txtIPAddress.TabIndex = 1
         Me.txtIPAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ToolTip1.SetToolTip(Me.txtIPAddress, "IP Address of the node in IPv4 or IPv6 format")
         '
         'tabSettings
         '
@@ -977,6 +1003,8 @@ Partial Class Form1
         Me.btnClearMapCache.Size = New System.Drawing.Size(75, 23)
         Me.btnClearMapCache.TabIndex = 19
         Me.btnClearMapCache.Text = "Clear Cache"
+        Me.ToolTip1.SetToolTip(Me.btnClearMapCache, "Clear the current map cache. This will force a refresh that could take up to 1 ho" &
+        "ur")
         Me.btnClearMapCache.UseVisualStyleBackColor = True
         '
         'lblPercentageNodes
@@ -1006,6 +1034,9 @@ Partial Class Form1
         Me.lblPercentageNodesValue.Size = New System.Drawing.Size(83, 20)
         Me.lblPercentageNodesValue.TabIndex = 16
         Me.lblPercentageNodesValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.lblPercentageNodesValue, "The percentage of nodes in the cache with a location against them. This will drop" &
+        " to zero when the cache is first refreshed, then gradually return to 100 percent" &
+        "")
         '
         'lblCacheNodesValue
         '
@@ -1016,6 +1047,8 @@ Partial Class Form1
         Me.lblCacheNodesValue.Size = New System.Drawing.Size(82, 20)
         Me.lblCacheNodesValue.TabIndex = 15
         Me.lblCacheNodesValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.lblCacheNodesValue, "The total number of node locations held in the cache. This may fluctuate up and d" &
+        "own as the cache refreshes")
         '
         'gbxLogging
         '
@@ -1038,6 +1071,7 @@ Partial Class Form1
         Me.btnCopyLog.Size = New System.Drawing.Size(124, 23)
         Me.btnCopyLog.TabIndex = 11
         Me.btnCopyLog.Text = "Copy Log To Desktop"
+        Me.ToolTip1.SetToolTip(Me.btnCopyLog, "Copy the current Log to the desktop in a write enabled form")
         Me.btnCopyLog.UseVisualStyleBackColor = True
         '
         'btnClearLog
@@ -1047,6 +1081,7 @@ Partial Class Form1
         Me.btnClearLog.Size = New System.Drawing.Size(75, 23)
         Me.btnClearLog.TabIndex = 10
         Me.btnClearLog.Text = "Clear Log"
+        Me.ToolTip1.SetToolTip(Me.btnClearLog, "Clear the current log")
         Me.btnClearLog.UseVisualStyleBackColor = True
         '
         'btnDisplayLog
@@ -1056,6 +1091,7 @@ Partial Class Form1
         Me.btnDisplayLog.Size = New System.Drawing.Size(75, 23)
         Me.btnDisplayLog.TabIndex = 9
         Me.btnDisplayLog.Text = "Display Log"
+        Me.ToolTip1.SetToolTip(Me.btnDisplayLog, "Display the current log contents read-only")
         Me.btnDisplayLog.UseVisualStyleBackColor = True
         '
         'chkAllowLogging
@@ -1066,6 +1102,7 @@ Partial Class Form1
         Me.chkAllowLogging.Size = New System.Drawing.Size(100, 17)
         Me.chkAllowLogging.TabIndex = 2
         Me.chkAllowLogging.Text = "Enable Logging"
+        Me.ToolTip1.SetToolTip(Me.chkAllowLogging, "Enable logging to a text file")
         Me.chkAllowLogging.UseVisualStyleBackColor = True
         '
         'comLogLvl
@@ -1077,6 +1114,7 @@ Partial Class Form1
         Me.comLogLvl.Name = "comLogLvl"
         Me.comLogLvl.Size = New System.Drawing.Size(121, 21)
         Me.comLogLvl.TabIndex = 6
+        Me.ToolTip1.SetToolTip(Me.comLogLvl, "Select which notifications should be logged")
         '
         'btnSaveSettings
         '
@@ -1086,6 +1124,8 @@ Partial Class Form1
         Me.btnSaveSettings.Size = New System.Drawing.Size(103, 23)
         Me.btnSaveSettings.TabIndex = 4
         Me.btnSaveSettings.Text = "Save Settings"
+        Me.ToolTip1.SetToolTip(Me.btnSaveSettings, "Save the settings so that they will automatically be applied next time the applic" &
+        "ation starts")
         Me.btnSaveSettings.UseVisualStyleBackColor = True
         '
         'gbxNotification
@@ -1124,6 +1164,7 @@ Partial Class Form1
         Me.pbxShow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbxShow.TabIndex = 19
         Me.pbxShow.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.pbxShow, "Hide or show password")
         '
         'lblEmailAddress
         '
@@ -1140,6 +1181,7 @@ Partial Class Form1
         Me.txtEmailAddress.Name = "txtEmailAddress"
         Me.txtEmailAddress.Size = New System.Drawing.Size(179, 20)
         Me.txtEmailAddress.TabIndex = 17
+        Me.ToolTip1.SetToolTip(Me.txtEmailAddress, "Address where notification emails should be sent")
         '
         'lblSMTPPassword
         '
@@ -1185,6 +1227,7 @@ Partial Class Form1
         Me.chkUseSSL.Size = New System.Drawing.Size(68, 17)
         Me.chkUseSSL.TabIndex = 12
         Me.chkUseSSL.Text = "Use SSL"
+        Me.ToolTip1.SetToolTip(Me.chkUseSSL, "Select whether SSL is required for sending emails")
         Me.chkUseSSL.UseVisualStyleBackColor = True
         '
         'txtSMTPPassword
@@ -1192,8 +1235,9 @@ Partial Class Form1
         Me.txtSMTPPassword.Location = New System.Drawing.Point(475, 140)
         Me.txtSMTPPassword.Name = "txtSMTPPassword"
         Me.txtSMTPPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtSMTPPassword.Size = New System.Drawing.Size(183, 20)
+        Me.txtSMTPPassword.Size = New System.Drawing.Size(165, 20)
         Me.txtSMTPPassword.TabIndex = 11
+        Me.ToolTip1.SetToolTip(Me.txtSMTPPassword, "Password required for SMTP host")
         '
         'txtSMTPUsername
         '
@@ -1201,6 +1245,7 @@ Partial Class Form1
         Me.txtSMTPUsername.Name = "txtSMTPUsername"
         Me.txtSMTPUsername.Size = New System.Drawing.Size(183, 20)
         Me.txtSMTPUsername.TabIndex = 10
+        Me.ToolTip1.SetToolTip(Me.txtSMTPUsername, "Username required for SMTP Host")
         '
         'txtSMTPPort
         '
@@ -1208,6 +1253,7 @@ Partial Class Form1
         Me.txtSMTPPort.Name = "txtSMTPPort"
         Me.txtSMTPPort.Size = New System.Drawing.Size(47, 20)
         Me.txtSMTPPort.TabIndex = 9
+        Me.ToolTip1.SetToolTip(Me.txtSMTPPort, "SMTP port for sending emails")
         '
         'txtSMTPHost
         '
@@ -1215,6 +1261,7 @@ Partial Class Form1
         Me.txtSMTPHost.Name = "txtSMTPHost"
         Me.txtSMTPHost.Size = New System.Drawing.Size(179, 20)
         Me.txtSMTPHost.TabIndex = 8
+        Me.ToolTip1.SetToolTip(Me.txtSMTPHost, "SMTP host used to send emails")
         '
         'comEmailNotifLvl
         '
@@ -1225,6 +1272,7 @@ Partial Class Form1
         Me.comEmailNotifLvl.Name = "comEmailNotifLvl"
         Me.comEmailNotifLvl.Size = New System.Drawing.Size(121, 21)
         Me.comEmailNotifLvl.TabIndex = 7
+        Me.ToolTip1.SetToolTip(Me.comEmailNotifLvl, "Select which notification emails will be sent")
         '
         'comWinNotifLvl
         '
@@ -1235,6 +1283,7 @@ Partial Class Form1
         Me.comWinNotifLvl.Name = "comWinNotifLvl"
         Me.comWinNotifLvl.Size = New System.Drawing.Size(121, 21)
         Me.comWinNotifLvl.TabIndex = 5
+        Me.ToolTip1.SetToolTip(Me.comWinNotifLvl, "Select which popup notifications will be displayed")
         '
         'comAppNotifLvl
         '
@@ -1245,6 +1294,7 @@ Partial Class Form1
         Me.comAppNotifLvl.Name = "comAppNotifLvl"
         Me.comAppNotifLvl.Size = New System.Drawing.Size(121, 21)
         Me.comAppNotifLvl.TabIndex = 4
+        Me.ToolTip1.SetToolTip(Me.comAppNotifLvl, "Select which application notifications will be displayed")
         '
         'chkAllowEmailNotification
         '
@@ -1254,6 +1304,7 @@ Partial Class Form1
         Me.chkAllowEmailNotification.Size = New System.Drawing.Size(143, 17)
         Me.chkAllowEmailNotification.TabIndex = 3
         Me.chkAllowEmailNotification.Text = "Enable Email Notification"
+        Me.ToolTip1.SetToolTip(Me.chkAllowEmailNotification, "Allow notifications to be sent via email")
         Me.chkAllowEmailNotification.UseVisualStyleBackColor = True
         '
         'chkApplicationNotification
@@ -1264,6 +1315,7 @@ Partial Class Form1
         Me.chkApplicationNotification.Size = New System.Drawing.Size(170, 17)
         Me.chkApplicationNotification.TabIndex = 1
         Me.chkApplicationNotification.Text = "Enable Application Notification"
+        Me.ToolTip1.SetToolTip(Me.chkApplicationNotification, "Allow notifications to be displayed at the bottom of the application window")
         Me.chkApplicationNotification.UseVisualStyleBackColor = True
         '
         'chkWindowsNotification
@@ -1274,6 +1326,8 @@ Partial Class Form1
         Me.chkWindowsNotification.Size = New System.Drawing.Size(162, 17)
         Me.chkWindowsNotification.TabIndex = 0
         Me.chkWindowsNotification.Text = "Enable Windows Notification"
+        Me.ToolTip1.SetToolTip(Me.chkWindowsNotification, "Allow notifications to be displayed in a popup at the bottom right of the desktop" &
+        "")
         Me.chkWindowsNotification.UseVisualStyleBackColor = True
         '
         'gbxWindow
@@ -1303,6 +1357,7 @@ Partial Class Form1
         Me.chkShowTooltips.Size = New System.Drawing.Size(93, 17)
         Me.chkShowTooltips.TabIndex = 9
         Me.chkShowTooltips.Text = "Show Tooltips"
+        Me.ToolTip1.SetToolTip(Me.chkShowTooltips, "Show or hide all tooltips")
         Me.chkShowTooltips.UseVisualStyleBackColor = True
         '
         'chkDesktopShortcut
@@ -1313,6 +1368,7 @@ Partial Class Form1
         Me.chkDesktopShortcut.Size = New System.Drawing.Size(139, 17)
         Me.chkDesktopShortcut.TabIndex = 8
         Me.chkDesktopShortcut.Text = "Add shortcut to desktop"
+        Me.ToolTip1.SetToolTip(Me.chkDesktopShortcut, "Add a shortcut for DogeNodes to the desktop")
         Me.chkDesktopShortcut.UseVisualStyleBackColor = True
         '
         'chkStartWithWindows
@@ -1323,6 +1379,7 @@ Partial Class Form1
         Me.chkStartWithWindows.Size = New System.Drawing.Size(117, 17)
         Me.chkStartWithWindows.TabIndex = 7
         Me.chkStartWithWindows.Text = "Start with Windows"
+        Me.ToolTip1.SetToolTip(Me.chkStartWithWindows, "Start the application automatically on Windows login")
         Me.chkStartWithWindows.UseVisualStyleBackColor = True
         '
         'chkStartMinimised
@@ -1333,6 +1390,7 @@ Partial Class Form1
         Me.chkStartMinimised.Size = New System.Drawing.Size(150, 17)
         Me.chkStartMinimised.TabIndex = 6
         Me.chkStartMinimised.Text = "Start application minimised"
+        Me.ToolTip1.SetToolTip(Me.chkStartMinimised, "Start the application minimised to the tray or task bar")
         Me.chkStartMinimised.UseVisualStyleBackColor = True
         '
         'comStartup
@@ -1344,6 +1402,8 @@ Partial Class Form1
         Me.comStartup.Name = "comStartup"
         Me.comStartup.Size = New System.Drawing.Size(121, 21)
         Me.comStartup.TabIndex = 5
+        Me.ToolTip1.SetToolTip(Me.comStartup, "Choose the tab that is displayed when the application starts or is restored from " &
+        "the tray or taskbar")
         '
         'lblStartupTab
         '
@@ -1362,6 +1422,8 @@ Partial Class Form1
         Me.btnForceClose.Size = New System.Drawing.Size(98, 23)
         Me.btnForceClose.TabIndex = 3
         Me.btnForceClose.Text = "Close Application"
+        Me.ToolTip1.SetToolTip(Me.btnForceClose, "Use this button to close the application if you have chosen to minimise it on clo" &
+        "se")
         Me.btnForceClose.UseVisualStyleBackColor = True
         '
         'chkMinimiseOnClose
@@ -1372,6 +1434,8 @@ Partial Class Form1
         Me.chkMinimiseOnClose.Size = New System.Drawing.Size(110, 17)
         Me.chkMinimiseOnClose.TabIndex = 2
         Me.chkMinimiseOnClose.Text = "Minimise on Close"
+        Me.ToolTip1.SetToolTip(Me.chkMinimiseOnClose, "Minimise the application when the close button is clicked. If this option is sele" &
+        "cted the application can only be closed from the 'Close Application' button")
         Me.chkMinimiseOnClose.UseVisualStyleBackColor = True
         '
         'chkMinimiseToTray
@@ -1382,6 +1446,8 @@ Partial Class Form1
         Me.chkMinimiseToTray.Size = New System.Drawing.Size(233, 17)
         Me.chkMinimiseToTray.TabIndex = 1
         Me.chkMinimiseToTray.Text = "Minimise to the Tray Instead of the Task bar"
+        Me.ToolTip1.SetToolTip(Me.chkMinimiseToTray, "Choose whether the application is minimised to the system tray or the taskbar. Th" &
+        "e application can be restored from either location")
         Me.chkMinimiseToTray.UseVisualStyleBackColor = True
         '
         'chkHideTrayIcon
@@ -1392,6 +1458,7 @@ Partial Class Form1
         Me.chkHideTrayIcon.Size = New System.Drawing.Size(96, 17)
         Me.chkHideTrayIcon.TabIndex = 0
         Me.chkHideTrayIcon.Text = "Hide Tray Icon"
+        Me.ToolTip1.SetToolTip(Me.chkHideTrayIcon, "Show or hide the icon that appears in the system tray")
         Me.chkHideTrayIcon.UseVisualStyleBackColor = True
         '
         'btnRestoreDefaults
@@ -1402,6 +1469,7 @@ Partial Class Form1
         Me.btnRestoreDefaults.Size = New System.Drawing.Size(96, 23)
         Me.btnRestoreDefaults.TabIndex = 1
         Me.btnRestoreDefaults.Text = "Restore Defaults"
+        Me.ToolTip1.SetToolTip(Me.btnRestoreDefaults, "Restore all the default settings")
         Me.btnRestoreDefaults.UseVisualStyleBackColor = True
         '
         'gbxThresholdSettings
@@ -1442,6 +1510,7 @@ Partial Class Form1
         Me.trkYellowToRed.Size = New System.Drawing.Size(104, 45)
         Me.trkYellowToRed.TabIndex = 5
         Me.trkYellowToRed.TickFrequency = 2
+        Me.ToolTip1.SetToolTip(Me.trkYellowToRed, "Adjust the threshold at which the block height status changes from yellow to red")
         Me.trkYellowToRed.Value = 16
         '
         'trkGreenToYellow
@@ -1452,6 +1521,8 @@ Partial Class Form1
         Me.trkGreenToYellow.Name = "trkGreenToYellow"
         Me.trkGreenToYellow.Size = New System.Drawing.Size(104, 45)
         Me.trkGreenToYellow.TabIndex = 4
+        Me.ToolTip1.SetToolTip(Me.trkGreenToYellow, "Adjust the threshold at which the block height status changes from green to yello" &
+        "w")
         Me.trkGreenToYellow.Value = 6
         '
         'lblYellowRed
@@ -1491,11 +1562,11 @@ Partial Class Form1
         Me.sslAPIProgressBar.Size = New System.Drawing.Size(100, 16)
         Me.sslAPIProgressBar.Step = 1
         Me.sslAPIProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous
+        Me.sslAPIProgressBar.ToolTipText = "Progress towards next blockchain data update"
         '
         'sslLastUpdate
         '
         Me.sslLastUpdate.AutoSize = False
-        Me.sslLastUpdate.AutoToolTip = True
         Me.sslLastUpdate.Name = "sslLastUpdate"
         Me.sslLastUpdate.Size = New System.Drawing.Size(200, 17)
         Me.sslLastUpdate.Text = "Last Update : Never"
@@ -1505,7 +1576,6 @@ Partial Class Form1
         'sslError
         '
         Me.sslError.AutoSize = False
-        Me.sslError.AutoToolTip = True
         Me.sslError.BackColor = System.Drawing.SystemColors.Control
         Me.sslError.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
         Me.sslError.ForeColor = System.Drawing.Color.White
@@ -1513,6 +1583,7 @@ Partial Class Form1
         Me.sslError.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.sslError.Size = New System.Drawing.Size(495, 17)
         Me.sslError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.sslError.ToolTipText = "Application notification area"
         '
         'timReloadData
         '
