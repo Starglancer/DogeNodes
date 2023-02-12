@@ -1685,6 +1685,7 @@ Public Class Form1
                 chkUseSSL.Enabled = True
                 txtEmailAddress.Enabled = True
                 pbxShow.Enabled = True
+                btnTestEmail.Enabled = True
                 Notification_Display("Information", "The email notification controls have been enabled")
             Else
                 comEmailNotifLvl.Enabled = False
@@ -1695,6 +1696,7 @@ Public Class Form1
                 chkUseSSL.Enabled = False
                 txtEmailAddress.Enabled = False
                 pbxShow.Enabled = False
+                btnTestEmail.Enabled = False
                 Notification_Display("Information", "The email notification controls have been disabled")
             End If
 
@@ -2399,6 +2401,13 @@ Public Class Form1
     Private Sub chkShowTooltips_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowTooltips.CheckedChanged
 
         Configure_Tooltips()
+
+    End Sub
+
+    Private Sub btnTestEmail_Click(sender As Object, e As EventArgs) Handles btnTestEmail.Click
+
+        'Send a test email
+        Send_Email_Notification("Test Email", "You have correctly configured your email settings")
 
     End Sub
 End Class
