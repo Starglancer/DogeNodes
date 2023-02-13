@@ -64,6 +64,7 @@ Partial Class Form1
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabNodeMap = New System.Windows.Forms.TabPage()
+        Me.lblMapUpdate = New System.Windows.Forms.Label()
         Me.pbxMap = New System.Windows.Forms.PictureBox()
         Me.tabNodestatus = New System.Windows.Forms.TabPage()
         Me.gbxDetails = New System.Windows.Forms.GroupBox()
@@ -156,10 +157,8 @@ Partial Class Form1
         Me.timReloadData = New System.Windows.Forms.Timer(Me.components)
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.timClearError = New System.Windows.Forms.Timer(Me.components)
-        Me.dlgSelectLogFileLocation = New System.Windows.Forms.FolderBrowserDialog()
         Me.timUpdateCache = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.lblMapUpdate = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.tabSummary.SuspendLayout()
         CType(Me.pbxDogecoin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -609,6 +608,14 @@ Partial Class Form1
         Me.tabNodeMap.TabIndex = 5
         Me.tabNodeMap.Text = "Node Map"
         Me.tabNodeMap.UseVisualStyleBackColor = True
+        '
+        'lblMapUpdate
+        '
+        Me.lblMapUpdate.Location = New System.Drawing.Point(88, 384)
+        Me.lblMapUpdate.Name = "lblMapUpdate"
+        Me.lblMapUpdate.Size = New System.Drawing.Size(608, 19)
+        Me.lblMapUpdate.TabIndex = 1
+        Me.lblMapUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'pbxMap
         '
@@ -1617,14 +1624,6 @@ Partial Class Form1
         '
         Me.timUpdateCache.Interval = 3000
         '
-        'lblMapUpdate
-        '
-        Me.lblMapUpdate.Location = New System.Drawing.Point(88, 384)
-        Me.lblMapUpdate.Name = "lblMapUpdate"
-        Me.lblMapUpdate.Size = New System.Drawing.Size(608, 19)
-        Me.lblMapUpdate.TabIndex = 1
-        Me.lblMapUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1769,7 +1768,6 @@ Partial Class Form1
     Friend WithEvents gbxLogging As GroupBox
     Friend WithEvents btnClearLog As Button
     Friend WithEvents btnDisplayLog As Button
-    Friend WithEvents dlgSelectLogFileLocation As FolderBrowserDialog
     Friend WithEvents lblZipCode As Label
     Friend WithEvents lblRegion As Label
     Friend WithEvents lblISP As Label
