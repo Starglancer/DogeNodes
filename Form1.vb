@@ -99,6 +99,7 @@ Public Class Form1
             chkStartWithWindows.Checked = My.Settings.StartWithWindows
             chkDesktopShortcut.Checked = My.Settings.DesktopShortcut
             chkShowTooltips.Checked = My.Settings.ShowTooltips
+            chkHighlightCurrentNode.Checked = My.Settings.HighlightNode
 
             'Update sliders to persistent values
             trkGreenToYellow.Value = lblGreenToYellow.Text
@@ -167,7 +168,7 @@ Public Class Form1
             'Set up tooltips
             Configure_Tooltips()
 
-            'Flag to indicate if form has finished loading. Used in error handling
+            'Flag to indicate if form has finished loading.
             FormLoadComplete = True
 
             'Close the splashscreen
@@ -380,6 +381,11 @@ Public Class Form1
                     CurrentColour = "Grey"
                 End If
 
+            End If
+
+            're-populate the node map if current node is displayed on map
+            If chkHighlightCurrentNode.Checked = True Then
+                Populate_Node_Map()
             End If
 
             'Set the tray icon appearance dependent on status
@@ -1234,6 +1240,7 @@ Public Class Form1
                 chkStartWithWindows.Checked = My.Settings.StartWithWindowsDefault
                 chkDesktopShortcut.Checked = My.Settings.DesktopShortcutDefault
                 chkShowTooltips.Checked = My.Settings.ShowTooltipsDefault
+                chkHighlightCurrentNode.Checked = My.Settings.HighlightNodeDefault
 
                 'Update sliders
                 trkGreenToYellow.Value = lblGreenToYellow.Text
@@ -1463,6 +1470,7 @@ Public Class Form1
             My.Settings.StartWithWindows = chkStartWithWindows.Checked
             My.Settings.DesktopShortcut = chkDesktopShortcut.Checked
             My.Settings.ShowTooltips = chkShowTooltips.Checked
+            My.Settings.HighlightNode = chkHighlightCurrentNode.Checked
 
             My.Settings.Save()
 
@@ -1817,7 +1825,6 @@ Public Class Form1
             'set up graphics objects
             Dim Map As Image = My.Resources.Map
             Dim MapGraphics As Graphics = Graphics.FromImage(Map)
-            Dim NodePen As Pen = New Pen(Color.FromArgb(128, 255, 147, 0), 4)
 
             'Write a point onto the map for each node in the nodelist
             Dim RowCount As Integer = grdNodeList.RowCount
@@ -1833,6 +1840,21 @@ Public Class Form1
                         MapGraphics.DrawImage(My.Resources.MapNode, X, Y, 32, 32)
                     End If
                 Next
+            End If
+
+            'Highlight the currently selected node on the map. Icon shows whether its on or offline
+            If chkHighlightCurrentNode.Checked = True Then
+                IPAddress = txtIPAddress.Text
+                If IPAddress <> "" And Validate_IPAddress(IPAddress) <> "Invalid" Then
+                    Location = Lookup_IP_Location(IPAddress)
+                    Longitude = Location(0)
+                    Latitude = Location(1)
+                    If Longitude <> "" And Latitude <> "" Then
+                        X = Map_X_Coords_from_Longitude(Longitude)
+                        Y = Map_Y_Coords_from_Latitude(Latitude)
+                        MapGraphics.DrawImage(pbxStatus.Image, X, Y, 32, 32)
+                    End If
+                End If
             End If
 
             'Apply the updated map to the picturebox
@@ -2438,4 +2460,14 @@ Public Class Form1
         Send_Email_Notification("Test Email", "You have correctly configured your email settings")
 
     End Sub
+
+    Private Sub chkHighlightCurrentNode_CheckedChanged(sender As Object, e As EventArgs) Handles chkHighlightCurrentNode.CheckedChanged
+
+        're-populate the node map to hide or show the currently selected node. Only do this if user action
+        If FormLoadComplete = True Then
+            Populate_Node_Map()
+        End If
+
+    End Sub
+
 End Class

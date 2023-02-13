@@ -560,6 +560,27 @@ Namespace My
                 Return CType(Me("ShowTooltipsDefault"),Boolean)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property HighlightNode() As Boolean
+            Get
+                Return CType(Me("HighlightNode"),Boolean)
+            End Get
+            Set
+                Me("HighlightNode") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public ReadOnly Property HighlightNodeDefault() As Boolean
+            Get
+                Return CType(Me("HighlightNodeDefault"),Boolean)
+            End Get
+        End Property
     End Class
 End Namespace
 

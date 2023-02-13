@@ -23,11 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabSummary = New System.Windows.Forms.TabPage()
@@ -159,6 +159,7 @@ Partial Class Form1
         Me.timClearError = New System.Windows.Forms.Timer(Me.components)
         Me.timUpdateCache = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.chkHighlightCurrentNode = New System.Windows.Forms.CheckBox()
         Me.TabControl1.SuspendLayout()
         Me.tabSummary.SuspendLayout()
         CType(Me.pbxDogecoin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -334,24 +335,24 @@ Partial Class Form1
         Me.grdStatistics.AllowUserToResizeColumns = False
         Me.grdStatistics.AllowUserToResizeRows = False
         Me.grdStatistics.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.grdStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdStatistics.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Value, Me.Count, Me.BarChart})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle13
         Me.grdStatistics.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdStatistics.GridColor = System.Drawing.Color.White
         Me.grdStatistics.Location = New System.Drawing.Point(72, 64)
@@ -380,10 +381,10 @@ Partial Class Form1
         '
         'BarChart
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Khaki
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Khaki
-        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Khaki
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Khaki
+        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle12
         Me.BarChart.HeaderText = "Bar Chart"
         Me.BarChart.Name = "BarChart"
         Me.BarChart.ReadOnly = True
@@ -553,24 +554,24 @@ Partial Class Form1
         Me.grdNodeList.AllowUserToResizeColumns = False
         Me.grdNodeList.AllowUserToResizeRows = False
         Me.grdNodeList.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.grdNodeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdNodeList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2})
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle15
         Me.grdNodeList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdNodeList.GridColor = System.Drawing.Color.White
         Me.grdNodeList.Location = New System.Drawing.Point(399, 21)
@@ -994,6 +995,7 @@ Partial Class Form1
         '
         'gbxMapCache
         '
+        Me.gbxMapCache.Controls.Add(Me.chkHighlightCurrentNode)
         Me.gbxMapCache.Controls.Add(Me.btnClearMapCache)
         Me.gbxMapCache.Controls.Add(Me.lblPercentageNodes)
         Me.gbxMapCache.Controls.Add(Me.lblCacheNodes)
@@ -1001,14 +1003,14 @@ Partial Class Form1
         Me.gbxMapCache.Controls.Add(Me.lblCacheNodesValue)
         Me.gbxMapCache.Location = New System.Drawing.Point(28, 556)
         Me.gbxMapCache.Name = "gbxMapCache"
-        Me.gbxMapCache.Size = New System.Drawing.Size(715, 65)
+        Me.gbxMapCache.Size = New System.Drawing.Size(715, 98)
         Me.gbxMapCache.TabIndex = 6
         Me.gbxMapCache.TabStop = False
-        Me.gbxMapCache.Text = "Map Cache"
+        Me.gbxMapCache.Text = "Map"
         '
         'btnClearMapCache
         '
-        Me.btnClearMapCache.Location = New System.Drawing.Point(565, 22)
+        Me.btnClearMapCache.Location = New System.Drawing.Point(565, 60)
         Me.btnClearMapCache.Name = "btnClearMapCache"
         Me.btnClearMapCache.Size = New System.Drawing.Size(75, 23)
         Me.btnClearMapCache.TabIndex = 19
@@ -1020,7 +1022,7 @@ Partial Class Form1
         'lblPercentageNodes
         '
         Me.lblPercentageNodes.AutoSize = True
-        Me.lblPercentageNodes.Location = New System.Drawing.Point(272, 27)
+        Me.lblPercentageNodes.Location = New System.Drawing.Point(272, 65)
         Me.lblPercentageNodes.Name = "lblPercentageNodes"
         Me.lblPercentageNodes.Size = New System.Drawing.Size(140, 13)
         Me.lblPercentageNodes.TabIndex = 18
@@ -1029,7 +1031,7 @@ Partial Class Form1
         'lblCacheNodes
         '
         Me.lblCacheNodes.AutoSize = True
-        Me.lblCacheNodes.Location = New System.Drawing.Point(55, 27)
+        Me.lblCacheNodes.Location = New System.Drawing.Point(55, 65)
         Me.lblCacheNodes.Name = "lblCacheNodes"
         Me.lblCacheNodes.Size = New System.Drawing.Size(83, 13)
         Me.lblCacheNodes.TabIndex = 17
@@ -1039,7 +1041,7 @@ Partial Class Form1
         '
         Me.lblPercentageNodesValue.BackColor = System.Drawing.Color.White
         Me.lblPercentageNodesValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblPercentageNodesValue.Location = New System.Drawing.Point(418, 23)
+        Me.lblPercentageNodesValue.Location = New System.Drawing.Point(418, 61)
         Me.lblPercentageNodesValue.Name = "lblPercentageNodesValue"
         Me.lblPercentageNodesValue.Size = New System.Drawing.Size(83, 20)
         Me.lblPercentageNodesValue.TabIndex = 16
@@ -1052,7 +1054,7 @@ Partial Class Form1
         '
         Me.lblCacheNodesValue.BackColor = System.Drawing.Color.White
         Me.lblCacheNodesValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblCacheNodesValue.Location = New System.Drawing.Point(143, 23)
+        Me.lblCacheNodesValue.Location = New System.Drawing.Point(143, 61)
         Me.lblCacheNodesValue.Name = "lblCacheNodesValue"
         Me.lblCacheNodesValue.Size = New System.Drawing.Size(82, 20)
         Me.lblCacheNodesValue.TabIndex = 15
@@ -1502,7 +1504,7 @@ Partial Class Form1
         Me.gbxThresholdSettings.Controls.Add(Me.trkGreenToYellow)
         Me.gbxThresholdSettings.Controls.Add(Me.lblYellowRed)
         Me.gbxThresholdSettings.Controls.Add(Me.lblGreenYellow)
-        Me.gbxThresholdSettings.Location = New System.Drawing.Point(28, 646)
+        Me.gbxThresholdSettings.Location = New System.Drawing.Point(28, 682)
         Me.gbxThresholdSettings.Name = "gbxThresholdSettings"
         Me.gbxThresholdSettings.Size = New System.Drawing.Size(715, 76)
         Me.gbxThresholdSettings.TabIndex = 0
@@ -1623,6 +1625,18 @@ Partial Class Form1
         'timUpdateCache
         '
         Me.timUpdateCache.Interval = 3000
+        '
+        'chkHighlightCurrentNode
+        '
+        Me.chkHighlightCurrentNode.AutoSize = True
+        Me.chkHighlightCurrentNode.Location = New System.Drawing.Point(57, 29)
+        Me.chkHighlightCurrentNode.Name = "chkHighlightCurrentNode"
+        Me.chkHighlightCurrentNode.Size = New System.Drawing.Size(254, 17)
+        Me.chkHighlightCurrentNode.TabIndex = 20
+        Me.chkHighlightCurrentNode.Text = "Highlight the currently selected node on the map"
+        Me.ToolTip1.SetToolTip(Me.chkHighlightCurrentNode, "Choose whether or not to highlight on the map, the node currently selected for no" &
+        "de status")
+        Me.chkHighlightCurrentNode.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -1812,4 +1826,5 @@ Partial Class Form1
     Friend WithEvents chkShowTooltips As CheckBox
     Friend WithEvents btnTestEmail As Button
     Friend WithEvents lblMapUpdate As Label
+    Friend WithEvents chkHighlightCurrentNode As CheckBox
 End Class
