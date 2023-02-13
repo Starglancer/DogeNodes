@@ -8,15 +8,19 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
 
 ## Screenshots
 
-![Summary](https://user-images.githubusercontent.com/124823644/217803867-00c8ce45-270b-45d8-97d3-bc44e2ef20ed.png)
+![Summary](https://user-images.githubusercontent.com/124823644/218485582-f1e8c320-5e23-4fa4-9200-d0ba6ecde1cd.png)
 
 ![Statistics](https://user-images.githubusercontent.com/124823644/217803935-ae6e0c80-a2a9-4f69-9b18-4dcaa5370bc5.png)
 
 ![NodeList](https://user-images.githubusercontent.com/124823644/217803981-e7b9523e-77f0-4b33-9051-5e273533ceac.png)
 
-![NodeMap](https://user-images.githubusercontent.com/124823644/217804002-fe2e975d-7b75-4d68-b800-3a7e7596ad96.png)
+![Map](https://user-images.githubusercontent.com/124823644/218485680-53e77553-182c-49c7-b0fd-ef7ff99e0930.png)
 
 ![NodeStatus](https://user-images.githubusercontent.com/124823644/217804034-1388326c-89ac-45b7-aa31-ac52fd766595.png)
+
+![Settings1](https://user-images.githubusercontent.com/124823644/218485707-321c093f-8d77-40de-8032-52ef329a4bef.png)
+
+![Settings2](https://user-images.githubusercontent.com/124823644/218485740-9a7c1a4b-e280-4d00-88dc-5a753b3b7f34.png)
 
 ## Features
 
@@ -24,7 +28,7 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  - Summary of total active nodes
  - Breakdown of nodes by country, block height, agent version and network protocol
  - Filterable list of all nodes
- - Global map of filtered node location (Initial map load may take up to 1 hour, but after that it is cached)
+ - Global map of filtered node locations
  - Ability to select detailed status of any node 
  - Monitoring of selected node status including pop up alerts and email alerts if any issues arise
  - Highly configurable behaviour including start with windows, minimize to tray and minimise on close
@@ -34,15 +38,11 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  - Network connection to the internet
  - No inbound ports need to be opened
  - Microsoft Windows operating system (I have tested on Windows 10 only)
- - Dot Net Framework 4.7.2
+ - Dot Net Framework 4.7.2. This will be installed at deployment time if not already present
  
 ## To Do List
 
-- progress bar for initial map load
-- Test button for email configuration
-- Plot currently selected node location on map
-- Add tooltips
-- Additional help and documentation
+- Additional documentation
  
 ## Acknowledgements
 
