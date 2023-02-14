@@ -42,12 +42,15 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  
 ## To Do List
 
-- Additional documentation
+- Improve installation experience using Advanced Installer
+- Create a CHM based help system 
  
 ## Acknowledgements
 
 Thanks to the following API providers used as the source of data for this application
 
-- https://blockchair.com/
-- https://ip-api.com/
-- https://github.com/
+- [Blockchair](https://blockchair.com/)
+- [IP-API](https://ip-api.com/)
+- [Github](https://github.com/)
+
+Thanks to [Advanced Installer](https://www.advancedinstaller.com/) for their excellent installer which will be used from the next release (0.30) onwards
