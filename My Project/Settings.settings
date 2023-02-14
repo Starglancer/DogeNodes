@@ -12,16 +12,16 @@
       <Value Profile="(Default)">Country</Value>
     </Setting>
     <Setting Name="GreenToYellow" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">8</Value>
+      <Value Profile="(Default)">9</Value>
     </Setting>
     <Setting Name="YellowToRed" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">16</Value>
+      <Value Profile="(Default)">18</Value>
     </Setting>
     <Setting Name="GreenToYellowDefault" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">8</Value>
+      <Value Profile="(Default)">9</Value>
     </Setting>
     <Setting Name="YellowToRedDefault" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">16</Value>
+      <Value Profile="(Default)">18</Value>
     </Setting>
     <Setting Name="HideTrayIcon" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -135,7 +135,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="DogeNodesVersion" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Version 0.20 Beta</Value>
+      <Value Profile="(Default)">Version 0.30 Beta</Value>
     </Setting>
     <Setting Name="ShowTooltips" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

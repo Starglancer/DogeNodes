@@ -92,7 +92,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("8")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("9")>  _
         Public Property GreenToYellow() As Integer
             Get
                 Return CType(Me("GreenToYellow"),Integer)
@@ -104,7 +104,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("16")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("18")>  _
         Public Property YellowToRed() As Integer
             Get
                 Return CType(Me("YellowToRed"),Integer)
@@ -116,7 +116,7 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("8")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("9")>  _
         Public ReadOnly Property GreenToYellowDefault() As Integer
             Get
                 Return CType(Me("GreenToYellowDefault"),Integer)
@@ -125,7 +125,7 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("16")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("18")>  _
         Public ReadOnly Property YellowToRedDefault() As Integer
             Get
                 Return CType(Me("YellowToRedDefault"),Integer)
@@ -533,7 +533,7 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Version 0.20 Beta")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Version 0.30 Beta")>  _
         Public ReadOnly Property DogeNodesVersion() As String
             Get
                 Return CType(Me("DogeNodesVersion"),String)
