@@ -176,9 +176,9 @@ Public Class Form1
 
             Notification_Display("Information", "Application load completed successfully")
 
-        Catch
+        Catch ex As Exception
 
-            Notification_Display("Error", "There was an error in the application load")
+            Notification_Display("Error", "There was an error in the application load", ex)
 
         End Try
 
@@ -192,9 +192,9 @@ Public Class Form1
             Notification_Display("Information", "The latest API download from blockchair has started")
             json = New WebDownload(2000).DownloadString("https://api.blockchair.com/dogecoin/nodes")
             Notification_Display("Information", "The latest API download from blockchair has completed successfully")
-        Catch
+        Catch ex As Exception
             If json <> "" Then
-                Notification_Display("Error", "Blockchair API is unreachable. Please check network connection")
+                Notification_Display("Error", "Blockchair API is unreachable. Please check network connection", ex)
                 'Carry on with rest of subroutine using the last value of json stored in the global variable
             Else
                 'No global variable, so put out message and close application
@@ -248,9 +248,9 @@ Public Class Form1
 
             Notification_Display("Information", "The JSON Load has completed successfully")
 
-        Catch
+        Catch ex As Exception
 
-            Notification_Display("Error", "There was an error in the JSON load")
+            Notification_Display("Error", "There was an error in the JSON load", ex)
 
         End Try
 
@@ -393,9 +393,9 @@ Public Class Form1
 
             Notification_Display("Information", "Population of the node status tab has completed successfully")
 
-        Catch
+        Catch ex As Exception
 
-            Notification_Display("Error", "There was an error populating the node status tab")
+            Notification_Display("Error", "There was an error populating the node status tab", ex)
 
         End Try
 
@@ -408,34 +408,37 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Notification_Display(Severity As String, Message As String)
+    Private Sub Notification_Display(Severity As String, Message As String, Optional ex As Exception = Nothing)
 
         Try
             'display notification in the appropriate places
             If Severity = "Critical" Then
                 Display_MessageBox_Notification(Message)
-            End If
-            If chkApplicationNotification.Checked = True Then
-                If comAppNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Display_Application_Notification(Severity, Message)
-                If comAppNotifLvl.Text = "Error Only" And Severity = "Error" Then Display_Application_Notification(Severity, Message)
-            End If
-            If chkWindowsNotification.Checked = True Then
-                If comWinNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Display_Windows_Notification(Severity, Message)
-                If comWinNotifLvl.Text = "Error Only" And Severity = "Error" Then Display_Windows_Notification(Severity, Message)
-            End If
-            If chkAllowLogging.Checked = True Then
-                If comLogLvl.Text = "Everything" Then Log_Notification(Severity, Message)
-                If comLogLvl.Text = "Warning and Error" And Severity <> "Information" Then Log_Notification(Severity, Message)
-                If comLogLvl.Text = "Error Only" And Severity = "Error" Then Log_Notification(Severity, Message)
-            End If
-            If chkAllowEmailNotification.Checked = True Then
-                If comEmailNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Send_Email_Notification(Severity, Message)
-                If comEmailNotifLvl.Text = "Error Only" And Severity = "Error" Then Send_Email_Notification(Severity, Message)
+            Else
+                If chkApplicationNotification.Checked = True Then
+                    If comAppNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Display_Application_Notification(Severity, Message)
+                    If comAppNotifLvl.Text = "Error Only" And Severity = "Error" Then Display_Application_Notification(Severity, Message)
+                End If
+                If chkWindowsNotification.Checked = True Then
+                    If comWinNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Display_Windows_Notification(Severity, Message)
+                    If comWinNotifLvl.Text = "Error Only" And Severity = "Error" Then Display_Windows_Notification(Severity, Message)
+                End If
+                If chkAllowLogging.Checked = True Then
+                    If comLogLvl.Text = "Everything" Then Log_Notification(Severity, Message)
+                    If comLogLvl.Text = "Warning and Error" And Severity <> "Information" Then Log_Notification(Severity, Message)
+                    If comLogLvl.Text = "Error Only" And Severity = "Error" Then Log_Notification(Severity, Message)
+                    If comLogLvl.Text = "Debug" And Severity = "Error" And Not ex Is Nothing Then Log_Notification(Severity, Message, ex)
+                End If
+                If chkAllowEmailNotification.Checked = True Then
+                    If comEmailNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Send_Email_Notification(Severity, Message)
+                    If comEmailNotifLvl.Text = "Error Only" And Severity = "Error" Then Send_Email_Notification(Severity, Message)
+                End If
             End If
 
         Catch
             Display_MessageBox_Notification("There has been a critical error in the notification display flow")
         End Try
+
     End Sub
 
     Private Sub Display_Application_Notification(Severity As String, Message As String)
@@ -482,8 +485,8 @@ Public Class Form1
             Value = parsejson.SelectToken(Token).ToString
 
             Notification_Display("Information", "The value of " + Value + " was returned successfully for token " + Token)
-        Catch
-            Notification_Display("Error", "There was a problem retrieving a value for token " + Token)
+        Catch ex As Exception
+            Notification_Display("Error", "There was a problem retrieving a value for token " + Token, ex)
             Value = ""
         End Try
 
@@ -525,8 +528,8 @@ Public Class Form1
 
             Notification_Display("Information", "The IP Address " + Input + " was found to be " + Result)
 
-        Catch
-            Notification_Display("Error", "There was an error in validating the IP Address " + Input)
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error in validating the IP Address " + Input, ex)
             Result = ""
         End Try
 
@@ -544,8 +547,8 @@ Public Class Form1
 
             Notification_Display("Information", "The port " + Input + " was found to be " + Valid.ToString)
 
-        Catch
-            Notification_Display("Error", "There was an error in validating the port " + Input)
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error in validating the port " + Input, ex)
             Valid = Nothing
         End Try
 
@@ -593,8 +596,8 @@ Public Class Form1
 
             Notification_Display("Information", "The country datagrid was loaded successfully with " + Count.ToString + " rows")
 
-        Catch
-            Notification_Display("Error", "There was an error in loading the country datagrid")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error in loading the country datagrid", ex)
         End Try
 
     End Sub
@@ -633,8 +636,8 @@ Public Class Form1
 
             Notification_Display("Information", "The height datagrid was loaded successfully with " + Count.ToString + " rows")
 
-        Catch
-            Notification_Display("Error", "There was an error in loading the height datagrid")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error in loading the height datagrid", ex)
         End Try
 
     End Sub
@@ -675,8 +678,8 @@ Public Class Form1
 
             Notification_Display("Information", "The version datagrid was loaded successfully with " + Count.ToString + " rows")
 
-        Catch
-            Notification_Display("Error", "There was an error in loading the version datagrid")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error in loading the version datagrid", ex)
         End Try
 
     End Sub
@@ -729,8 +732,8 @@ Public Class Form1
 
             Notification_Display("Information", "The protocol datagrid was loaded successfully with 2 rows")
 
-        Catch
-            Notification_Display("Error", "There was an error in loading the protocol datagrid")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error in loading the protocol datagrid", ex)
         End Try
 
     End Sub
@@ -757,8 +760,8 @@ Public Class Form1
             End If
 
             Notification_Display("Information", "The statistics datagrid has been successfully selected as " + comStatistics.Text)
-        Catch
-            Notification_Display("Error", "There was an error in selecting the statistics datagrid")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error in selecting the statistics datagrid", ex)
         End Try
 
     End Sub
@@ -792,8 +795,8 @@ Public Class Form1
             If Count > 0.5 And Count <= 0.75 Then BarChart += ChrW(&H258E)
             If Count > 0.75 And Count < 1 Then BarChart += ChrW(&H258D)
 
-        Catch
-            Notification_Display("Error", "There was an error generating the barchart text")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error generating the barchart text", ex)
         End Try
 
         Return BarChart
@@ -859,8 +862,8 @@ Public Class Form1
 
             Notification_Display("Information", "The nodes datagrid was loaded successfully with " + Count.ToString + " rows")
 
-        Catch
-            Notification_Display("Error", "There was an error in loading the nodes datagrid")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error in loading the nodes datagrid", ex)
         End Try
 
     End Sub
@@ -887,8 +890,8 @@ Public Class Form1
             Next
 
             Notification_Display("Information", "The country dropdown has been populated successfully")
-        Catch
-            Notification_Display("Error", "There was an error populating the country dropdown")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error populating the country dropdown", ex)
         End Try
 
     End Sub
@@ -915,8 +918,8 @@ Public Class Form1
             Next
 
             Notification_Display("Information", "The height dropdown has been populated successfully")
-        Catch
-            Notification_Display("Error", "There was an error populating the height dropdown")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error populating the height dropdown", ex)
         End Try
 
     End Sub
@@ -943,8 +946,8 @@ Public Class Form1
             Next
 
             Notification_Display("Information", "The version dropdown has been populated successfully")
-        Catch
-            Notification_Display("Error", "There was an error populating the version dropdown")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error populating the version dropdown", ex)
         End Try
 
     End Sub
@@ -963,8 +966,8 @@ Public Class Form1
             comNetwork.Items.Add("IPv6")
 
             Notification_Display("Information", "The network dropdown has been populated successfully")
-        Catch
-            Notification_Display("Error", "There was an error populating the network dropdown")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error populating the network dropdown", ex)
         End Try
 
     End Sub
@@ -1010,8 +1013,8 @@ Public Class Form1
             gbxStatus.Focus()
 
             Notification_Display("Information", "The node " + txtIPAddress.Text + ":" + txtPort.Text + " was successfully selected from the node list")
-        Catch
-            Notification_Display("Error", "There was an error selecting the node from the node list")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error selecting the node from the node list", ex)
         End Try
 
     End Sub
@@ -1032,8 +1035,8 @@ Public Class Form1
             TabControl1.SelectedTab = tabNodeList
 
             Notification_Display("Information", "The node list for all nodes has been displayed successfully")
-        Catch
-            Notification_Display("Error", "There was an error displaying the node list for all nodes")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying the node list for all nodes", ex)
         End Try
 
     End Sub
@@ -1050,8 +1053,8 @@ Public Class Form1
             Load_Nodes_Datagrid()
 
             Notification_Display("Information", "All the node list filters have been cleared successfully")
-        Catch
-            Notification_Display("Error", "There was an error clearing all the node list filters")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error clearing all the node list filters", ex)
         End Try
 
     End Sub
@@ -1094,8 +1097,8 @@ Public Class Form1
             TabControl1.SelectedTab = tabNodeList
 
             Notification_Display("Information", "Node list has been made active with the " + comStatistics.Text + " filter set to " + grdStatistics.Rows(e.RowIndex).Cells(0).Value)
-        Catch
-            Notification_Display("Error", "There was an error displaying the node list filtered on " + comStatistics.Text)
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying the node list filtered on " + comStatistics.Text, ex)
         End Try
 
     End Sub
@@ -1123,8 +1126,8 @@ Public Class Form1
             sslAPIProgressBar.Value = Percentage
 
             'Do not log a success message as there would be one message per 5 seconds in the log!!
-        Catch
-            Notification_Display("Error", "There was an error during the regular check for an API update")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error during the regular check for an API update", ex)
         End Try
 
     End Sub
@@ -1145,8 +1148,8 @@ Public Class Form1
                 Notification_Display("Information", "The API download from github has started")
                 jsonRelease = client.DownloadString("https://api.github.com/repos/dogecoin/dogecoin/releases/latest")
                 Notification_Display("Information", "The API download from github has completed successfully")
-            Catch
-                Notification_Display("Error", "Github API is unreachable. Please check network connection")
+            Catch ex As Exception
+                Notification_Display("Error", "Github API is unreachable. Please check network connection", ex)
                 'Exit the sub leaving the last retrieved agent version in the global variable
                 Exit Sub
             End Try
@@ -1160,8 +1163,8 @@ Public Class Form1
             CurrentAgentVersion = Version
 
             Notification_Display("Information", "The current agent version has been successfully identified as " + Version)
-        Catch
-            Notification_Display("Error", "There was an error identifying the current agent version. It will be left as " + CurrentAgentVersion)
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error identifying the current agent version. It will be left as " + CurrentAgentVersion, ex)
         End Try
 
     End Sub
@@ -1190,8 +1193,8 @@ Public Class Form1
             Next
 
             Notification_Display("Information", "The maximum block height has been successfully identified as " + MaxBlockHeight.ToString)
-        Catch
-            Notification_Display("Error", "There was an error identifying the maximum block height")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error identifying the maximum block height", ex)
         End Try
 
     End Sub
@@ -1211,8 +1214,8 @@ Public Class Form1
             'Set Force close flag to false
             ForceCloseFlag = False
 
-        Catch
-            Notification_Display("Error", "There was an error closing/minimising the application")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error closing/minimising the application", ex)
         End Try
 
     End Sub
@@ -1250,8 +1253,8 @@ Public Class Form1
             End If
 
 
-        Catch
-            Notification_Display("Error", "There was an error restoring the default settings")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error restoring the default settings", ex)
         End Try
 
     End Sub
@@ -1274,8 +1277,8 @@ Public Class Form1
                 Notification_Display("Information", "The tray icon has been made visible")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error changing the tray icon visibility")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error changing the tray icon visibility", ex)
         End Try
 
     End Sub
@@ -1305,8 +1308,8 @@ Public Class Form1
                 Notification_Display("Information", "The application window has been displayed")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error minimising or restoring the application")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error minimising or restoring the application", ex)
         End Try
 
     End Sub
@@ -1321,8 +1324,8 @@ Public Class Form1
                 WindowState = FormWindowState.Minimized
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error resizing the application")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error resizing the application", ex)
         End Try
 
     End Sub
@@ -1348,8 +1351,8 @@ Public Class Form1
                 Notification_Display("Information", "The persistent settings were not saved on form close as application load had not completed")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error saving the persistent settings on form close")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error saving the persistent settings on form close", ex)
         End Try
 
     End Sub
@@ -1372,8 +1375,8 @@ Public Class Form1
             End If
 
             Notification_Display("Information", "The force close button visibility has been successfully set")
-        Catch
-            Notification_Display("Error", "There was an error setting the force close button visibility")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error setting the force close button visibility", ex)
         End Try
 
     End Sub
@@ -1404,8 +1407,8 @@ Public Class Form1
             End If
 
             Notification_Display("Information", "The tray icon appearance has been set to " + NotifyIcon1.Text)
-        Catch
-            Notification_Display("Error", "There was an error setting the tray icon appearance")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error setting the tray icon appearance", ex)
         End Try
 
     End Sub
@@ -1432,8 +1435,8 @@ Public Class Form1
             End Select
 
             Notification_Display("Information", "The startup tab has been set to " + TabControl1.SelectedTab.ToString)
-        Catch
-            Notification_Display("Error", "There was an error opening the startup tab")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error opening the startup tab", ex)
         End Try
 
     End Sub
@@ -1475,8 +1478,8 @@ Public Class Form1
             My.Settings.Save()
 
             Notification_Display("Information", "The persistent application level settings have been saved successfully")
-        Catch
-            Notification_Display("Error", "There was an error saving the persistent application level settings")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error saving the persistent application level settings", ex)
         End Try
 
     End Sub
@@ -1528,15 +1531,46 @@ Public Class Form1
 
     End Function
 
-    Private Function Log_Notification(Severity As String, Message As String) As Boolean
+    Private Function Log_Notification(Severity As String, Message As String, Optional ex As Exception = Nothing) As Boolean
 
         Try
-            'Pad out severity field for neat formatting of the log entry
-            If Severity = "Warning" Then Severity = "Warning    "
-            If Severity = "Error" Then Severity = "Error      "
 
-            'Construct Log Entry
-            Dim LogEntry As String = Date.Now.ToString("dd/MM/yyyy HH:mm:ss.fff") + " | " + Severity + " | " + Message + Environment.NewLine
+            Dim LogEntry As String
+
+            'Check if ex is supplied. If it is, it must be debug log
+
+            If ex Is Nothing Then
+                'Normal log entry
+
+                'Pad out severity field for neat formatting of the log entry
+                If Severity = "Warning" Then Severity = "Warning    "
+                If Severity = "Error" Then Severity = "Error      "
+
+                'Construct Log Entry
+                LogEntry = Date.Now.ToString("dd/MM/yyyy HH:mm:ss.fff") + " | " + Severity + " | " + Message + Environment.NewLine
+
+            Else
+                'Debug log entry
+
+                'Construct Log Entry
+                LogEntry = "----------------------------------------------"
+                LogEntry += Environment.NewLine
+                LogEntry += Date.Now.ToString("dd/MM/yyyy HH:mm:ss.fff")
+                LogEntry += Environment.NewLine
+                LogEntry += "----------------------------------------------"
+                LogEntry += Environment.NewLine
+                LogEntry += "Human Message: " + Message
+                LogEntry += Environment.NewLine
+                LogEntry += "Exception Message: " + ex.Message
+                LogEntry += Environment.NewLine
+                LogEntry += "StackTrace: " + ex.StackTrace
+                LogEntry += Environment.NewLine
+                LogEntry += "Source: " + ex.Source
+                LogEntry += Environment.NewLine
+                LogEntry += "TargetSite: " + ex.TargetSite.ToString
+                LogEntry += Environment.NewLine
+
+            End If
 
             'Write entry to log
             If System.IO.File.Exists(LogFileName) Then
@@ -1621,8 +1655,8 @@ Public Class Form1
                 Notification_Display("Information", "The logging controls have been disabled")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error changing the logging controls availability")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error changing the logging controls availability", ex)
         End Try
 
     End Sub
@@ -1645,8 +1679,8 @@ Public Class Form1
                 Notification_Display("Information", "The application notification controls have been disabled")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error changing the application notification controls availability")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error changing the application notification controls availability", ex)
         End Try
 
     End Sub
@@ -1669,8 +1703,8 @@ Public Class Form1
                 Notification_Display("Information", "The windows notification controls have been disabled")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error changing the windows notification controls availability")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error changing the windows notification controls availability", ex)
         End Try
 
     End Sub
@@ -1709,8 +1743,8 @@ Public Class Form1
                 Notification_Display("Information", "The email notification controls have been disabled")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error changing the email notification controls availability")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error changing the email notification controls availability", ex)
         End Try
 
     End Sub
@@ -1726,8 +1760,8 @@ Public Class Form1
             End If
 
             Notification_Display("Information", "The log file has been opened successfully")
-        Catch
-            Notification_Display("Error", "There was an error opening the log file")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error opening the log file", ex)
         End Try
 
     End Sub
@@ -1746,8 +1780,8 @@ Public Class Form1
             End If
 
             Notification_Display("Information", "The log file has been cleared")
-        Catch
-            Notification_Display("Error", "There was an error clearing the log file")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error clearing the log file", ex)
         End Try
 
     End Sub
@@ -1764,8 +1798,8 @@ Public Class Form1
             Notification_Display("Information", "The API download from ip-api has started")
             IP = New WebDownload(2000).DownloadString("http://ip-api.com/json/" + txtIPAddress.Text)
             Notification_Display("Information", "The API download from ip-api has completed successfully")
-        Catch
-            Notification_Display("Error", "IP API is unreachable. Please check network connection")
+        Catch ex As Exception
+            Notification_Display("Error", "IP API is unreachable. Please check network connection", ex)
             IP = ""
         End Try
 
@@ -1789,8 +1823,8 @@ Public Class Form1
             End If
 
             Notification_Display("Information", "The IP address details have been displayed successfully")
-        Catch
-            Notification_Display("Error", "There was an error displaying the IP address details")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying the IP address details", ex)
         End Try
 
     End Sub
@@ -1861,8 +1895,8 @@ Public Class Form1
             pbxMap.Image = Map
 
             Notification_Display("Information", "The node map has been created successfully")
-        Catch
-            Notification_Display("Error", "There was an error creating the node map")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error creating the node map", ex)
         End Try
 
     End Sub
@@ -1882,8 +1916,8 @@ Public Class Form1
             If X > ImageWidth - 1 Then X = ImageWidth - 1
 
             'No success notification as there are approx 1000 nodes
-        Catch
-            Notification_Display("Error", "There was an error calculating the X coordinate")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error calculating the X coordinate", ex)
         End Try
 
         Return X
@@ -1907,8 +1941,8 @@ Public Class Form1
             If Y > ImageHeight - 1 Then Y = ImageHeight - 1
 
             'No success notification as there are approx 1000 nodes
-        Catch
-            Notification_Display("Error", "There was an error calculating the Y coordinate")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error calculating the Y coordinate", ex)
         End Try
 
         Return Y
@@ -1933,8 +1967,8 @@ Public Class Form1
                 Notification_Display("Warning", "Log file is currently empty so will not be copied")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error copying the log file to the desktop")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error copying the log file to the desktop", ex)
         End Try
 
     End Sub
@@ -1951,8 +1985,8 @@ Public Class Form1
             End If
 
             Notification_Display("Information", "The node map cache has been configured")
-        Catch
-            Notification_Display("Error", "There was an error configuring the node map cache")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error configuring the node map cache", ex)
         End Try
 
     End Sub
@@ -1974,8 +2008,8 @@ Public Class Form1
             Next
 
             Notification_Display("Information", "Map cache successfully read from file")
-        Catch
-            Notification_Display("Error", "There was an error reading the map cache from file")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error reading the map cache from file", ex)
         End Try
 
     End Sub
@@ -2034,8 +2068,8 @@ Public Class Form1
             Location(1) = Latitude
 
             'No success notification as there would be too many
-        Catch
-            Notification_Display("Error", "There was an error retrieving the IP location for node " + IPAddress)
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error retrieving the IP location for node " + IPAddress, ex)
         End Try
 
         Return Location
@@ -2099,8 +2133,8 @@ Public Class Form1
                 Try
                     'No information logging here as the call may be made 20 times a minute!!
                     IP = New WebDownload(2000).DownloadString("http://ip-api.com/json/" + IPAddress + "?fields=lat,lon")
-                Catch
-                    Notification_Display("Error", "IP API is unreachable. Please check network connection")
+                Catch ex As Exception
+                    Notification_Display("Error", "IP API is unreachable. Please check network connection", ex)
                     'extend interval to 1 minute to avoid unneccessary api calls
                     timUpdateCache.Enabled = False
                     timUpdateCache.Interval = 60000
@@ -2134,8 +2168,8 @@ Public Class Form1
             End If
 
             'No success notification as there would be one every three seconds
-        Catch
-            Notification_Display("Error", "There was an error updating the cache")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error updating the cache", ex)
         End Try
 
     End Sub
@@ -2164,8 +2198,8 @@ Public Class Form1
                 Notification_Display("Information", "No rows to remove from cache from cache")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error removing the first row from the cache")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error removing the first row from the cache", ex)
         End Try
 
     End Sub
@@ -2184,8 +2218,8 @@ Public Class Form1
                 Notification_Display("Information", "SMTP password hidden")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error updating the SMTP password visibility")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error updating the SMTP password visibility", ex)
         End Try
 
     End Sub
@@ -2215,8 +2249,8 @@ Public Class Form1
                 Notification_Display("Information", "Request confirmed as No for message (" + Message + " - Are you sure?)")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error in processing the request confirmation for message (" + Message + " - Are you sure?)")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error in processing the request confirmation for message (" + Message + " - Are you sure?)", ex)
         End Try
 
         Return Response
@@ -2235,8 +2269,8 @@ Public Class Form1
                 Notification_Display("Information", "JSON string was not read from file as file does not exist")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error reading the JSON string from file")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error reading the JSON string from file", ex)
         End Try
 
     End Sub
@@ -2253,8 +2287,8 @@ Public Class Form1
             System.IO.File.AppendAllText(JSONFileName, json)
 
             Notification_Display("Information", "JSON string successfully written to file")
-        Catch
-            Notification_Display("Error", "There was an error writing the JSON string to file")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error writing the JSON string to file", ex)
         End Try
 
     End Sub
@@ -2266,8 +2300,8 @@ Public Class Form1
             JSONFileName = "C:\Users\" + Environment.UserName + "\AppData\Local\DogeNodes\JSON.txt"
 
             Notification_Display("Information", "JSON string persistence successfully configured")
-        Catch
-            Notification_Display("Error", "There was an error configuring the JSON string persistence")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error configuring the JSON string persistence", ex)
         End Try
 
     End Sub
@@ -2287,8 +2321,8 @@ Public Class Form1
                 Notification_Display("Information", "The map cache has been successfully cleared")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error clearing the map cache")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error clearing the map cache", ex)
         End Try
 
     End Sub
@@ -2307,8 +2341,8 @@ Public Class Form1
             oLink.Save()
 
             Notification_Display("Information", "Shortcut has been created in (" + ShortCutPath + ")")
-        Catch
-            Notification_Display("Error", "There was an error creating the shortcut")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error creating the shortcut", ex)
         End Try
 
     End Sub
@@ -2322,8 +2356,8 @@ Public Class Form1
                 Notification_Display("Information", "Shortcut has been deleted from (" + ShortCutPath + ")")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error deleting the shortcut")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error deleting the shortcut", ex)
         End Try
 
     End Sub
@@ -2342,8 +2376,8 @@ Public Class Form1
             End If
 
             Notification_Display("Information", "Desktop shortcut has been successfully configured")
-        Catch
-            Notification_Display("Error", "There was an error configuring the desktop shortcut")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error configuring the desktop shortcut", ex)
         End Try
 
     End Sub
@@ -2362,8 +2396,8 @@ Public Class Form1
             End If
 
             Notification_Display("Information", "Startup shortcut has been successfully configured")
-        Catch
-            Notification_Display("Error", "There was an error configuring the startup shortcut")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error configuring the startup shortcut", ex)
         End Try
 
     End Sub
@@ -2391,8 +2425,8 @@ Public Class Form1
                 Notification_Display("Information", "Confirmation recieved to select 'everything' for logging")
             End If
 
-        Catch
-            Notification_Display("Error", "There was an error requesting confirmation to select 'everything' for logging")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error requesting confirmation to select 'everything' for logging", ex)
         End Try
 
     End Sub
@@ -2407,8 +2441,8 @@ Public Class Form1
 
             lblGreenToYellow.Text = trkGreenToYellow.Value
 
-        Catch
-            Notification_Display("Error", "There was an error changing the green to yellow threshold")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error changing the green to yellow threshold", ex)
         End Try
 
     End Sub
@@ -2423,8 +2457,8 @@ Public Class Form1
 
             lblYellowToRed.Text = trkYellowToRed.Value
 
-        Catch
-            Notification_Display("Error", "There was an error changing the yellow to red threshold")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error changing the yellow to red threshold", ex)
         End Try
 
     End Sub
@@ -2442,8 +2476,8 @@ Public Class Form1
             End If
 
             Notification_Display("Information", "Tooltips have been successfully configured")
-        Catch
-            Notification_Display("Error", "There was an error configuring the tooltips")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error configuring the tooltips", ex)
         End Try
 
     End Sub
