@@ -533,7 +533,7 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Version 0.30 Beta")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("v0.30-Beta")>  _
         Public ReadOnly Property DogeNodesVersion() As String
             Get
                 Return CType(Me("DogeNodesVersion"),String)
@@ -579,6 +579,15 @@ Namespace My
         Public ReadOnly Property HighlightNodeDefault() As Boolean
             Get
                 Return CType(Me("HighlightNodeDefault"),Boolean)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://sourceforge.net/projects/dogenodes/files/latest/download")>  _
+        Public ReadOnly Property DownLoadURL() As String
+            Get
+                Return CType(Me("DownLoadURL"),String)
             End Get
         End Property
     End Class

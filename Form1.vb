@@ -105,8 +105,11 @@ Public Class Form1
             trkGreenToYellow.Value = lblGreenToYellow.Text
             trkYellowToRed.Value = lblYellowToRed.Text
 
-            'Display application version
-            lblDogeNodesVersion.Text = My.Settings.DogeNodesVersion
+            'Display application version information and prompt user if a new version is available
+            DogeNodes_Version()
+            If btnUpdateNow.Enabled = True Then
+                MessageBox.Show("A new version of DogeNodes is available. Please click on the 'Update Now' button in settings to update", "DogeNodes - Update Available", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
 
             'Set up map cache
             Set_Up_Map_Cache()
@@ -2504,4 +2507,62 @@ Public Class Form1
 
     End Sub
 
+    Private Sub DogeNodes_Version()
+
+        'Check for updates to dogenodes
+
+        Dim jsonVersion As String
+        Dim client As New WebDownload(2000)
+
+        Try
+            'Set default values in case github update cannot be obtained
+            lblInstalledVersionValue.Text = My.Settings.DogeNodesVersion
+            lblLatestVersionValue.Text = My.Settings.DogeNodesVersion
+            lblUpdateStatus.Text = "Your current version of DogeNodes is up to date"
+            btnUpdateNow.Enabled = False
+
+            'Retrieve latest version from github
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+            client.Headers.Add("user-agent", "request")
+
+            Try
+                Notification_Display("Information", "The API download of latest DogeNodes version from github has started")
+                jsonVersion = client.DownloadString("https://api.github.com/repos/starglancer/dogenodes/releases/latest")
+                Notification_Display("Information", "The API download of latest DogeNodes version from github has completed successfully")
+            Catch ex As Exception
+                Notification_Display("Error", "Github API is unreachable. Please check network connection", ex)
+                'Skip the rest of the subroutine if github API unreachable
+                Exit Sub
+            End Try
+
+            Dim parseVersion As JObject = JObject.Parse(jsonVersion)
+            Dim Version As String = parseVersion.SelectToken("tag_name").ToString
+
+            lblLatestVersionValue.Text = Version
+
+            If lblLatestVersionValue.Text <> lblInstalledVersionValue.Text Then
+                lblUpdateStatus.Text = "There is an updated version of DogeNodes available"
+                btnUpdateNow.Enabled = True
+            End If
+
+            Notification_Display("Information", "The latest DogeNodes version has been successfully identified as " + Version)
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error identifying the latest DogeNodes version. It will be assumed to be " + My.Settings.DogeNodesVersion, ex)
+        End Try
+
+    End Sub
+
+    Private Sub btnCheckForUpdate_Click(sender As Object, e As EventArgs) Handles btnCheckForUpdate.Click
+
+        DogeNodes_Version()
+
+    End Sub
+
+    Private Sub btnUpdateNow_Click(sender As Object, e As EventArgs) Handles btnUpdateNow.Click
+
+        'Go to download link for the latest version
+        Process.Start(My.Settings.DownLoadURL)
+
+    End Sub
 End Class
