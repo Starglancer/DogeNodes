@@ -44,7 +44,8 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
 
 - Improve installation experience using [Advanced Installer](https://www.advancedinstaller.com/)
 - Create a CHM based help system 
-- Capture exception information in log to aid troubleshooting
+- Capture exception information in log to aid debugging
+- Add functionality to check for updates
  
 ## Acknowledgements
 
