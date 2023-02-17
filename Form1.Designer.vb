@@ -23,11 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabSummary = New System.Windows.Forms.TabPage()
@@ -66,6 +66,7 @@ Partial Class Form1
         Me.lblMapUpdate = New System.Windows.Forms.Label()
         Me.pbxMap = New System.Windows.Forms.PictureBox()
         Me.tabNodestatus = New System.Windows.Forms.TabPage()
+        Me.btnDefaultPort = New System.Windows.Forms.Button()
         Me.gbxDetails = New System.Windows.Forms.GroupBox()
         Me.lblZipCode = New System.Windows.Forms.Label()
         Me.lblRegion = New System.Windows.Forms.Label()
@@ -97,6 +98,14 @@ Partial Class Form1
         Me.txtPort = New System.Windows.Forms.TextBox()
         Me.txtIPAddress = New System.Windows.Forms.TextBox()
         Me.tabSettings = New System.Windows.Forms.TabPage()
+        Me.gbxUpdate = New System.Windows.Forms.GroupBox()
+        Me.btnUpdateNow = New System.Windows.Forms.Button()
+        Me.btnCheckForUpdate = New System.Windows.Forms.Button()
+        Me.lblUpdateStatus = New System.Windows.Forms.Label()
+        Me.lblLatestVersionValue = New System.Windows.Forms.Label()
+        Me.lblInstalledVersionValue = New System.Windows.Forms.Label()
+        Me.lblLatestVersion = New System.Windows.Forms.Label()
+        Me.lblInstalledVersion = New System.Windows.Forms.Label()
         Me.gbxMapCache = New System.Windows.Forms.GroupBox()
         Me.chkHighlightCurrentNode = New System.Windows.Forms.CheckBox()
         Me.btnClearMapCache = New System.Windows.Forms.Button()
@@ -159,14 +168,6 @@ Partial Class Form1
         Me.timClearError = New System.Windows.Forms.Timer(Me.components)
         Me.timUpdateCache = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.gbxUpdate = New System.Windows.Forms.GroupBox()
-        Me.lblInstalledVersion = New System.Windows.Forms.Label()
-        Me.lblLatestVersion = New System.Windows.Forms.Label()
-        Me.lblInstalledVersionValue = New System.Windows.Forms.Label()
-        Me.lblLatestVersionValue = New System.Windows.Forms.Label()
-        Me.lblUpdateStatus = New System.Windows.Forms.Label()
-        Me.btnCheckForUpdate = New System.Windows.Forms.Button()
-        Me.btnUpdateNow = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.tabSummary.SuspendLayout()
         CType(Me.pbxDogecoin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -184,6 +185,7 @@ Partial Class Form1
         CType(Me.pbxUpToDate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbxStatus, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabSettings.SuspendLayout()
+        Me.gbxUpdate.SuspendLayout()
         Me.gbxMapCache.SuspendLayout()
         Me.gbxLogging.SuspendLayout()
         Me.gbxNotification.SuspendLayout()
@@ -193,7 +195,6 @@ Partial Class Form1
         CType(Me.trkYellowToRed, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkGreenToYellow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
-        Me.gbxUpdate.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -333,24 +334,24 @@ Partial Class Form1
         Me.grdStatistics.AllowUserToResizeColumns = False
         Me.grdStatistics.AllowUserToResizeRows = False
         Me.grdStatistics.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdStatistics.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Value, Me.Count, Me.BarChart})
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle3
         Me.grdStatistics.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdStatistics.GridColor = System.Drawing.Color.White
         Me.grdStatistics.Location = New System.Drawing.Point(72, 64)
@@ -379,10 +380,10 @@ Partial Class Form1
         '
         'BarChart
         '
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle22.ForeColor = System.Drawing.Color.Khaki
-        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Khaki
-        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Khaki
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Khaki
+        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle2
         Me.BarChart.HeaderText = "Bar Chart"
         Me.BarChart.Name = "BarChart"
         Me.BarChart.ReadOnly = True
@@ -552,24 +553,24 @@ Partial Class Form1
         Me.grdNodeList.AllowUserToResizeColumns = False
         Me.grdNodeList.AllowUserToResizeRows = False
         Me.grdNodeList.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.grdNodeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdNodeList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2})
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle5
         Me.grdNodeList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdNodeList.GridColor = System.Drawing.Color.White
         Me.grdNodeList.Location = New System.Drawing.Point(399, 21)
@@ -632,6 +633,7 @@ Partial Class Form1
         'tabNodestatus
         '
         Me.tabNodestatus.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(248, Byte), Integer))
+        Me.tabNodestatus.Controls.Add(Me.btnDefaultPort)
         Me.tabNodestatus.Controls.Add(Me.gbxDetails)
         Me.tabNodestatus.Controls.Add(Me.gbxStatus)
         Me.tabNodestatus.Controls.Add(Me.lblPort)
@@ -645,6 +647,16 @@ Partial Class Form1
         Me.tabNodestatus.TabIndex = 0
         Me.tabNodestatus.Text = "Node Status"
         Me.tabNodestatus.ToolTipText = "Display the information for a single node"
+        '
+        'btnDefaultPort
+        '
+        Me.btnDefaultPort.Image = Global.BlockchainNodes.My.Resources.Resources.Port
+        Me.btnDefaultPort.Location = New System.Drawing.Point(724, 15)
+        Me.btnDefaultPort.Name = "btnDefaultPort"
+        Me.btnDefaultPort.Size = New System.Drawing.Size(23, 20)
+        Me.btnDefaultPort.TabIndex = 10
+        Me.ToolTip1.SetToolTip(Me.btnDefaultPort, "Set port to the default dogecoin core port")
+        Me.btnDefaultPort.UseVisualStyleBackColor = True
         '
         'gbxDetails
         '
@@ -939,7 +951,7 @@ Partial Class Form1
         'lblPort
         '
         Me.lblPort.AutoSize = True
-        Me.lblPort.Location = New System.Drawing.Point(468, 18)
+        Me.lblPort.Location = New System.Drawing.Point(530, 18)
         Me.lblPort.Name = "lblPort"
         Me.lblPort.Size = New System.Drawing.Size(26, 13)
         Me.lblPort.TabIndex = 4
@@ -956,9 +968,9 @@ Partial Class Form1
         '
         'txtPort
         '
-        Me.txtPort.Location = New System.Drawing.Point(512, 15)
+        Me.txtPort.Location = New System.Drawing.Point(572, 15)
         Me.txtPort.Name = "txtPort"
-        Me.txtPort.Size = New System.Drawing.Size(206, 20)
+        Me.txtPort.Size = New System.Drawing.Size(146, 20)
         Me.txtPort.TabIndex = 2
         Me.txtPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.ToolTip1.SetToolTip(Me.txtPort, "Port address of the node")
@@ -991,6 +1003,93 @@ Partial Class Form1
         Me.tabSettings.Size = New System.Drawing.Size(795, 404)
         Me.tabSettings.TabIndex = 4
         Me.tabSettings.Text = "Settings"
+        '
+        'gbxUpdate
+        '
+        Me.gbxUpdate.Controls.Add(Me.btnUpdateNow)
+        Me.gbxUpdate.Controls.Add(Me.btnCheckForUpdate)
+        Me.gbxUpdate.Controls.Add(Me.lblUpdateStatus)
+        Me.gbxUpdate.Controls.Add(Me.lblLatestVersionValue)
+        Me.gbxUpdate.Controls.Add(Me.lblInstalledVersionValue)
+        Me.gbxUpdate.Controls.Add(Me.lblLatestVersion)
+        Me.gbxUpdate.Controls.Add(Me.lblInstalledVersion)
+        Me.gbxUpdate.Location = New System.Drawing.Point(28, 738)
+        Me.gbxUpdate.Name = "gbxUpdate"
+        Me.gbxUpdate.Size = New System.Drawing.Size(715, 100)
+        Me.gbxUpdate.TabIndex = 7
+        Me.gbxUpdate.TabStop = False
+        Me.gbxUpdate.Text = "Update DogeNodes"
+        '
+        'btnUpdateNow
+        '
+        Me.btnUpdateNow.AutoSize = True
+        Me.btnUpdateNow.Location = New System.Drawing.Point(525, 57)
+        Me.btnUpdateNow.Name = "btnUpdateNow"
+        Me.btnUpdateNow.Size = New System.Drawing.Size(77, 23)
+        Me.btnUpdateNow.TabIndex = 6
+        Me.btnUpdateNow.Text = "Update Now"
+        Me.ToolTip1.SetToolTip(Me.btnUpdateNow, "Update now to the latest version of DogeNodes")
+        Me.btnUpdateNow.UseVisualStyleBackColor = True
+        '
+        'btnCheckForUpdate
+        '
+        Me.btnCheckForUpdate.AutoSize = True
+        Me.btnCheckForUpdate.Location = New System.Drawing.Point(349, 57)
+        Me.btnCheckForUpdate.Name = "btnCheckForUpdate"
+        Me.btnCheckForUpdate.Size = New System.Drawing.Size(101, 23)
+        Me.btnCheckForUpdate.TabIndex = 5
+        Me.btnCheckForUpdate.Text = "Check for Update"
+        Me.ToolTip1.SetToolTip(Me.btnCheckForUpdate, "Check for latest available version of DogeNodes")
+        Me.btnCheckForUpdate.UseVisualStyleBackColor = True
+        '
+        'lblUpdateStatus
+        '
+        Me.lblUpdateStatus.Location = New System.Drawing.Point(326, 31)
+        Me.lblUpdateStatus.Name = "lblUpdateStatus"
+        Me.lblUpdateStatus.Size = New System.Drawing.Size(314, 13)
+        Me.lblUpdateStatus.TabIndex = 4
+        Me.lblUpdateStatus.Text = "Update Status"
+        Me.lblUpdateStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'lblLatestVersionValue
+        '
+        Me.lblLatestVersionValue.AutoSize = True
+        Me.lblLatestVersionValue.Location = New System.Drawing.Point(164, 62)
+        Me.lblLatestVersionValue.Name = "lblLatestVersionValue"
+        Me.lblLatestVersionValue.Size = New System.Drawing.Size(74, 13)
+        Me.lblLatestVersionValue.TabIndex = 3
+        Me.lblLatestVersionValue.Text = "Latest Version"
+        Me.ToolTip1.SetToolTip(Me.lblLatestVersionValue, "Latest available version of DogeNodes")
+        '
+        'lblInstalledVersionValue
+        '
+        Me.lblInstalledVersionValue.AutoSize = True
+        Me.lblInstalledVersionValue.Location = New System.Drawing.Point(164, 31)
+        Me.lblInstalledVersionValue.Name = "lblInstalledVersionValue"
+        Me.lblInstalledVersionValue.Size = New System.Drawing.Size(84, 13)
+        Me.lblInstalledVersionValue.TabIndex = 2
+        Me.lblInstalledVersionValue.Text = "Installed Version"
+        Me.ToolTip1.SetToolTip(Me.lblInstalledVersionValue, "Currently installed version of DogeNodes")
+        '
+        'lblLatestVersion
+        '
+        Me.lblLatestVersion.AutoSize = True
+        Me.lblLatestVersion.Location = New System.Drawing.Point(81, 62)
+        Me.lblLatestVersion.Name = "lblLatestVersion"
+        Me.lblLatestVersion.Size = New System.Drawing.Size(77, 13)
+        Me.lblLatestVersion.TabIndex = 1
+        Me.lblLatestVersion.Text = "Latest Version:"
+        Me.lblLatestVersion.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'lblInstalledVersion
+        '
+        Me.lblInstalledVersion.AutoSize = True
+        Me.lblInstalledVersion.Location = New System.Drawing.Point(71, 31)
+        Me.lblInstalledVersion.Name = "lblInstalledVersion"
+        Me.lblInstalledVersion.Size = New System.Drawing.Size(87, 13)
+        Me.lblInstalledVersion.TabIndex = 0
+        Me.lblInstalledVersion.Text = "Installed Version:"
+        Me.lblInstalledVersion.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'gbxMapCache
         '
@@ -1637,93 +1736,6 @@ Partial Class Form1
         '
         Me.timUpdateCache.Interval = 3000
         '
-        'gbxUpdate
-        '
-        Me.gbxUpdate.Controls.Add(Me.btnUpdateNow)
-        Me.gbxUpdate.Controls.Add(Me.btnCheckForUpdate)
-        Me.gbxUpdate.Controls.Add(Me.lblUpdateStatus)
-        Me.gbxUpdate.Controls.Add(Me.lblLatestVersionValue)
-        Me.gbxUpdate.Controls.Add(Me.lblInstalledVersionValue)
-        Me.gbxUpdate.Controls.Add(Me.lblLatestVersion)
-        Me.gbxUpdate.Controls.Add(Me.lblInstalledVersion)
-        Me.gbxUpdate.Location = New System.Drawing.Point(28, 738)
-        Me.gbxUpdate.Name = "gbxUpdate"
-        Me.gbxUpdate.Size = New System.Drawing.Size(715, 100)
-        Me.gbxUpdate.TabIndex = 7
-        Me.gbxUpdate.TabStop = False
-        Me.gbxUpdate.Text = "Update DogeNodes"
-        '
-        'lblInstalledVersion
-        '
-        Me.lblInstalledVersion.AutoSize = True
-        Me.lblInstalledVersion.Location = New System.Drawing.Point(71, 31)
-        Me.lblInstalledVersion.Name = "lblInstalledVersion"
-        Me.lblInstalledVersion.Size = New System.Drawing.Size(87, 13)
-        Me.lblInstalledVersion.TabIndex = 0
-        Me.lblInstalledVersion.Text = "Installed Version:"
-        Me.lblInstalledVersion.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'lblLatestVersion
-        '
-        Me.lblLatestVersion.AutoSize = True
-        Me.lblLatestVersion.Location = New System.Drawing.Point(81, 62)
-        Me.lblLatestVersion.Name = "lblLatestVersion"
-        Me.lblLatestVersion.Size = New System.Drawing.Size(77, 13)
-        Me.lblLatestVersion.TabIndex = 1
-        Me.lblLatestVersion.Text = "Latest Version:"
-        Me.lblLatestVersion.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'lblInstalledVersionValue
-        '
-        Me.lblInstalledVersionValue.AutoSize = True
-        Me.lblInstalledVersionValue.Location = New System.Drawing.Point(164, 31)
-        Me.lblInstalledVersionValue.Name = "lblInstalledVersionValue"
-        Me.lblInstalledVersionValue.Size = New System.Drawing.Size(84, 13)
-        Me.lblInstalledVersionValue.TabIndex = 2
-        Me.lblInstalledVersionValue.Text = "Installed Version"
-        Me.ToolTip1.SetToolTip(Me.lblInstalledVersionValue, "Currently installed version of DogeNodes")
-        '
-        'lblLatestVersionValue
-        '
-        Me.lblLatestVersionValue.AutoSize = True
-        Me.lblLatestVersionValue.Location = New System.Drawing.Point(164, 62)
-        Me.lblLatestVersionValue.Name = "lblLatestVersionValue"
-        Me.lblLatestVersionValue.Size = New System.Drawing.Size(74, 13)
-        Me.lblLatestVersionValue.TabIndex = 3
-        Me.lblLatestVersionValue.Text = "Latest Version"
-        Me.ToolTip1.SetToolTip(Me.lblLatestVersionValue, "Latest available version of DogeNodes")
-        '
-        'lblUpdateStatus
-        '
-        Me.lblUpdateStatus.Location = New System.Drawing.Point(326, 31)
-        Me.lblUpdateStatus.Name = "lblUpdateStatus"
-        Me.lblUpdateStatus.Size = New System.Drawing.Size(314, 13)
-        Me.lblUpdateStatus.TabIndex = 4
-        Me.lblUpdateStatus.Text = "Update Status"
-        Me.lblUpdateStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'btnCheckForUpdate
-        '
-        Me.btnCheckForUpdate.AutoSize = True
-        Me.btnCheckForUpdate.Location = New System.Drawing.Point(349, 57)
-        Me.btnCheckForUpdate.Name = "btnCheckForUpdate"
-        Me.btnCheckForUpdate.Size = New System.Drawing.Size(101, 23)
-        Me.btnCheckForUpdate.TabIndex = 5
-        Me.btnCheckForUpdate.Text = "Check for Update"
-        Me.ToolTip1.SetToolTip(Me.btnCheckForUpdate, "Check for latest available version of DogeNodes")
-        Me.btnCheckForUpdate.UseVisualStyleBackColor = True
-        '
-        'btnUpdateNow
-        '
-        Me.btnUpdateNow.AutoSize = True
-        Me.btnUpdateNow.Location = New System.Drawing.Point(525, 57)
-        Me.btnUpdateNow.Name = "btnUpdateNow"
-        Me.btnUpdateNow.Size = New System.Drawing.Size(77, 23)
-        Me.btnUpdateNow.TabIndex = 6
-        Me.btnUpdateNow.Text = "Update Now"
-        Me.ToolTip1.SetToolTip(Me.btnUpdateNow, "Update now to the latest version of DogeNodes")
-        Me.btnUpdateNow.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1761,6 +1773,8 @@ Partial Class Form1
         CType(Me.pbxStatus, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabSettings.ResumeLayout(False)
         Me.tabSettings.PerformLayout()
+        Me.gbxUpdate.ResumeLayout(False)
+        Me.gbxUpdate.PerformLayout()
         Me.gbxMapCache.ResumeLayout(False)
         Me.gbxMapCache.PerformLayout()
         Me.gbxLogging.ResumeLayout(False)
@@ -1776,8 +1790,6 @@ Partial Class Form1
         CType(Me.trkGreenToYellow, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        Me.gbxUpdate.ResumeLayout(False)
-        Me.gbxUpdate.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1921,4 +1933,5 @@ Partial Class Form1
     Friend WithEvents lblInstalledVersionValue As Label
     Friend WithEvents lblLatestVersion As Label
     Friend WithEvents lblInstalledVersion As Label
+    Friend WithEvents btnDefaultPort As Button
 End Class

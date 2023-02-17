@@ -590,6 +590,15 @@ Namespace My
                 Return CType(Me("DownLoadURL"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("22556")>  _
+        Public ReadOnly Property DefaultPort() As String
+            Get
+                Return CType(Me("DefaultPort"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

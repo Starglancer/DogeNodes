@@ -2565,4 +2565,12 @@ Public Class Form1
         Process.Start(My.Settings.DownLoadURL)
 
     End Sub
+
+    Private Sub btnDefaultPort_Click(sender As Object, e As EventArgs) Handles btnDefaultPort.Click
+
+        'Set Port to default Dogecoin Core port
+        txtPort.Text = My.Settings.DefaultPort
+
+    End Sub
+
 End Class

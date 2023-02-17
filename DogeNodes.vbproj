@@ -186,6 +186,7 @@
     <EmbeddedResource Include="Resources\eye-icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Port.png" />
     <None Include="Resources\Splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
