@@ -188,10 +188,10 @@
     <None Include="Resources\Splash.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\IPAddress.png" />
+    <EmbeddedResource Include="Resources\IPAddress.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Port.png" />
+    <EmbeddedResource Include="Resources\Port.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
