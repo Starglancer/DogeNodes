@@ -533,7 +533,7 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("v0.30-Beta")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("v1.00")>  _
         Public ReadOnly Property DogeNodesVersion() As String
             Get
                 Return CType(Me("DogeNodesVersion"),String)
