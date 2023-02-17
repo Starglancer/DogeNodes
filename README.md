@@ -52,4 +52,4 @@ Thanks to the following API providers used as the source of data for this applic
 - [IP-API](https://ip-api.com/)
 - [Github](https://github.com/)
 
-Thanks to [Advanced Installer](https://www.advancedinstaller.com/) for their excellent installer which will be used from the next release (0.30) onwards
+Thanks to [Advanced Installer](https://www.advancedinstaller.com/) for their excellent installer which has been used from release 1.00 onwards
