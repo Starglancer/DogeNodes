@@ -168,6 +168,7 @@ Partial Class Form1
         Me.timClearError = New System.Windows.Forms.Timer(Me.components)
         Me.timUpdateCache = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.btnMyIPAddress = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.tabSummary.SuspendLayout()
         CType(Me.pbxDogecoin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -633,6 +634,7 @@ Partial Class Form1
         'tabNodestatus
         '
         Me.tabNodestatus.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(248, Byte), Integer))
+        Me.tabNodestatus.Controls.Add(Me.btnMyIPAddress)
         Me.tabNodestatus.Controls.Add(Me.btnDefaultPort)
         Me.tabNodestatus.Controls.Add(Me.gbxDetails)
         Me.tabNodestatus.Controls.Add(Me.gbxStatus)
@@ -1736,6 +1738,16 @@ Partial Class Form1
         '
         Me.timUpdateCache.Interval = 3000
         '
+        'btnMyIPAddress
+        '
+        Me.btnMyIPAddress.Image = Global.BlockchainNodes.My.Resources.Resources.IPAddress
+        Me.btnMyIPAddress.Location = New System.Drawing.Point(407, 15)
+        Me.btnMyIPAddress.Name = "btnMyIPAddress"
+        Me.btnMyIPAddress.Size = New System.Drawing.Size(23, 20)
+        Me.btnMyIPAddress.TabIndex = 11
+        Me.ToolTip1.SetToolTip(Me.btnMyIPAddress, "Set IP address to my current IP address")
+        Me.btnMyIPAddress.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1934,4 +1946,5 @@ Partial Class Form1
     Friend WithEvents lblLatestVersion As Label
     Friend WithEvents lblInstalledVersion As Label
     Friend WithEvents btnDefaultPort As Button
+    Friend WithEvents btnMyIPAddress As Button
 End Class

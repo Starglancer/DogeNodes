@@ -189,5 +189,8 @@
     <None Include="Resources\Port.png" />
     <None Include="Resources\Splash.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IPAddress.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

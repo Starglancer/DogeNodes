@@ -2573,4 +2573,35 @@ Public Class Form1
 
     End Sub
 
+    Private Sub btnMyIPAddress_Click(sender As Object, e As EventArgs) Handles btnMyIPAddress.Click
+
+        'Lookup my current IP address and display it in the box
+
+        Dim IP As String
+        Dim parseIP As JObject 'JSON Object to hold API data
+
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+
+        'Load the data from the API into a JSON object
+        Try
+            Notification_Display("Information", "The API download from ip-api for my IP address has started")
+            IP = New WebDownload(2000).DownloadString("http://ip-api.com/json/")
+            Notification_Display("Information", "The API download from ip-api for my IP address has completed successfully")
+        Catch ex As Exception
+            Notification_Display("Error", "IP API is unreachable. Please check network connection", ex)
+            IP = ""
+        End Try
+
+        Try
+            If IP <> "" Then
+                parseIP = JObject.Parse(IP)
+                txtIPAddress.Text = parseIP.SelectToken("query").ToString
+                Notification_Display("Information", "My current IP address has been displayed successfully as " + txtIPAddress.Text)
+            End If
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying my current IP address", ex)
+        End Try
+
+    End Sub
+
 End Class
