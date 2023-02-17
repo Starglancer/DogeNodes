@@ -8,7 +8,7 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
 
 ## Screenshots
 
-![Summary](https://user-images.githubusercontent.com/124823644/218485582-f1e8c320-5e23-4fa4-9200-d0ba6ecde1cd.png)
+![Summary](https://user-images.githubusercontent.com/124823644/219656730-52fcc249-4152-4afb-a96e-1c9dc36cad42.png)
 
 ![Statistics](https://user-images.githubusercontent.com/124823644/217803935-ae6e0c80-a2a9-4f69-9b18-4dcaa5370bc5.png)
 
@@ -20,7 +20,7 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
 
 ![Settings1](https://user-images.githubusercontent.com/124823644/218485707-321c093f-8d77-40de-8032-52ef329a4bef.png)
 
-![Settings2](https://user-images.githubusercontent.com/124823644/218485740-9a7c1a4b-e280-4d00-88dc-5a753b3b7f34.png)
+![Settings(2)](https://user-images.githubusercontent.com/124823644/219656768-f9cfc6b8-7a63-4298-8164-56ac1cfce8e2.png)
 
 ## Features
 
