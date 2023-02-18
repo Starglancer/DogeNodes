@@ -501,7 +501,9 @@ Public Class Form1
 
         'Only refresh if user making change
         If TabControl1.SelectedTab Is tabNodestatus Then
-            Populate_NodeStatusTab()
+            'Reset timer. Node status tab will be refreshed when the timer elapsed
+            timTextbox.Enabled = False
+            timTextbox.Enabled = True
         End If
 
     End Sub
@@ -510,7 +512,9 @@ Public Class Form1
 
         'Only refresh if user making change
         If TabControl1.SelectedTab Is tabNodestatus Then
-            Populate_NodeStatusTab()
+            'Reset timer. Node status tab will be refreshed when the timer elapsed
+            timTextbox.Enabled = False
+            timTextbox.Enabled = True
         End If
 
     End Sub
@@ -2601,6 +2605,14 @@ Public Class Form1
         Catch ex As Exception
             Notification_Display("Error", "There was an error displaying my current IP address", ex)
         End Try
+
+    End Sub
+
+    Private Sub timTextbox_Tick(sender As Object, e As EventArgs) Handles timTextbox.Tick
+
+        'Refresh the node status tab and disable the timer to prevent it firing again
+        Populate_NodeStatusTab()
+        timTextbox.Enabled = False
 
     End Sub
 
