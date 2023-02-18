@@ -572,13 +572,14 @@ Public Class Form1
     Private Sub Load_Country_Datagrid()
 
         'Local Variables
-        Dim parsecountry As JObject = parsejson.SelectToken("data.countries")
-        Dim countries As List(Of JToken) = parsecountry.Children().ToList()
         Dim Country As String()
         Dim Count As Integer = 0
         Dim MaxResult As Integer
 
         Try
+            Dim parsecountry As JObject = parsejson.SelectToken("data.countries")
+            Dim countries As List(Of JToken) = parsecountry.Children().ToList()
+
             'Set appropriate column header
             grdStatistics.Columns(0).HeaderText = "Country"
 
@@ -612,13 +613,14 @@ Public Class Form1
     Private Sub Load_Height_Datagrid()
 
         'Local Variables
-        Dim parseheight As JObject = parsejson.SelectToken("data.heights")
-        Dim heights As List(Of JToken) = parseheight.Children().ToList()
         Dim Height As String()
         Dim Count As Integer = 0
         Dim MaxResult As Integer
 
         Try
+            Dim parseheight As JObject = parsejson.SelectToken("data.heights")
+            Dim heights As List(Of JToken) = parseheight.Children().ToList()
+
             'Set appropriate column header
             grdStatistics.Columns(0).HeaderText = "Height"
 
@@ -652,14 +654,15 @@ Public Class Form1
     Private Sub Load_Version_Datagrid()
 
         'Local Variables
-        Dim parseversion As JObject = parsejson.SelectToken("data.versions")
-        Dim versions As List(Of JToken) = parseversion.Children().ToList()
         Dim VersionString As String
         Dim Version As String()
         Dim Count As Integer = 0
         Dim MaxResult As Integer
 
         Try
+            Dim parseversion As JObject = parsejson.SelectToken("data.versions")
+            Dim versions As List(Of JToken) = parseversion.Children().ToList()
+
             grdStatistics.Columns(0).HeaderText = "Version"
 
             'Populate data to rows and columns
@@ -693,18 +696,19 @@ Public Class Form1
     Private Sub Load_Protocol_Datagrid()
 
         'Local Variables
-        Dim parsenodes As JObject = parsejson.SelectToken("data.nodes")
-        Dim nodes As List(Of JToken) = parsenodes.Children().ToList()
         Dim Token As String()
         Dim IPv6 As Integer = 0
         Dim IPv4 As Integer = 0
         Dim MaxResult As Integer
 
         Try
+            Dim parsenodes As JObject = parsejson.SelectToken("data.nodes")
+            Dim nodes As List(Of JToken) = parsenodes.Children().ToList()
+
             grdStatistics.Columns(0).HeaderText = "Protocol"
 
             'Calculate counts of protocols
-            For Each JToken In nodes
+            For Each JToken In Nodes
                 Token = JToken.ToString.Split(New Char() {""""c})
                 If Token(1).Contains(".") Then
                     IPv4 += 1
@@ -786,10 +790,11 @@ Public Class Form1
 
         'Return a string of blocks whose length relates to the percentage of maximum value
         Dim BarChart As String = ""
-        Dim Count As Decimal = 27 * Value / Maximum
-        Dim CountInt As Integer = Math.Truncate(Count)
 
         Try
+            Dim Count As Decimal = 27 * Value / Maximum
+            Dim CountInt As Integer = Math.Truncate(Count)
+
             Count -= CountInt
 
             While CountInt > 0
@@ -812,19 +817,19 @@ Public Class Form1
 
     Private Sub Load_Nodes_Datagrid()
 
-        Try
+        'Local Variables
+        Dim Token As String()
+        Dim Node As String()
+        Dim Height As String = ""
+        Dim Count As Integer = 0
+        Dim Include As Boolean
+        Dim IPAddress As String
+        Dim Port As String
+        Dim n As Integer
 
-            'Local Variables
+        Try
             Dim parsenodes As JObject = parsejson.SelectToken("data.nodes")
             Dim nodes As List(Of JToken) = parsenodes.Children().ToList()
-            Dim Token As String()
-            Dim Node As String()
-            Dim Height As String = ""
-            Dim Count As Integer = 0
-            Dim Include As Boolean
-            Dim IPAddress As String
-            Dim Port As String
-            Dim n As Integer
 
             'Clear Node List
             grdNodeList.Rows.Clear()
@@ -879,11 +884,12 @@ Public Class Form1
     Private Sub Load_Country_Dropdown()
 
         'Local Variables
-        Dim parsecountry As JObject = parsejson.SelectToken("data.countries")
-        Dim countries As List(Of JToken) = parsecountry.Children().ToList()
         Dim Country As String()
 
         Try
+            Dim parsecountry As JObject = parsejson.SelectToken("data.countries")
+            Dim countries As List(Of JToken) = parsecountry.Children().ToList()
+
             'Clear existing list
             comCountry.Items.Clear()
 
@@ -907,11 +913,12 @@ Public Class Form1
     Private Sub Load_Height_Dropdown()
 
         'Local Variables
-        Dim parseheight As JObject = parsejson.SelectToken("data.heights")
-        Dim heights As List(Of JToken) = parseheight.Children().ToList()
         Dim Height As String()
 
         Try
+            Dim parseheight As JObject = parsejson.SelectToken("data.heights")
+            Dim heights As List(Of JToken) = parseheight.Children().ToList()
+
             'Clear existing list
             comHeight.Items.Clear()
 
@@ -935,12 +942,13 @@ Public Class Form1
     Private Sub Load_Version_Dropdown()
 
         'Local Variables
-        Dim parseversion As JObject = parsejson.SelectToken("data.versions")
-        Dim versions As List(Of JToken) = parseversion.Children().ToList()
         Dim VersionString As String
         Dim Version As String()
 
         Try
+            Dim parseversion As JObject = parsejson.SelectToken("data.versions")
+            Dim versions As List(Of JToken) = parseversion.Children().ToList()
+
             'Add an All option at start of list
             ComVersion.Items.Add(All)
 
