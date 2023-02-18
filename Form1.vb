@@ -812,19 +812,20 @@ Public Class Form1
 
     Private Sub Load_Nodes_Datagrid()
 
-        'Local Variables
-        Dim parsenodes As JObject = parsejson.SelectToken("data.nodes")
-        Dim nodes As List(Of JToken) = parsenodes.Children().ToList()
-        Dim Token As String()
-        Dim Node As String()
-        Dim Height As String = ""
-        Dim Count As Integer = 0
-        Dim Include As Boolean
-        Dim IPAddress As String
-        Dim Port As String
-        Dim n As Integer
-
         Try
+
+            'Local Variables
+            Dim parsenodes As JObject = parsejson.SelectToken("data.nodes")
+            Dim nodes As List(Of JToken) = parsenodes.Children().ToList()
+            Dim Token As String()
+            Dim Node As String()
+            Dim Height As String = ""
+            Dim Count As Integer = 0
+            Dim Include As Boolean
+            Dim IPAddress As String
+            Dim Port As String
+            Dim n As Integer
+
             'Clear Node List
             grdNodeList.Rows.Clear()
 
