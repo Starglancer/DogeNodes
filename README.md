@@ -42,6 +42,7 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  
 ## To Do List
 
+- Node status only updates when user stops typing in the IP address or port fields
 - add statistics/filter for node port
 - add button to select current users IP address on the node status tab
 - add a button to select default port on the node status tab
