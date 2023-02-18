@@ -1803,7 +1803,7 @@ Public Class Form1
         'Load the data from the API into a JSON object
         Try
             Notification_Display("Information", "The API download from ip-api has started")
-            IP = New WebDownload(2000).DownloadString("http://ip-api.com/json/" + txtIPAddress.Text)
+            IP = New WebDownload(2000).DownloadString("http://ip-api.com/json/" + txtIPAddress.Text + "?fields=country,region,city,zip,isp")
             Notification_Display("Information", "The API download from ip-api has completed successfully")
         Catch ex As Exception
             Notification_Display("Error", "IP API is unreachable. Please check network connection", ex)
@@ -2589,7 +2589,7 @@ Public Class Form1
         'Load the data from the API into a JSON object
         Try
             Notification_Display("Information", "The API download from ip-api for my IP address has started")
-            IP = New WebDownload(2000).DownloadString("http://ip-api.com/json/")
+            IP = New WebDownload(2000).DownloadString("http://ip-api.com/json/?fields=query")
             Notification_Display("Information", "The API download from ip-api for my IP address has completed successfully")
         Catch ex As Exception
             Notification_Display("Error", "IP API is unreachable. Please check network connection", ex)
