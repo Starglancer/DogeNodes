@@ -23,11 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabSummary = New System.Windows.Forms.TabPage()
@@ -50,6 +50,8 @@ Partial Class Form1
         Me.lblNodeRows = New System.Windows.Forms.Label()
         Me.lblNodeRowsCount = New System.Windows.Forms.Label()
         Me.gbxFilters = New System.Windows.Forms.GroupBox()
+        Me.lblAgentPort = New System.Windows.Forms.Label()
+        Me.comPort = New System.Windows.Forms.ComboBox()
         Me.lblNetwork = New System.Windows.Forms.Label()
         Me.comNetwork = New System.Windows.Forms.ComboBox()
         Me.btnClearFilters = New System.Windows.Forms.Button()
@@ -336,24 +338,24 @@ Partial Class Form1
         Me.grdStatistics.AllowUserToResizeColumns = False
         Me.grdStatistics.AllowUserToResizeRows = False
         Me.grdStatistics.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.grdStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdStatistics.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Value, Me.Count, Me.BarChart})
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle10
         Me.grdStatistics.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdStatistics.GridColor = System.Drawing.Color.White
         Me.grdStatistics.Location = New System.Drawing.Point(72, 64)
@@ -382,10 +384,10 @@ Partial Class Form1
         '
         'BarChart
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Khaki
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Khaki
-        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Khaki
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Khaki
+        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle9
         Me.BarChart.HeaderText = "Bar Chart"
         Me.BarChart.Name = "BarChart"
         Me.BarChart.ReadOnly = True
@@ -396,7 +398,7 @@ Partial Class Form1
         '
         Me.comStatistics.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comStatistics.FormattingEnabled = True
-        Me.comStatistics.Items.AddRange(New Object() {"Country", "Height", "Version", "Protocol"})
+        Me.comStatistics.Items.AddRange(New Object() {"Country", "Height", "Version", "Protocol", "Port"})
         Me.comStatistics.Location = New System.Drawing.Point(374, 22)
         Me.comStatistics.Name = "comStatistics"
         Me.comStatistics.Size = New System.Drawing.Size(121, 21)
@@ -446,6 +448,8 @@ Partial Class Form1
         '
         'gbxFilters
         '
+        Me.gbxFilters.Controls.Add(Me.lblAgentPort)
+        Me.gbxFilters.Controls.Add(Me.comPort)
         Me.gbxFilters.Controls.Add(Me.lblNetwork)
         Me.gbxFilters.Controls.Add(Me.comNetwork)
         Me.gbxFilters.Controls.Add(Me.btnClearFilters)
@@ -462,10 +466,29 @@ Partial Class Form1
         Me.gbxFilters.TabStop = False
         Me.gbxFilters.Text = "Filters"
         '
+        'lblAgentPort
+        '
+        Me.lblAgentPort.AutoSize = True
+        Me.lblAgentPort.Location = New System.Drawing.Point(71, 221)
+        Me.lblAgentPort.Name = "lblAgentPort"
+        Me.lblAgentPort.Size = New System.Drawing.Size(26, 13)
+        Me.lblAgentPort.TabIndex = 10
+        Me.lblAgentPort.Text = "Port"
+        '
+        'comPort
+        '
+        Me.comPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.comPort.FormattingEnabled = True
+        Me.comPort.Location = New System.Drawing.Point(110, 218)
+        Me.comPort.Name = "comPort"
+        Me.comPort.Size = New System.Drawing.Size(77, 21)
+        Me.comPort.TabIndex = 9
+        Me.ToolTip1.SetToolTip(Me.comPort, "Select the port filter to use")
+        '
         'lblNetwork
         '
         Me.lblNetwork.AutoSize = True
-        Me.lblNetwork.Location = New System.Drawing.Point(12, 217)
+        Me.lblNetwork.Location = New System.Drawing.Point(12, 173)
         Me.lblNetwork.Name = "lblNetwork"
         Me.lblNetwork.Size = New System.Drawing.Size(89, 13)
         Me.lblNetwork.TabIndex = 8
@@ -475,11 +498,11 @@ Partial Class Form1
         '
         Me.comNetwork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comNetwork.FormattingEnabled = True
-        Me.comNetwork.Location = New System.Drawing.Point(110, 214)
+        Me.comNetwork.Location = New System.Drawing.Point(110, 170)
         Me.comNetwork.Name = "comNetwork"
         Me.comNetwork.Size = New System.Drawing.Size(77, 21)
         Me.comNetwork.TabIndex = 7
-        Me.ToolTip1.SetToolTip(Me.comNetwork, "Select the network protocol to use")
+        Me.ToolTip1.SetToolTip(Me.comNetwork, "Select the network protocol filter to use")
         '
         'btnClearFilters
         '
@@ -494,7 +517,7 @@ Partial Class Form1
         'lblVersionFilter
         '
         Me.lblVersionFilter.AutoSize = True
-        Me.lblVersionFilter.Location = New System.Drawing.Point(24, 154)
+        Me.lblVersionFilter.Location = New System.Drawing.Point(24, 127)
         Me.lblVersionFilter.Name = "lblVersionFilter"
         Me.lblVersionFilter.Size = New System.Drawing.Size(73, 13)
         Me.lblVersionFilter.TabIndex = 5
@@ -503,7 +526,7 @@ Partial Class Form1
         'lblHeightFilter
         '
         Me.lblHeightFilter.AutoSize = True
-        Me.lblHeightFilter.Location = New System.Drawing.Point(59, 93)
+        Me.lblHeightFilter.Location = New System.Drawing.Point(59, 80)
         Me.lblHeightFilter.Name = "lblHeightFilter"
         Me.lblHeightFilter.Size = New System.Drawing.Size(38, 13)
         Me.lblHeightFilter.TabIndex = 4
@@ -522,17 +545,17 @@ Partial Class Form1
         '
         Me.ComVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComVersion.FormattingEnabled = True
-        Me.ComVersion.Location = New System.Drawing.Point(110, 151)
+        Me.ComVersion.Location = New System.Drawing.Point(110, 124)
         Me.ComVersion.Name = "ComVersion"
         Me.ComVersion.Size = New System.Drawing.Size(197, 21)
         Me.ComVersion.TabIndex = 2
-        Me.ToolTip1.SetToolTip(Me.ComVersion, "Select the dogecoin node agent version to use")
+        Me.ToolTip1.SetToolTip(Me.ComVersion, "Select the dogecoin node agent version filter to use")
         '
         'comHeight
         '
         Me.comHeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comHeight.FormattingEnabled = True
-        Me.comHeight.Location = New System.Drawing.Point(110, 90)
+        Me.comHeight.Location = New System.Drawing.Point(110, 77)
         Me.comHeight.Name = "comHeight"
         Me.comHeight.Size = New System.Drawing.Size(77, 21)
         Me.comHeight.TabIndex = 1
@@ -555,24 +578,24 @@ Partial Class Form1
         Me.grdNodeList.AllowUserToResizeColumns = False
         Me.grdNodeList.AllowUserToResizeRows = False
         Me.grdNodeList.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.grdNodeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdNodeList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle7
         Me.grdNodeList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdNodeList.GridColor = System.Drawing.Color.White
         Me.grdNodeList.Location = New System.Drawing.Point(399, 21)
@@ -1953,4 +1976,6 @@ Partial Class Form1
     Friend WithEvents btnDefaultPort As Button
     Friend WithEvents btnMyIPAddress As Button
     Friend WithEvents timTextbox As Timer
+    Friend WithEvents lblAgentPort As Label
+    Friend WithEvents comPort As ComboBox
 End Class

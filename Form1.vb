@@ -1,4 +1,5 @@
 ﻿Imports Newtonsoft.Json.Linq
+Imports System.ComponentModel
 Imports System.Net
 Imports System.Net.Mail
 Imports System.Text.RegularExpressions
@@ -51,6 +52,7 @@ Public Class Form1
     Dim MapRefreshCounter As Integer = 0
     Dim FileWriteThread As System.Threading.Thread
     Dim FormLoadComplete As Boolean = False
+    Dim PortArray(,) As Integer
 
     ReadOnly All As String = "- All -"
 
@@ -216,6 +218,9 @@ Public Class Form1
             'Save Last Updated date
             LastAPIUpdate = Convert.ToDateTime(Get_Token("context.cache.since"))
 
+            'Create the array for use in port statistics and port filter dropdown
+            Create_Port_Array()
+
             'Store maximum block height
             Get_Maximum_Block_Height()
 
@@ -240,11 +245,15 @@ Public Class Form1
             'Load network dropdown list
             Load_Network_Dropdown()
 
+            'Load port dropdown list
+            Load_Port_Dropdown()
+
             'Reset Filters as new data may not contain selections
             comCountry.Text = All
             comHeight.Text = All
             ComVersion.Text = All
             comNetwork.Text = All
+            comPort.Text = All
 
             'populate Node List
             Load_Nodes_Datagrid()
@@ -708,7 +717,7 @@ Public Class Form1
             grdStatistics.Columns(0).HeaderText = "Protocol"
 
             'Calculate counts of protocols
-            For Each JToken In Nodes
+            For Each JToken In nodes
                 Token = JToken.ToString.Split(New Char() {""""c})
                 If Token(1).Contains(".") Then
                     IPv4 += 1
@@ -749,6 +758,44 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Load_Port_Datagrid()
+
+        'Local Variables
+        Dim Count As Integer
+        Dim MaxResult As Integer = 0
+
+        Try
+            'Set appropriate column header
+            grdStatistics.Columns(0).HeaderText = "Port"
+
+            'Populate data to rows and columns and get the highest count of ports
+            For Count = 0 To PortArray.GetLength(1) - 2 'Last row in array is blank
+                grdStatistics.Rows.Add()
+                grdStatistics.Rows(Count).Cells(0).Value = PortArray(0, Count)
+                grdStatistics.Rows(Count).Cells(1).Value = PortArray(1, Count)
+                If PortArray(1, Count) > MaxResult Then MaxResult = PortArray(1, Count)
+            Next
+
+            'Sort datagrid on count descending
+            grdStatistics.Sort(grdStatistics.Columns(1), ListSortDirection.Descending)
+
+            'Display Status Bars
+            For i As Integer = 0 To Count - 1
+                grdStatistics.Rows(i).Cells(2).Value = BarChartText(MaxResult, grdStatistics.Rows(i).Cells(1).Value)
+            Next
+
+            'Display Row Count
+            lblRowCount.Text = Count.ToString
+            lblRows.Text = "Ports"
+
+            Notification_Display("Information", "The port datagrid was loaded successfully with " + Count.ToString + " rows")
+
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error in loading the port datagrid", ex)
+        End Try
+
+    End Sub
+
     Private Sub Display_Statistics()
 
         Try
@@ -764,6 +811,8 @@ Public Class Form1
                 Load_Version_Datagrid()
             ElseIf comStatistics.Text = "Protocol" Then
                 Load_Protocol_Datagrid()
+            ElseIf comStatistics.Text = "Port" Then
+                Load_Port_Datagrid()
             Else
                 'If selection not recognised then default to Country
                 comStatistics.Text = "Country"
@@ -857,12 +906,14 @@ Public Class Form1
                     IPAddress = IPAddress.Trim("""")
                     Port = Port.Trim("""")
 
-                    'Filter by network protocol
+                    'Filter by network protocol and port
                     If comNetwork.Text = All Or (comNetwork.Text = "IPv4" And IPAddress.Contains(".")) Or (comNetwork.Text = "IPv6" And IPAddress.Contains(":")) Then
-                        grdNodeList.Rows.Add()
-                        grdNodeList.Rows(Count).Cells(0).Value = IPAddress
-                        grdNodeList.Rows(Count).Cells(1).Value = Port
-                        Count += 1
+                        If comPort.Text = All Or comPort.Text = Port Then
+                            grdNodeList.Rows.Add()
+                            grdNodeList.Rows(Count).Cells(0).Value = IPAddress
+                            grdNodeList.Rows(Count).Cells(1).Value = Port
+                            Count += 1
+                        End If
                     End If
                 End If
             Next
@@ -988,6 +1039,38 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Load_Port_Dropdown()
+
+        Try
+            'Clear existing list
+            comPort.Items.Clear()
+
+            'Add an All option at start of list
+            comPort.Items.Add(All)
+
+            'Populate port values to single dimension array to allow sorting
+            Dim Length As Integer = PortArray.GetLength(1) - 1
+            Dim PortList(Length) As Integer
+            For i As Integer = 0 To Length
+                PortList(i) = PortArray(0, i)
+            Next
+
+            'Sort list descending
+            Array.Sort(PortList)
+            Array.Reverse(PortList)
+
+            'Add sorted items to dropdown
+            For i As Integer = 0 To Length
+                comPort.Items.Add(PortList(i))
+            Next
+
+            Notification_Display("Information", "The port dropdown has been populated successfully")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error populating the port dropdown", ex)
+        End Try
+
+    End Sub
+
     Private Sub comCountry_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles comCountry.SelectionChangeCommitted
 
         Load_Nodes_Datagrid()
@@ -1007,6 +1090,12 @@ Public Class Form1
     End Sub
 
     Private Sub comNetwork_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles comNetwork.SelectionChangeCommitted
+
+        Load_Nodes_Datagrid()
+
+    End Sub
+
+    Private Sub comPort_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles comPort.SelectionChangeCommitted
 
         Load_Nodes_Datagrid()
 
@@ -1043,6 +1132,7 @@ Public Class Form1
             comHeight.Text = All
             ComVersion.Text = All
             comNetwork.Text = All
+            comPort.Text = All
 
             'Refresh node list
             Load_Nodes_Datagrid()
@@ -1065,6 +1155,7 @@ Public Class Form1
             comHeight.Text = All
             ComVersion.Text = All
             comNetwork.Text = All
+            comPort.Text = All
 
             Load_Nodes_Datagrid()
 
@@ -1084,18 +1175,28 @@ Public Class Form1
                 comHeight.Text = All
                 ComVersion.Text = All
                 comNetwork.Text = All
+                comPort.Text = All
             ElseIf comStatistics.Text = "Height" Then
                 comHeight.Text = grdStatistics.Rows(e.RowIndex).Cells(0).Value
                 comCountry.Text = All
                 ComVersion.Text = All
                 comNetwork.Text = All
+                comPort.Text = All
             ElseIf comStatistics.Text = "Version" Then
                 ComVersion.Text = grdStatistics.Rows(e.RowIndex).Cells(0).Value
                 comCountry.Text = All
                 comHeight.Text = All
                 comNetwork.Text = All
+                comPort.Text = All
             ElseIf comStatistics.Text = "Protocol" Then
                 comNetwork.Text = grdStatistics.Rows(e.RowIndex).Cells(0).Value
+                comCountry.Text = All
+                comHeight.Text = All
+                ComVersion.Text = All
+                comPort.Text = All
+            ElseIf comStatistics.Text = "Port" Then
+                comPort.Text = grdStatistics.Rows(e.RowIndex).Cells(0).Value
+                comNetwork.Text = All
                 comCountry.Text = All
                 comHeight.Text = All
                 ComVersion.Text = All
@@ -1104,6 +1205,7 @@ Public Class Form1
                 comHeight.Text = All
                 ComVersion.Text = All
                 comNetwork.Text = All
+                comPort.Text = All
             End If
 
             'Refresh grid contents
@@ -1112,7 +1214,7 @@ Public Class Form1
             'Switch to Node List tab
             TabControl1.SelectedTab = tabNodeList
 
-            Notification_Display("Information", "Node list has been made active with the " + comStatistics.Text + " filter set to " + grdStatistics.Rows(e.RowIndex).Cells(0).Value)
+            Notification_Display("Information", "Node list has been made active with the " + comStatistics.Text + " filter set to " + grdStatistics.Rows(e.RowIndex).Cells(0).Value.ToString)
         Catch ex As Exception
             Notification_Display("Error", "There was an error displaying the node list filtered on " + comStatistics.Text, ex)
         End Try
@@ -2622,6 +2724,66 @@ Public Class Form1
         'Refresh the node status tab and disable the timer to prevent it firing again
         Populate_NodeStatusTab()
         timTextbox.Enabled = False
+
+    End Sub
+
+    Private Sub Create_Port_Array()
+
+        'Create an array of port statistics for the statistics grid and the port dropdown. This is unsorted as cannot sort a 2 dimensional array
+
+        'Local Variables
+        Dim Token As String()
+        Dim Node As String()
+        Dim PortString As String
+        Dim Port As Integer
+        Dim Found As Boolean
+        Dim Length As Integer
+
+        Try
+            Dim parsenodes As JObject = parsejson.SelectToken("data.nodes")
+            Dim nodes As List(Of JToken) = parsenodes.Children().ToList()
+
+            'Clear previous array contents
+            ReDim PortArray(1, 0)
+
+            'Cycle through each node, and add its port to the array
+            For Each JToken In nodes
+
+                'Current length of array
+                Length = PortArray.GetLength(1)
+
+                'Get the port number for the node
+                Token = JToken.ToString.Split(New Char() {""""c})
+                Node = Token(1).Split(New Char() {":"c})
+                PortString = Node(Node.Length - 1)
+                PortString = PortString.Trim("""")
+                Port = Convert.ToInt32(PortString)
+
+                'Check if port is already in array, and if so, increase its count
+                Found = False
+
+                For i As Integer = 0 To Length - 1
+                    If PortArray(0, i) = Port Then
+                        PortArray(1, i) += 1
+                        Found = True
+                        Exit For
+                    End If
+                Next
+
+                'If not already in array, then add it
+                If Found = False Then
+                    PortArray(0, Length - 1) = Port
+                    PortArray(1, Length - 1) = 1
+                    ReDim Preserve PortArray(1, Length)
+                End If
+
+            Next
+
+            Notification_Display("Information", "The port array was created successfully with " + (Length - 1).ToString + " rows")
+
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error in creating the port array", ex)
+        End Try
 
     End Sub
 
