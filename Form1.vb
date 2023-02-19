@@ -2787,4 +2787,11 @@ Public Class Form1
 
     End Sub
 
+    Private Sub btnRunDogecoinNode_Click(sender As Object, e As EventArgs) Handles btnRunDogecoinNode.Click
+
+        'Go to link to running your own node
+        Process.Start(My.Settings.DogecoinCoreURL)
+
+    End Sub
+
 End Class

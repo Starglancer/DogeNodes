@@ -599,6 +599,15 @@ Namespace My
                 Return CType(Me("DefaultPort"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://github.com/dogecoin/dogecoin")>  _
+        Public ReadOnly Property DogecoinCoreURL() As String
+            Get
+                Return CType(Me("DogecoinCoreURL"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 
