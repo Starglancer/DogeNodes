@@ -8,15 +8,15 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
 
 ## Screenshots
 
-![Summary](https://user-images.githubusercontent.com/124823644/219656730-52fcc249-4152-4afb-a96e-1c9dc36cad42.png)
+![Summary](https://user-images.githubusercontent.com/124823644/219970025-11153c4c-80f3-4d0a-8a4e-5c70c40fe2d2.png)
 
 ![Statistics](https://user-images.githubusercontent.com/124823644/217803935-ae6e0c80-a2a9-4f69-9b18-4dcaa5370bc5.png)
 
-![NodeList](https://user-images.githubusercontent.com/124823644/217803981-e7b9523e-77f0-4b33-9051-5e273533ceac.png)
+![Node List](https://user-images.githubusercontent.com/124823644/219970068-011d7345-b951-41e0-852a-51b71b430d50.png)
 
 ![Map](https://user-images.githubusercontent.com/124823644/218485680-53e77553-182c-49c7-b0fd-ef7ff99e0930.png)
 
-![NodeStatus](https://user-images.githubusercontent.com/124823644/217804034-1388326c-89ac-45b7-aa31-ac52fd766595.png)
+![Node Status](https://user-images.githubusercontent.com/124823644/219970050-cf031a85-907b-49be-9cee-625442bed405.png)
 
 ![Settings1](https://user-images.githubusercontent.com/124823644/218485707-321c093f-8d77-40de-8032-52ef329a4bef.png)
 
@@ -42,12 +42,7 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  
 ## To Do List
 
-- Node status only updates when user stops typing in the IP address or port fields
-- add statistics/filter for node port
-- add button to select current users IP address on the node status tab
-- add a button to select default port on the node status tab
 - Create a CHM based help system
-- Add a link to dogecoin core on summary tab
  
 ## Acknowledgements
 
