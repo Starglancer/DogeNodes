@@ -46,7 +46,8 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
 - add statistics/filter for node port
 - add button to select current users IP address on the node status tab
 - add a button to select default port on the node status tab
-- Create a CHM based help system 
+- Create a CHM based help system
+- Add a link to dogecoin core on summary tab
  
 ## Acknowledgements
 
