@@ -203,7 +203,7 @@ Public Class Form1
                 'Carry on with rest of subroutine using the last value of json stored in the global variable
             Else
                 'No global variable, so put out message and close application
-                Notification_Display("Critical", "Internet connection required for application. Please try again later. Application will close")
+                MessageBox.Show("Internet connection required for application. Please try again later. Application will close", "DogeNodes - Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End
             End If
         End Try
@@ -424,31 +424,29 @@ Public Class Form1
 
         Try
             'display notification in the appropriate places
-            If Severity = "Critical" Then
-                Display_MessageBox_Notification(Message)
-            Else
-                If chkApplicationNotification.Checked = True Then
-                    If comAppNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Display_Application_Notification(Severity, Message)
-                    If comAppNotifLvl.Text = "Error Only" And Severity = "Error" Then Display_Application_Notification(Severity, Message)
-                End If
-                If chkWindowsNotification.Checked = True Then
-                    If comWinNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Display_Windows_Notification(Severity, Message)
-                    If comWinNotifLvl.Text = "Error Only" And Severity = "Error" Then Display_Windows_Notification(Severity, Message)
-                End If
-                If chkAllowLogging.Checked = True Then
-                    If comLogLvl.Text = "Everything" Then Log_Notification(Severity, Message)
-                    If comLogLvl.Text = "Warning and Error" And Severity <> "Information" Then Log_Notification(Severity, Message)
-                    If comLogLvl.Text = "Error Only" And Severity = "Error" Then Log_Notification(Severity, Message)
-                    If comLogLvl.Text = "Debug" And Severity = "Error" And Not ex Is Nothing Then Log_Notification(Severity, Message, ex)
-                End If
-                If chkAllowEmailNotification.Checked = True Then
-                    If comEmailNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Send_Email_Notification(Severity, Message)
-                    If comEmailNotifLvl.Text = "Error Only" And Severity = "Error" Then Send_Email_Notification(Severity, Message)
-                End If
+            If chkApplicationNotification.Checked = True Then
+                If comAppNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Display_Application_Notification(Severity, Message)
+                If comAppNotifLvl.Text = "Error Only" And Severity = "Error" Then Display_Application_Notification(Severity, Message)
+            End If
+            If chkWindowsNotification.Checked = True Then
+                If comWinNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Display_Windows_Notification(Severity, Message)
+                If comWinNotifLvl.Text = "Error Only" And Severity = "Error" Then Display_Windows_Notification(Severity, Message)
+            End If
+            If chkAllowLogging.Checked = True Then
+                If comLogLvl.Text = "Everything" Then Log_Notification(Severity, Message)
+                If comLogLvl.Text = "Warning and Error" And Severity <> "Information" Then Log_Notification(Severity, Message)
+                If comLogLvl.Text = "Error Only" And Severity = "Error" Then Log_Notification(Severity, Message)
+                If comLogLvl.Text = "Debug" And Severity = "Error" And Not ex Is Nothing Then Log_Notification(Severity, Message, ex)
+            End If
+            If chkAllowEmailNotification.Checked = True Then
+                If comEmailNotifLvl.Text = "Warning and Error" And Severity <> "Information" Then Send_Email_Notification(Severity, Message)
+                If comEmailNotifLvl.Text = "Error Only" And Severity = "Error" Then Send_Email_Notification(Severity, Message)
             End If
 
         Catch
-            Display_MessageBox_Notification("There has been a critical error in the notification display flow")
+            sslError.Text = "There has been a critical error in the notification display flow"
+            sslError.BackColor = Color.Red
+            sslError.ForeColor = Color.White
         End Try
 
     End Sub
@@ -475,7 +473,9 @@ Public Class Form1
             timClearError.Enabled = True
 
         Catch
-            Display_MessageBox_Notification("There has been a critical error in the application notification display")
+            sslError.Text = "There has been a critical error in the application notification display"
+            sslError.BackColor = Color.Red
+            sslError.ForeColor = Color.White
         End Try
 
     End Sub
@@ -1642,7 +1642,9 @@ Public Class Form1
             Notification.Popup()
 
         Catch
-            Display_MessageBox_Notification("There has been a critical error in the Windows notification display")
+            sslError.Text = "There has been a critical error in the Windows notification display"
+            sslError.BackColor = Color.Red
+            sslError.ForeColor = Color.White
         End Try
 
         Return True
@@ -1699,7 +1701,9 @@ Public Class Form1
             System.IO.File.SetAttributes(LogFileName, IO.FileAttributes.ReadOnly)
 
         Catch
-            Display_MessageBox_Notification("There has been a critical error in the Log notification process")
+            sslError.Text = "There has been a critical error in the Log notification process"
+            sslError.BackColor = Color.Red
+            sslError.ForeColor = Color.White
         End Try
 
         Return True
@@ -1734,7 +1738,9 @@ Public Class Form1
             smtp.Send(mail)
 
         Catch
-            Display_MessageBox_Notification("There has been an error sending an email. Please check email settings")
+            sslError.Text = "There has been an error sending an email. Please check email settings"
+            sslError.BackColor = Color.Red
+            sslError.ForeColor = Color.White
         End Try
 
         Return True
@@ -1959,7 +1965,9 @@ Public Class Form1
 
             LogFileName = LogFileDirectory + "\dogenodes.log"
         Catch
-            Display_MessageBox_Notification("There has been a critical error in the logging configuration process")
+            sslError.Text = "There has been a critical error in the logging configuration process"
+            sslError.BackColor = Color.Red
+            sslError.ForeColor = Color.White
         End Try
 
     End Sub
@@ -2341,16 +2349,6 @@ Public Class Form1
         End Try
 
     End Sub
-
-    Private Function Display_MessageBox_Notification(Message As String) As Boolean
-
-        'Display a message box for critical notifications. This cannot be filtered by the user and will display even before form load completes
-        'Cannot use a try catch on this as its the most basic error message
-        MessageBox.Show(Message, "DogeNodes - Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-        Return True
-
-    End Function
 
     Private Function Request_Confirmation(Message As String) As Boolean
 
