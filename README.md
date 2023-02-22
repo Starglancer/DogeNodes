@@ -42,6 +42,7 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  
 ## To Do List
 
+- Fix a bug with repeat MessageBox popups
 - Create a CHM based help system
  
 ## Acknowledgements
