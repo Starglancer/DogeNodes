@@ -2235,7 +2235,7 @@ Public Class Form1
                 Percentage = 0
             Else
                 Percentage = 100 * (CacheIndex - 1) / (IPLocations.GetLength(1) - 1)
-                lblPercentageNodesValue.Text = Percentage.ToString
+                lblPercentageNodesValue.Text = Percentage.ToString + "%"
             End If
 
             'Display progress underneath the map if it is a long way behind (e.g. after cache clear or first installation)
