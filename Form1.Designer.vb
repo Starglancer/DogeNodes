@@ -23,11 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabSummary = New System.Windows.Forms.TabPage()
@@ -163,6 +163,19 @@ Partial Class Form1
         Me.trkGreenToYellow = New System.Windows.Forms.TrackBar()
         Me.lblYellowRed = New System.Windows.Forms.Label()
         Me.lblGreenYellow = New System.Windows.Forms.Label()
+        Me.tabHelp = New System.Windows.Forms.TabPage()
+        Me.gbxInlineHelp = New System.Windows.Forms.GroupBox()
+        Me.btnInlineHelp = New System.Windows.Forms.Button()
+        Me.lblInlineHelp = New System.Windows.Forms.Label()
+        Me.gbxEmail = New System.Windows.Forms.GroupBox()
+        Me.btnEmailHelp = New System.Windows.Forms.Button()
+        Me.lblEmailHelp = New System.Windows.Forms.Label()
+        Me.gbxWebsite = New System.Windows.Forms.GroupBox()
+        Me.btnWebsiteHelp = New System.Windows.Forms.Button()
+        Me.lblWebsiteHelp = New System.Windows.Forms.Label()
+        Me.gbxTooltips = New System.Windows.Forms.GroupBox()
+        Me.lblTooltips = New System.Windows.Forms.Label()
+        Me.lblHelpApproach = New System.Windows.Forms.Label()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.sslAPIProgressBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.sslLastUpdate = New System.Windows.Forms.ToolStripStatusLabel()
@@ -173,6 +186,7 @@ Partial Class Form1
         Me.timUpdateCache = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.timTextbox = New System.Windows.Forms.Timer(Me.components)
+        Me.hlpDogeNodes = New System.Windows.Forms.HelpProvider()
         Me.TabControl1.SuspendLayout()
         Me.tabSummary.SuspendLayout()
         CType(Me.pbxDogecoin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -199,6 +213,11 @@ Partial Class Form1
         Me.gbxThresholdSettings.SuspendLayout()
         CType(Me.trkYellowToRed, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkGreenToYellow, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabHelp.SuspendLayout()
+        Me.gbxInlineHelp.SuspendLayout()
+        Me.gbxEmail.SuspendLayout()
+        Me.gbxWebsite.SuspendLayout()
+        Me.gbxTooltips.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -210,6 +229,7 @@ Partial Class Form1
         Me.TabControl1.Controls.Add(Me.tabNodeMap)
         Me.TabControl1.Controls.Add(Me.tabNodestatus)
         Me.TabControl1.Controls.Add(Me.tabSettings)
+        Me.TabControl1.Controls.Add(Me.tabHelp)
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -227,17 +247,22 @@ Partial Class Form1
         Me.tabSummary.Controls.Add(Me.lblCredit)
         Me.tabSummary.Controls.Add(Me.lblMainTitle)
         Me.tabSummary.Controls.Add(Me.pbxDogecoin)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.tabSummary, "topic-summary")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.tabSummary, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.tabSummary.Location = New System.Drawing.Point(4, 22)
         Me.tabSummary.Name = "tabSummary"
         Me.tabSummary.Padding = New System.Windows.Forms.Padding(3)
+        Me.hlpDogeNodes.SetShowHelp(Me.tabSummary, True)
         Me.tabSummary.Size = New System.Drawing.Size(795, 404)
         Me.tabSummary.TabIndex = 1
         Me.tabSummary.Text = "Summary"
         '
         'btnRunDogecoinNode
         '
+        Me.hlpDogeNodes.SetHelpKeyword(Me.btnRunDogecoinNode, "")
         Me.btnRunDogecoinNode.Location = New System.Drawing.Point(57, 324)
         Me.btnRunDogecoinNode.Name = "btnRunDogecoinNode"
+        Me.hlpDogeNodes.SetShowHelp(Me.btnRunDogecoinNode, False)
         Me.btnRunDogecoinNode.Size = New System.Drawing.Size(120, 23)
         Me.btnRunDogecoinNode.TabIndex = 6
         Me.btnRunDogecoinNode.Text = "Run Your Own Node"
@@ -270,9 +295,11 @@ Partial Class Form1
         '
         Me.lblTotalNodesValue.BackColor = System.Drawing.Color.Transparent
         Me.lblTotalNodesValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 50.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.hlpDogeNodes.SetHelpKeyword(Me.lblTotalNodesValue, "")
         Me.lblTotalNodesValue.Image = Global.BlockchainNodes.My.Resources.Resources.Yellow
         Me.lblTotalNodesValue.Location = New System.Drawing.Point(386, 167)
         Me.lblTotalNodesValue.Name = "lblTotalNodesValue"
+        Me.hlpDogeNodes.SetShowHelp(Me.lblTotalNodesValue, False)
         Me.lblTotalNodesValue.Size = New System.Drawing.Size(245, 228)
         Me.lblTotalNodesValue.TabIndex = 3
         Me.lblTotalNodesValue.Text = "0000"
@@ -318,8 +345,11 @@ Partial Class Form1
         Me.tabStatistics.Controls.Add(Me.grdStatistics)
         Me.tabStatistics.Controls.Add(Me.comStatistics)
         Me.tabStatistics.Controls.Add(Me.lblStatisticsSelect)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.tabStatistics, "topic-statistics")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.tabStatistics, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.tabStatistics.Location = New System.Drawing.Point(4, 22)
         Me.tabStatistics.Name = "tabStatistics"
+        Me.hlpDogeNodes.SetShowHelp(Me.tabStatistics, True)
         Me.tabStatistics.Size = New System.Drawing.Size(795, 404)
         Me.tabStatistics.TabIndex = 2
         Me.tabStatistics.Text = "Statistics"
@@ -350,24 +380,24 @@ Partial Class Form1
         Me.grdStatistics.AllowUserToResizeColumns = False
         Me.grdStatistics.AllowUserToResizeRows = False
         Me.grdStatistics.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdStatistics.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdStatistics.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Value, Me.Count, Me.BarChart})
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdStatistics.DefaultCellStyle = DataGridViewCellStyle3
         Me.grdStatistics.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdStatistics.GridColor = System.Drawing.Color.White
         Me.grdStatistics.Location = New System.Drawing.Point(72, 64)
@@ -396,10 +426,10 @@ Partial Class Form1
         '
         'BarChart
         '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Khaki
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Khaki
-        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Khaki
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Khaki
+        Me.BarChart.DefaultCellStyle = DataGridViewCellStyle2
         Me.BarChart.HeaderText = "Bar Chart"
         Me.BarChart.Name = "BarChart"
         Me.BarChart.ReadOnly = True
@@ -433,8 +463,11 @@ Partial Class Form1
         Me.tabNodeList.Controls.Add(Me.lblNodeRowsCount)
         Me.tabNodeList.Controls.Add(Me.gbxFilters)
         Me.tabNodeList.Controls.Add(Me.grdNodeList)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.tabNodeList, "topic-node list")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.tabNodeList, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.tabNodeList.Location = New System.Drawing.Point(4, 22)
         Me.tabNodeList.Name = "tabNodeList"
+        Me.hlpDogeNodes.SetShowHelp(Me.tabNodeList, True)
         Me.tabNodeList.Size = New System.Drawing.Size(795, 404)
         Me.tabNodeList.TabIndex = 3
         Me.tabNodeList.Text = "Node List"
@@ -590,24 +623,24 @@ Partial Class Form1
         Me.grdNodeList.AllowUserToResizeColumns = False
         Me.grdNodeList.AllowUserToResizeRows = False
         Me.grdNodeList.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdNodeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.grdNodeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdNodeList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2})
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grdNodeList.DefaultCellStyle = DataGridViewCellStyle5
         Me.grdNodeList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.grdNodeList.GridColor = System.Drawing.Color.White
         Me.grdNodeList.Location = New System.Drawing.Point(399, 21)
@@ -639,8 +672,11 @@ Partial Class Form1
         '
         Me.tabNodeMap.Controls.Add(Me.lblMapUpdate)
         Me.tabNodeMap.Controls.Add(Me.pbxMap)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.tabNodeMap, "topic-node map")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.tabNodeMap, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.tabNodeMap.Location = New System.Drawing.Point(4, 22)
         Me.tabNodeMap.Name = "tabNodeMap"
+        Me.hlpDogeNodes.SetShowHelp(Me.tabNodeMap, True)
         Me.tabNodeMap.Size = New System.Drawing.Size(795, 404)
         Me.tabNodeMap.TabIndex = 5
         Me.tabNodeMap.Text = "Node Map"
@@ -678,9 +714,12 @@ Partial Class Form1
         Me.tabNodestatus.Controls.Add(Me.lblIPAddress)
         Me.tabNodestatus.Controls.Add(Me.txtPort)
         Me.tabNodestatus.Controls.Add(Me.txtIPAddress)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.tabNodestatus, "topic-node status")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.tabNodestatus, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.tabNodestatus.Location = New System.Drawing.Point(4, 22)
         Me.tabNodestatus.Name = "tabNodestatus"
         Me.tabNodestatus.Padding = New System.Windows.Forms.Padding(3)
+        Me.hlpDogeNodes.SetShowHelp(Me.tabNodestatus, True)
         Me.tabNodestatus.Size = New System.Drawing.Size(795, 404)
         Me.tabNodestatus.TabIndex = 0
         Me.tabNodestatus.Text = "Node Status"
@@ -1045,9 +1084,12 @@ Partial Class Form1
         Me.tabSettings.Controls.Add(Me.gbxWindow)
         Me.tabSettings.Controls.Add(Me.btnRestoreDefaults)
         Me.tabSettings.Controls.Add(Me.gbxThresholdSettings)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.tabSettings, "topic-settings")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.tabSettings, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.tabSettings.Location = New System.Drawing.Point(4, 22)
         Me.tabSettings.Name = "tabSettings"
         Me.tabSettings.Padding = New System.Windows.Forms.Padding(3)
+        Me.hlpDogeNodes.SetShowHelp(Me.tabSettings, True)
         Me.tabSettings.Size = New System.Drawing.Size(795, 404)
         Me.tabSettings.TabIndex = 4
         Me.tabSettings.Text = "Settings"
@@ -1061,8 +1103,11 @@ Partial Class Form1
         Me.gbxUpdate.Controls.Add(Me.lblInstalledVersionValue)
         Me.gbxUpdate.Controls.Add(Me.lblLatestVersion)
         Me.gbxUpdate.Controls.Add(Me.lblInstalledVersion)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.gbxUpdate, "topic-update dogenodes")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.gbxUpdate, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.gbxUpdate.Location = New System.Drawing.Point(28, 738)
         Me.gbxUpdate.Name = "gbxUpdate"
+        Me.hlpDogeNodes.SetShowHelp(Me.gbxUpdate, True)
         Me.gbxUpdate.Size = New System.Drawing.Size(715, 100)
         Me.gbxUpdate.TabIndex = 7
         Me.gbxUpdate.TabStop = False
@@ -1147,8 +1192,11 @@ Partial Class Form1
         Me.gbxMapCache.Controls.Add(Me.lblCacheNodes)
         Me.gbxMapCache.Controls.Add(Me.lblPercentageNodesValue)
         Me.gbxMapCache.Controls.Add(Me.lblCacheNodesValue)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.gbxMapCache, "topic-map")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.gbxMapCache, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.gbxMapCache.Location = New System.Drawing.Point(28, 530)
         Me.gbxMapCache.Name = "gbxMapCache"
+        Me.hlpDogeNodes.SetShowHelp(Me.gbxMapCache, True)
         Me.gbxMapCache.Size = New System.Drawing.Size(715, 98)
         Me.gbxMapCache.TabIndex = 6
         Me.gbxMapCache.TabStop = False
@@ -1227,8 +1275,11 @@ Partial Class Form1
         Me.gbxLogging.Controls.Add(Me.btnDisplayLog)
         Me.gbxLogging.Controls.Add(Me.chkAllowLogging)
         Me.gbxLogging.Controls.Add(Me.comLogLvl)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.gbxLogging, "topic-logging")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.gbxLogging, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.gbxLogging.Location = New System.Drawing.Point(28, 407)
         Me.gbxLogging.Name = "gbxLogging"
+        Me.hlpDogeNodes.SetShowHelp(Me.gbxLogging, True)
         Me.gbxLogging.Size = New System.Drawing.Size(715, 104)
         Me.gbxLogging.TabIndex = 5
         Me.gbxLogging.TabStop = False
@@ -1319,8 +1370,11 @@ Partial Class Form1
         Me.gbxNotification.Controls.Add(Me.chkAllowEmailNotification)
         Me.gbxNotification.Controls.Add(Me.chkApplicationNotification)
         Me.gbxNotification.Controls.Add(Me.chkWindowsNotification)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.gbxNotification, "topic-notification")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.gbxNotification, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.gbxNotification.Location = New System.Drawing.Point(28, 184)
         Me.gbxNotification.Name = "gbxNotification"
+        Me.hlpDogeNodes.SetShowHelp(Me.gbxNotification, True)
         Me.gbxNotification.Size = New System.Drawing.Size(715, 206)
         Me.gbxNotification.TabIndex = 3
         Me.gbxNotification.TabStop = False
@@ -1524,8 +1578,11 @@ Partial Class Form1
         Me.gbxWindow.Controls.Add(Me.chkMinimiseOnClose)
         Me.gbxWindow.Controls.Add(Me.chkMinimiseToTray)
         Me.gbxWindow.Controls.Add(Me.chkHideTrayIcon)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.gbxWindow, "topic-window")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.gbxWindow, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.gbxWindow.Location = New System.Drawing.Point(28, 45)
         Me.gbxWindow.Name = "gbxWindow"
+        Me.hlpDogeNodes.SetShowHelp(Me.gbxWindow, True)
         Me.gbxWindow.Size = New System.Drawing.Size(715, 124)
         Me.gbxWindow.TabIndex = 2
         Me.gbxWindow.TabStop = False
@@ -1579,7 +1636,7 @@ Partial Class Form1
         '
         Me.comStartup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comStartup.FormattingEnabled = True
-        Me.comStartup.Items.AddRange(New Object() {"Summary", "Statistics", "Node List", "Node Map", "Node Status", "Settings"})
+        Me.comStartup.Items.AddRange(New Object() {"Summary", "Statistics", "Node List", "Node Map", "Node Status", "Settings", "Help"})
         Me.comStartup.Location = New System.Drawing.Point(120, 86)
         Me.comStartup.Name = "comStartup"
         Me.comStartup.Size = New System.Drawing.Size(121, 21)
@@ -1662,8 +1719,11 @@ Partial Class Form1
         Me.gbxThresholdSettings.Controls.Add(Me.trkGreenToYellow)
         Me.gbxThresholdSettings.Controls.Add(Me.lblYellowRed)
         Me.gbxThresholdSettings.Controls.Add(Me.lblGreenYellow)
+        Me.hlpDogeNodes.SetHelpKeyword(Me.gbxThresholdSettings, "topic-block height threshold")
+        Me.hlpDogeNodes.SetHelpNavigator(Me.gbxThresholdSettings, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.gbxThresholdSettings.Location = New System.Drawing.Point(28, 644)
         Me.gbxThresholdSettings.Name = "gbxThresholdSettings"
+        Me.hlpDogeNodes.SetShowHelp(Me.gbxThresholdSettings, True)
         Me.gbxThresholdSettings.Size = New System.Drawing.Size(715, 76)
         Me.gbxThresholdSettings.TabIndex = 0
         Me.gbxThresholdSettings.TabStop = False
@@ -1725,12 +1785,145 @@ Partial Class Form1
         Me.lblGreenYellow.TabIndex = 2
         Me.lblGreenYellow.Text = "Green to Yellow"
         '
+        'tabHelp
+        '
+        Me.tabHelp.Controls.Add(Me.gbxInlineHelp)
+        Me.tabHelp.Controls.Add(Me.gbxEmail)
+        Me.tabHelp.Controls.Add(Me.gbxWebsite)
+        Me.tabHelp.Controls.Add(Me.gbxTooltips)
+        Me.tabHelp.Controls.Add(Me.lblHelpApproach)
+        Me.tabHelp.Location = New System.Drawing.Point(4, 22)
+        Me.tabHelp.Name = "tabHelp"
+        Me.tabHelp.Size = New System.Drawing.Size(795, 404)
+        Me.tabHelp.TabIndex = 6
+        Me.tabHelp.Text = "Help"
+        Me.tabHelp.UseVisualStyleBackColor = True
+        '
+        'gbxInlineHelp
+        '
+        Me.gbxInlineHelp.Controls.Add(Me.btnInlineHelp)
+        Me.gbxInlineHelp.Controls.Add(Me.lblInlineHelp)
+        Me.gbxInlineHelp.Location = New System.Drawing.Point(36, 314)
+        Me.gbxInlineHelp.Name = "gbxInlineHelp"
+        Me.gbxInlineHelp.Size = New System.Drawing.Size(722, 70)
+        Me.gbxInlineHelp.TabIndex = 4
+        Me.gbxInlineHelp.TabStop = False
+        Me.gbxInlineHelp.Text = "Inline Help"
+        '
+        'btnInlineHelp
+        '
+        Me.btnInlineHelp.Location = New System.Drawing.Point(543, 28)
+        Me.btnInlineHelp.Name = "btnInlineHelp"
+        Me.btnInlineHelp.Size = New System.Drawing.Size(75, 23)
+        Me.btnInlineHelp.TabIndex = 1
+        Me.btnInlineHelp.Text = "Inline Help"
+        Me.btnInlineHelp.UseVisualStyleBackColor = True
+        '
+        'lblInlineHelp
+        '
+        Me.lblInlineHelp.Location = New System.Drawing.Point(46, 28)
+        Me.lblInlineHelp.Name = "lblInlineHelp"
+        Me.lblInlineHelp.Size = New System.Drawing.Size(456, 34)
+        Me.lblInlineHelp.TabIndex = 0
+        Me.lblInlineHelp.Text = "Click the button on the right to open the inline help system, or alternatively, p" &
+    "ress 'F1' at any point in the application to get context sensitive help"
+        '
+        'gbxEmail
+        '
+        Me.gbxEmail.Controls.Add(Me.btnEmailHelp)
+        Me.gbxEmail.Controls.Add(Me.lblEmailHelp)
+        Me.gbxEmail.Location = New System.Drawing.Point(36, 220)
+        Me.gbxEmail.Name = "gbxEmail"
+        Me.gbxEmail.Size = New System.Drawing.Size(722, 70)
+        Me.gbxEmail.TabIndex = 3
+        Me.gbxEmail.TabStop = False
+        Me.gbxEmail.Text = "Email"
+        '
+        'btnEmailHelp
+        '
+        Me.btnEmailHelp.Location = New System.Drawing.Point(543, 29)
+        Me.btnEmailHelp.Name = "btnEmailHelp"
+        Me.btnEmailHelp.Size = New System.Drawing.Size(75, 23)
+        Me.btnEmailHelp.TabIndex = 1
+        Me.btnEmailHelp.Text = "Email"
+        Me.btnEmailHelp.UseVisualStyleBackColor = True
+        '
+        'lblEmailHelp
+        '
+        Me.lblEmailHelp.AutoSize = True
+        Me.lblEmailHelp.Location = New System.Drawing.Point(46, 29)
+        Me.lblEmailHelp.Name = "lblEmailHelp"
+        Me.lblEmailHelp.Size = New System.Drawing.Size(286, 13)
+        Me.lblEmailHelp.TabIndex = 0
+        Me.lblEmailHelp.Text = "Click the button on the right to send an email to Starglancer"
+        '
+        'gbxWebsite
+        '
+        Me.gbxWebsite.Controls.Add(Me.btnWebsiteHelp)
+        Me.gbxWebsite.Controls.Add(Me.lblWebsiteHelp)
+        Me.gbxWebsite.Location = New System.Drawing.Point(33, 134)
+        Me.gbxWebsite.Name = "gbxWebsite"
+        Me.gbxWebsite.Size = New System.Drawing.Size(725, 66)
+        Me.gbxWebsite.TabIndex = 2
+        Me.gbxWebsite.TabStop = False
+        Me.gbxWebsite.Text = "Website"
+        '
+        'btnWebsiteHelp
+        '
+        Me.btnWebsiteHelp.Location = New System.Drawing.Point(546, 26)
+        Me.btnWebsiteHelp.Name = "btnWebsiteHelp"
+        Me.btnWebsiteHelp.Size = New System.Drawing.Size(75, 23)
+        Me.btnWebsiteHelp.TabIndex = 1
+        Me.btnWebsiteHelp.Text = "Website"
+        Me.btnWebsiteHelp.UseVisualStyleBackColor = True
+        '
+        'lblWebsiteHelp
+        '
+        Me.lblWebsiteHelp.AutoSize = True
+        Me.lblWebsiteHelp.Location = New System.Drawing.Point(49, 31)
+        Me.lblWebsiteHelp.Name = "lblWebsiteHelp"
+        Me.lblWebsiteHelp.Size = New System.Drawing.Size(287, 13)
+        Me.lblWebsiteHelp.TabIndex = 0
+        Me.lblWebsiteHelp.Text = "Click the button on the right to visit the DogeNodes website"
+        '
+        'gbxTooltips
+        '
+        Me.gbxTooltips.Controls.Add(Me.lblTooltips)
+        Me.gbxTooltips.Location = New System.Drawing.Point(33, 40)
+        Me.gbxTooltips.Name = "gbxTooltips"
+        Me.gbxTooltips.Size = New System.Drawing.Size(725, 72)
+        Me.gbxTooltips.TabIndex = 1
+        Me.gbxTooltips.TabStop = False
+        Me.gbxTooltips.Text = "Tooltips"
+        '
+        'lblTooltips
+        '
+        Me.lblTooltips.Location = New System.Drawing.Point(38, 25)
+        Me.lblTooltips.Name = "lblTooltips"
+        Me.lblTooltips.Size = New System.Drawing.Size(648, 31)
+        Me.lblTooltips.TabIndex = 0
+        Me.lblTooltips.Text = "On the settings menu, you can turn tooltips on and off. When turned on, hovering " &
+    "over a control with the mouse pointer will display information about that contro" &
+    "l"
+        Me.lblTooltips.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblHelpApproach
+        '
+        Me.lblHelpApproach.AutoSize = True
+        Me.lblHelpApproach.Location = New System.Drawing.Point(174, 15)
+        Me.lblHelpApproach.Name = "lblHelpApproach"
+        Me.lblHelpApproach.Size = New System.Drawing.Size(378, 13)
+        Me.lblHelpApproach.TabIndex = 0
+        Me.lblHelpApproach.Text = "There are a number of ways you can get help regarding the use of DogeNodes"
+        '
         'StatusStrip1
         '
         Me.StatusStrip1.BackColor = System.Drawing.SystemColors.Control
+        Me.hlpDogeNodes.SetHelpKeyword(Me.StatusStrip1, "")
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.sslAPIProgressBar, Me.sslLastUpdate, Me.sslError})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 428)
         Me.StatusStrip1.Name = "StatusStrip1"
+        Me.hlpDogeNodes.SetShowHelp(Me.StatusStrip1, False)
         Me.StatusStrip1.ShowItemToolTips = True
         Me.StatusStrip1.Size = New System.Drawing.Size(800, 22)
         Me.StatusStrip1.SizingGrip = False
@@ -1788,6 +1981,10 @@ Partial Class Form1
         '
         Me.timTextbox.Interval = 1000
         '
+        'hlpDogeNodes
+        '
+        Me.hlpDogeNodes.HelpNamespace = "DogeNodes.chm"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1796,9 +1993,12 @@ Partial Class Form1
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.TabControl1)
+        Me.hlpDogeNodes.SetHelpKeyword(Me, "topic-introduction")
+        Me.hlpDogeNodes.SetHelpNavigator(Me, System.Windows.Forms.HelpNavigator.KeywordIndex)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "Form1"
+        Me.hlpDogeNodes.SetShowHelp(Me, True)
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "DogeNodes"
         Me.TabControl1.ResumeLayout(False)
@@ -1840,6 +2040,14 @@ Partial Class Form1
         Me.gbxThresholdSettings.PerformLayout()
         CType(Me.trkYellowToRed, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.trkGreenToYellow, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabHelp.ResumeLayout(False)
+        Me.tabHelp.PerformLayout()
+        Me.gbxInlineHelp.ResumeLayout(False)
+        Me.gbxEmail.ResumeLayout(False)
+        Me.gbxEmail.PerformLayout()
+        Me.gbxWebsite.ResumeLayout(False)
+        Me.gbxWebsite.PerformLayout()
+        Me.gbxTooltips.ResumeLayout(False)
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -1991,4 +2199,18 @@ Partial Class Form1
     Friend WithEvents lblAgentPort As Label
     Friend WithEvents comPort As ComboBox
     Friend WithEvents btnRunDogecoinNode As Button
+    Friend WithEvents hlpDogeNodes As HelpProvider
+    Friend WithEvents tabHelp As TabPage
+    Friend WithEvents gbxInlineHelp As GroupBox
+    Friend WithEvents btnInlineHelp As Button
+    Friend WithEvents lblInlineHelp As Label
+    Friend WithEvents gbxEmail As GroupBox
+    Friend WithEvents btnEmailHelp As Button
+    Friend WithEvents lblEmailHelp As Label
+    Friend WithEvents gbxWebsite As GroupBox
+    Friend WithEvents btnWebsiteHelp As Button
+    Friend WithEvents lblWebsiteHelp As Label
+    Friend WithEvents gbxTooltips As GroupBox
+    Friend WithEvents lblTooltips As Label
+    Friend WithEvents lblHelpApproach As Label
 End Class

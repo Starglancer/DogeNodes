@@ -158,5 +158,11 @@
     <Setting Name="DogecoinCoreURL" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://github.com/dogecoin/dogecoin</Value>
     </Setting>
+    <Setting Name="WebHelp" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://starglancer.ddns.net</Value>
+    </Setting>
+    <Setting Name="EmailHelp" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">starglancer.x@pm.me</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

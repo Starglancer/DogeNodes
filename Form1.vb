@@ -103,6 +103,13 @@ Public Class Form1
             chkShowTooltips.Checked = My.Settings.ShowTooltips
             chkHighlightCurrentNode.Checked = My.Settings.HighlightNode
 
+            'check if help file present and then update visibility of inline help section on Help tab
+            If System.IO.File.Exists("DogeNodes.chm") Then
+                gbxInlineHelp.Visible = True
+            Else
+                gbxInlineHelp.Visible = False
+            End If
+
             'Update sliders to persistent values
             trkGreenToYellow.Value = lblGreenToYellow.Text
             trkYellowToRed.Value = lblYellowToRed.Text
@@ -1548,6 +1555,8 @@ Public Class Form1
                     gbxStatus.Focus()
                 Case "Settings"
                     TabControl1.SelectedTab = tabSettings
+                Case "Help"
+                    TabControl1.SelectedTab = tabHelp
                 Case Else
                     TabControl1.SelectedTab = tabSummary
             End Select
@@ -2789,6 +2798,48 @@ Public Class Form1
 
         'Go to link to running your own node
         Process.Start(My.Settings.DogecoinCoreURL)
+
+    End Sub
+
+    Private Sub btnWebsiteHelp_Click(sender As Object, e As EventArgs) Handles btnWebsiteHelp.Click
+
+        'Open website in the default browser
+
+        Try
+            Process.Start(My.Settings.WebHelp)
+
+            Notification_Display("Information", "The help website was opened successfully")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error opening the help website", ex)
+        End Try
+
+    End Sub
+
+    Private Sub btnEmailHelp_Click(sender As Object, e As EventArgs) Handles btnEmailHelp.Click
+
+        'Send an email help request using the default email application
+
+        Try
+            Process.Start("mailto:" + My.Settings.EmailHelp + "?subject=DogeNodes%20Help%20Required")
+
+            Notification_Display("Information", "Email help request was sent successfully")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error sending the email help request", ex)
+        End Try
+
+    End Sub
+
+    Private Sub btnInlineHelp_Click(sender As Object, e As EventArgs) Handles btnInlineHelp.Click
+
+        'Open help file
+
+        Try
+            Process.Start("DogeNodes.chm")
+
+            Notification_Display("Information", "Help file was opened successfully")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error opening the help file", ex)
+        End Try
 
     End Sub
 
