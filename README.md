@@ -8,19 +8,21 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
 
 ## Screenshots
 
-![Summary](https://user-images.githubusercontent.com/124823644/219970025-11153c4c-80f3-4d0a-8a4e-5c70c40fe2d2.png)
+![Summary](https://user-images.githubusercontent.com/124823644/221171087-c6b806ef-80ff-4cc2-9aa1-63bef11a8807.png)
 
-![Statistics](https://user-images.githubusercontent.com/124823644/217803935-ae6e0c80-a2a9-4f69-9b18-4dcaa5370bc5.png)
+![Statistics](https://user-images.githubusercontent.com/124823644/221171110-f54ad8db-7f39-473b-9b21-343a40217507.png)
 
-![Node List](https://user-images.githubusercontent.com/124823644/219970068-011d7345-b951-41e0-852a-51b71b430d50.png)
+![Node List](https://user-images.githubusercontent.com/124823644/221171148-2a708022-0e5f-4e5e-86f6-311df9ca9e81.png)
 
-![Map](https://user-images.githubusercontent.com/124823644/218485680-53e77553-182c-49c7-b0fd-ef7ff99e0930.png)
+![Node Map](https://user-images.githubusercontent.com/124823644/221171161-86b7be96-0e7f-4ccb-9a6f-9b0835c8ba05.png)
 
-![Node Status](https://user-images.githubusercontent.com/124823644/219970050-cf031a85-907b-49be-9cee-625442bed405.png)
+![Node Status](https://user-images.githubusercontent.com/124823644/221171183-62a35893-29e6-44a7-a690-67fb15ad748e.png)
 
-![Settings1](https://user-images.githubusercontent.com/124823644/218485707-321c093f-8d77-40de-8032-52ef329a4bef.png)
+![Settings(1)](https://user-images.githubusercontent.com/124823644/221171210-884bf3f5-0c98-4f80-897d-aa5b2cc0de64.png)
 
-![Settings(2)](https://user-images.githubusercontent.com/124823644/219656768-f9cfc6b8-7a63-4298-8164-56ac1cfce8e2.png)
+![Settings(2)](https://user-images.githubusercontent.com/124823644/221171231-805b3c27-9d71-4ded-bdcb-ff71fb506904.png)
+
+![Help](https://user-images.githubusercontent.com/124823644/221171250-94c9fdd7-4a93-43fd-a3d4-7787d53f29b0.png)
 
 ## Features
 
