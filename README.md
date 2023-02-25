@@ -44,9 +44,8 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  
 ## To Do List
 
-- Add a link to the startup folder for the chm help file
-- Add a right click menu to the sytem tray icon
-- add more detail to the system tray icon popup message
+- Fix any bugs identified by users
+- Make enhancements identified by users
  
 ## Acknowledgements
 
