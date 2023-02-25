@@ -1,5 +1,6 @@
 ﻿Imports Newtonsoft.Json.Linq
 Imports System.ComponentModel
+Imports System.Diagnostics.Eventing.Reader
 Imports System.Net
 Imports System.Net.Mail
 Imports System.Text.RegularExpressions
@@ -1526,9 +1527,17 @@ Public Class Form1
                 NotifyIcon1.Icon = My.Resources.Green1
                 NotifyIcon1.Text = "DogeNodes - Node Healthy"
             Else
-                'Use red icon as at least one node parameter is showing an issue
+                'At least one node parameter is showing an issue
                 NotifyIcon1.Icon = My.Resources.Red1
-                NotifyIcon1.Text = "DogeNodes - Node Issues"
+                If StatusColour = "Red" Then
+                    NotifyIcon1.Text = "DogeNodes - Node Offline"
+                ElseIf UpToDateColour = "Yellow" Then
+                    NotifyIcon1.Text = "DogeNodes - Node Block Height slightly Behind"
+                ElseIf UpToDateColour = "Red" Then
+                    NotifyIcon1.Text = "DogeNodes - Node Block Height significantly Behind"
+                Else
+                    NotifyIcon1.Text = "DogeNodes - Node Agent Out of Date"
+                End If
             End If
 
             Notification_Display("Information", "The tray icon appearance has been set to " + NotifyIcon1.Text)
