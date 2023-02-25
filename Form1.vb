@@ -1532,9 +1532,9 @@ Public Class Form1
                 If StatusColour = "Red" Then
                     NotifyIcon1.Text = "DogeNodes - Node Offline"
                 ElseIf UpToDateColour = "Yellow" Then
-                    NotifyIcon1.Text = "DogeNodes - Node Block Height slightly Behind"
+                    NotifyIcon1.Text = "DogeNodes - Node Block Height Slightly Behind"
                 ElseIf UpToDateColour = "Red" Then
-                    NotifyIcon1.Text = "DogeNodes - Node Block Height significantly Behind"
+                    NotifyIcon1.Text = "DogeNodes - Node Block Height Significantly Behind"
                 Else
                     NotifyIcon1.Text = "DogeNodes - Node Agent Out of Date"
                 End If
