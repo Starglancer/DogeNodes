@@ -1007,6 +1007,9 @@ Public Class Form1
             Dim parseversion As JObject = parsejson.SelectToken("data.versions")
             Dim versions As List(Of JToken) = parseversion.Children().ToList()
 
+            'Clear existing list
+            ComVersion.Items.Clear()
+
             'Add an All option at start of list
             ComVersion.Items.Add(All)
 
