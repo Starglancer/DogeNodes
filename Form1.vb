@@ -1,6 +1,5 @@
 ﻿Imports Newtonsoft.Json.Linq
 Imports System.ComponentModel
-Imports System.Diagnostics.Eventing.Reader
 Imports System.Net
 Imports System.Net.Mail
 Imports System.Text.RegularExpressions
@@ -1426,32 +1425,15 @@ Public Class Form1
             'Handle the restore event to reset selected display of tray icon
             If WindowState = FormWindowState.Normal Then
                 Me.Visible = False
-                Open_Startup_Tab()
                 Notify_Icon_Display()
                 ShowInTaskbar = True
-                Me.Visible = True
                 Me.CenterToScreen()
+                Me.Visible = True
                 Notification_Display("Information", "The application window has been displayed")
             End If
 
         Catch ex As Exception
             Notification_Display("Error", "There was an error minimising or restoring the application", ex)
-        End Try
-
-    End Sub
-
-    Private Sub NotifyIcon1_Click(sender As Object, e As EventArgs) Handles NotifyIcon1.Click
-
-        Try
-            'Restore window if minimised or Minimise Window if normal
-            If WindowState = FormWindowState.Minimized Then
-                WindowState = FormWindowState.Normal
-            ElseIf WindowState = FormWindowState.Normal Then
-                WindowState = FormWindowState.Minimized
-            End If
-
-        Catch ex As Exception
-            Notification_Display("Error", "There was an error resizing the application", ex)
         End Try
 
     End Sub
@@ -1891,7 +1873,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btnDisplayLog_Click(sender As Object, e As EventArgs) Handles btnDisplayLog.Click
+    Private Sub Display_Log()
 
         Try
             'Open notepad, and if log file exists, open it
@@ -1905,6 +1887,12 @@ Public Class Form1
         Catch ex As Exception
             Notification_Display("Error", "There was an error opening the log file", ex)
         End Try
+
+    End Sub
+
+    Private Sub btnDisplayLog_Click(sender As Object, e As EventArgs) Handles btnDisplayLog.Click
+
+        Display_Log()
 
     End Sub
 
@@ -2852,4 +2840,169 @@ Public Class Form1
 
     End Sub
 
+    Private Sub NotifyIcon1_MouseClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseClick
+
+        Try
+            'Only handle left mouse button click
+            If e.Button = MouseButtons.Left Then
+                'Restore window if minimised or Minimise Window if normal
+                If WindowState = FormWindowState.Minimized Then
+                    WindowState = FormWindowState.Normal
+                ElseIf WindowState = FormWindowState.Normal Then
+                    WindowState = FormWindowState.Minimized
+                End If
+            End If
+
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error resizing the application", ex)
+        End Try
+
+    End Sub
+
+    Private Sub mnuSummary_Click(sender As Object, e As EventArgs) Handles mnuSummary.Click
+
+        'Restore window to summary tab from tray icon menu
+
+        Try
+            TabControl1.SelectedTab = tabSummary
+            WindowState = FormWindowState.Normal
+
+            Notification_Display("Information", "Summary tab displayed successfully from tray icon menu")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying the summary tab from the tray icon menu", ex)
+        End Try
+
+    End Sub
+
+    Private Sub mnuStatistics_Click(sender As Object, e As EventArgs) Handles mnuStatistics.Click
+
+        'Restore window to statistics tab from tray icon menu
+
+        Try
+            TabControl1.SelectedTab = tabStatistics
+            WindowState = FormWindowState.Normal
+
+            Notification_Display("Information", "Statistics tab displayed successfully from tray icon menu")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying the statistics tab from the tray icon menu", ex)
+        End Try
+
+    End Sub
+
+    Private Sub mnuNodeList_Click(sender As Object, e As EventArgs) Handles mnuNodeList.Click
+
+        'Restore window to node list tab from tray icon menu
+
+        Try
+            TabControl1.SelectedTab = tabNodeList
+            WindowState = FormWindowState.Normal
+
+            Notification_Display("Information", "Node list tab displayed successfully from tray icon menu")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying the node list tab from the tray icon menu", ex)
+        End Try
+
+    End Sub
+
+    Private Sub mnuNodeMap_Click(sender As Object, e As EventArgs) Handles mnuNodeMap.Click
+
+        'Restore window to node map tab from tray icon menu
+
+        Try
+            TabControl1.SelectedTab = tabNodeMap
+            WindowState = FormWindowState.Normal
+
+            Notification_Display("Information", "Node map tab displayed successfully from tray icon menu")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying the node map tab from the tray icon menu", ex)
+        End Try
+
+    End Sub
+
+    Private Sub mnuNodeStatus_Click(sender As Object, e As EventArgs) Handles mnuNodeStatus.Click
+
+        'Restore window to node status tab from tray icon menu
+
+        Try
+            TabControl1.SelectedTab = tabNodestatus
+            gbxStatus.Focus()
+            WindowState = FormWindowState.Normal
+
+            Notification_Display("Information", "Node status tab displayed successfully from tray icon menu")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying the node status tab from the tray icon menu", ex)
+        End Try
+
+    End Sub
+
+    Private Sub mnuSettings_Click(sender As Object, e As EventArgs) Handles mnuSettings.Click
+
+        'Restore window to settings tab from tray icon menu
+
+        Try
+            TabControl1.SelectedTab = tabSettings
+            WindowState = FormWindowState.Normal
+
+            Notification_Display("Information", "Settings tab displayed successfully from tray icon menu")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying the settings tab from the tray icon menu", ex)
+        End Try
+
+    End Sub
+
+    Private Sub mnuHelp_Click(sender As Object, e As EventArgs) Handles mnuHelp.Click
+
+        'Restore window to help tab from tray icon menu
+
+        Try
+            TabControl1.SelectedTab = tabHelp
+            WindowState = FormWindowState.Normal
+
+            Notification_Display("Information", "Help tab displayed successfully from tray icon menu")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying the help tab from the tray icon menu", ex)
+        End Try
+
+    End Sub
+
+    Private Sub mnuDisplayLog_Click(sender As Object, e As EventArgs) Handles mnuDisplayLog.Click
+
+        Display_Log()
+
+    End Sub
+
+    Private Sub mnuExit_Click(sender As Object, e As EventArgs) Handles mnuExit.Click
+
+        Try
+            'Get confirmation before closing
+            If Request_Confirmation("This will close the DogeNodes application") = True Then
+                'Close application even if minimise on close is selected
+                ForceCloseFlag = True
+                Me.Close()
+            End If
+
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error closing the application", ex)
+        End Try
+
+    End Sub
+
+    Private Sub TrayMenuStrip_Opening(sender As Object, e As CancelEventArgs) Handles TrayMenuStrip.Opening
+
+        'When displaying the tray icon menu, hide the option to display the log file if logging is disabled in settings
+        Try
+            If chkAllowLogging.Checked = True Then
+                mnuDisplayLog.Visible = True
+                ToolStripSeparator1.Visible = True
+            Else
+                mnuDisplayLog.Visible = False
+                ToolStripSeparator1.Visible = False
+            End If
+
+            Notification_Display("Information", "Tray icon menu displayed successfully")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error displaying the tray icon menu", ex)
+        End Try
+
+    End Sub
 End Class
