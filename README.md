@@ -44,6 +44,7 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  
 ## To Do List
 
+- Allow pan and zoom in map as well as being able to select a node from the map
 - Fix any other bugs identified by users
 - Make enhancements identified by users
  
