@@ -1,5 +1,6 @@
 ﻿Imports Newtonsoft.Json.Linq
 Imports System.ComponentModel
+Imports System.IO
 Imports System.Net
 Imports System.Net.Mail
 Imports System.Text.RegularExpressions
@@ -50,9 +51,10 @@ Public Class Form1
     Dim IPLocations(,) As String
     Dim CacheCounter As Integer = 0
     Dim MapRefreshCounter As Integer = 0
-    Dim FileWriteThread As System.Threading.Thread
+    Dim FileWriteThread As Threading.Thread
     Dim FormLoadComplete As Boolean = False
     Dim PortArray(,) As Integer
+    Dim imageMarker As Image
 
     ReadOnly All As String = "- All -"
 
@@ -104,7 +106,7 @@ Public Class Form1
             chkHighlightCurrentNode.Checked = My.Settings.HighlightNode
 
             'check if help file present and then update visibility of inline help section on Help tab
-            If System.IO.File.Exists(Application.StartupPath() + "/DogeNodes.chm") Then
+            If File.Exists(Application.StartupPath() + "/DogeNodes.chm") Then
                 gbxInlineHelp.Visible = True
             Else
                 gbxInlineHelp.Visible = False
@@ -120,7 +122,13 @@ Public Class Form1
                 MessageBox.Show("A new version of DogeNodes is available. Please click on the 'Update Now' button in settings to update", "DogeNodes - Update Available", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
-            'Set up map cache
+            'Configure map control on node map tab
+            Configure_Map_Control()
+
+            'Get map tile cache size
+            Check_Map_Cache_size()
+
+            'Set up map location cache
             Set_Up_Map_Cache()
 
             'Initialise JSON Persistence
@@ -1454,7 +1462,7 @@ Public Class Form1
                 Write_JSON_String()
 
                 'Save IP location array to text file using background thread to avoid holding up form close
-                FileWriteThread = New System.Threading.Thread(AddressOf Write_IP_Locations)
+                FileWriteThread = New Threading.Thread(AddressOf Write_IP_Locations)
                 FileWriteThread.Start()
 
                 Notification_Display("Information", "The persistent settings have been saved successfully on form close")
@@ -1696,12 +1704,12 @@ Public Class Form1
             End If
 
             'Write entry to log
-            If System.IO.File.Exists(LogFileName) Then
-                System.IO.File.SetAttributes(LogFileName, IO.FileAttributes.Normal)
+            If File.Exists(LogFileName) Then
+                File.SetAttributes(LogFileName, FileAttributes.Normal)
             End If
 
-            System.IO.File.AppendAllText(LogFileName, LogEntry)
-            System.IO.File.SetAttributes(LogFileName, IO.FileAttributes.ReadOnly)
+            File.AppendAllText(LogFileName, LogEntry)
+            File.SetAttributes(LogFileName, FileAttributes.ReadOnly)
 
         Catch
             sslError.Text = "There has been a critical error in the Log notification process"
@@ -1733,7 +1741,7 @@ Public Class Form1
             Dim smtp As New SmtpClient()
             smtp.Host = txtSMTPHost.Text
             smtp.UseDefaultCredentials = False
-            smtp.Credentials = New Net.NetworkCredential(txtSMTPUsername.Text, txtSMTPPassword.Text)
+            smtp.Credentials = New NetworkCredential(txtSMTPUsername.Text, txtSMTPPassword.Text)
             smtp.Port = txtSMTPPort.Text
             smtp.EnableSsl = chkUseSSL.Checked
 
@@ -1880,10 +1888,10 @@ Public Class Form1
 
         Try
             'Open notepad, and if log file exists, open it
-            If System.IO.File.Exists(LogFileName) = True Then
-                System.Diagnostics.Process.Start("notepad.exe", LogFileName)
+            If File.Exists(LogFileName) = True Then
+                Process.Start("notepad.exe", LogFileName)
             Else
-                System.Diagnostics.Process.Start("notepad.exe")
+                Process.Start("notepad.exe")
             End If
 
             Notification_Display("Information", "The log file has been opened successfully")
@@ -1906,9 +1914,9 @@ Public Class Form1
             If Request_Confirmation("This will permanently delete the logs") = True Then
 
                 'If log file exists, then delete it
-                If System.IO.File.Exists(LogFileName) = True Then
-                    System.IO.File.SetAttributes(LogFileName, IO.FileAttributes.Normal)
-                    System.IO.File.Delete(LogFileName)
+                If File.Exists(LogFileName) = True Then
+                    File.SetAttributes(LogFileName, FileAttributes.Normal)
+                    File.Delete(LogFileName)
                 End If
             End If
 
@@ -1968,8 +1976,8 @@ Public Class Form1
             Dim LogFileDirectory As String = "C:\Users\" + Environment.UserName + "\AppData\Local\DogeNodes"
 
             'Create logging path
-            If System.IO.Directory.Exists(LogFileDirectory) = False Then
-                System.IO.Directory.CreateDirectory(LogFileDirectory)
+            If Directory.Exists(LogFileDirectory) = False Then
+                Directory.CreateDirectory(LogFileDirectory)
             End If
 
             LogFileName = LogFileDirectory + "\dogenodes.log"
@@ -1985,28 +1993,36 @@ Public Class Form1
 
         Try
             Dim IPAddress As String
+            Dim Port As String
             Dim Location As String() = Nothing
             Dim Longitude As String
             Dim Latitude As String
-            Dim X As Integer
-            Dim Y As Integer
+            Dim NodePoint As GeoPoint
 
-            'set up graphics objects
-            Dim Map As Image = My.Resources.Map
-            Dim MapGraphics As Graphics = Graphics.FromImage(Map)
+            'Clear all markers
+            MapControl1.Markers.Clear()
 
             'Write a point onto the map for each node in the nodelist
             Dim RowCount As Integer = grdNodeList.RowCount
             If RowCount > 0 Then
                 For Row As Integer = 0 To RowCount - 1
                     IPAddress = grdNodeList.Rows(Row).Cells(0).Value
+                    Port = grdNodeList.Rows(Row).Cells(1).Value
                     Location = Lookup_IP_Location(IPAddress)
                     Longitude = Location(0)
                     Latitude = Location(1)
                     If Longitude <> "" And Latitude <> "" Then
-                        X = Map_X_Coords_from_Longitude(Longitude)
-                        Y = Map_Y_Coords_from_Latitude(Latitude)
-                        MapGraphics.DrawImage(My.Resources.MapNode, X, Y, 32, 32)
+
+                        'Set marker's location point
+                        NodePoint.Longitude = Longitude
+                        NodePoint.Latitude = Latitude
+
+                        'Create marker instance specify Location On the map, Drawing style, And Label (Label not displayed but used when clicking on map)
+                        Dim NodeMarker = New Marker(NodePoint, MarkerStyle.Default, IPAddress + "|" + Port)
+
+                        'Add marker to the map
+                        MapControl1.Markers.Add(NodeMarker)
+
                     End If
                 Next
             End If
@@ -2019,15 +2035,20 @@ Public Class Form1
                     Longitude = Location(0)
                     Latitude = Location(1)
                     If Longitude <> "" And Latitude <> "" Then
-                        X = Map_X_Coords_from_Longitude(Longitude)
-                        Y = Map_Y_Coords_from_Latitude(Latitude)
-                        MapGraphics.DrawImage(pbxStatus.Image, X, Y, 32, 32)
+
+                        'Set marker's location point
+                        NodePoint.Longitude = Longitude
+                        NodePoint.Latitude = Latitude
+
+                        'Create marker instance specify Location On the map, Drawing style, And Label (Label used to flag this should be a highlight icon)
+                        Dim NodeMarker = New Marker(NodePoint, MarkerStyle.Default, "Highlight")
+
+                        'Add marker to the map
+                        MapControl1.Markers.Add(NodeMarker)
+
                     End If
                 End If
             End If
-
-            'Apply the updated map to the picturebox
-            pbxMap.Image = Map
 
             Notification_Display("Information", "The node map has been created successfully")
         Catch ex As Exception
@@ -2036,54 +2057,6 @@ Public Class Form1
 
     End Sub
 
-    Private Function Map_X_Coords_from_Longitude(Longitude As String) As Integer
-
-        Dim X As Integer
-
-        Try
-            Dim ImageWidth As Decimal = 1600
-            Dim Scale As Decimal = ImageWidth / 360
-            Dim Offset As Decimal = 165
-
-            X = Convert.ToInt32((Convert.ToDecimal(Longitude) + Offset) * Scale)
-
-            If X < 0 Then X = 0
-            If X > ImageWidth - 1 Then X = ImageWidth - 1
-
-            'No success notification as there are approx 1000 nodes
-        Catch ex As Exception
-            Notification_Display("Error", "There was an error calculating the X coordinate", ex)
-        End Try
-
-        Return X
-
-    End Function
-
-    Private Function Map_Y_Coords_from_Latitude(Latitude As String) As Integer
-
-        Dim Y As Integer
-
-        Try
-            Dim ImageHeight As Decimal = 800
-            Dim Scale As Decimal = ImageHeight / 180
-            Dim Offset As Decimal = 94
-
-            Y = Convert.ToInt32((Convert.ToDecimal(Latitude) + Offset) * Scale)
-
-            Y = ImageHeight - Y
-
-            If Y < 0 Then Y = 0
-            If Y > ImageHeight - 1 Then Y = ImageHeight - 1
-
-            'No success notification as there are approx 1000 nodes
-        Catch ex As Exception
-            Notification_Display("Error", "There was an error calculating the Y coordinate", ex)
-        End Try
-
-        Return Y
-
-    End Function
-
     Private Sub btnCopyLog_Click(sender As Object, e As EventArgs) Handles btnCopyLog.Click
 
         Try
@@ -2091,12 +2064,12 @@ Public Class Form1
             Dim DesktopPath As String = "C:\Users\" + Environment.UserName + "\Desktop\DogeNodes.log"
 
             'Copy log to the users desktop
-            If System.IO.File.Exists(LogFileName) Then
-                If System.IO.File.Exists(DesktopPath) = True Then
-                    System.IO.File.Delete(DesktopPath)
+            If File.Exists(LogFileName) Then
+                If File.Exists(DesktopPath) = True Then
+                    File.Delete(DesktopPath)
                 End If
-                System.IO.File.Copy(LogFileName, DesktopPath)
-                System.IO.File.SetAttributes(DesktopPath, IO.FileAttributes.Normal)
+                File.Copy(LogFileName, DesktopPath)
+                File.SetAttributes(DesktopPath, FileAttributes.Normal)
                 Notification_Display("Information", "Log file has been copied to desktop")
             Else
                 Notification_Display("Warning", "Log file is currently empty so will not be copied")
@@ -2111,12 +2084,12 @@ Public Class Form1
     Private Sub Set_Up_Map_Cache()
 
         Try
-            'Set map cache path and filename
+            'Set map location cache path and filename
             MapCacheFileName = "C:\Users\" + Environment.UserName + "\AppData\Local\DogeNodes\IP_Location.txt"
 
             'If cache file doesnt already exist, create it and write headers
-            If System.IO.File.Exists(MapCacheFileName) = False Then
-                System.IO.File.AppendAllText(MapCacheFileName, "IP Address,Longitude,Latitude" + Environment.NewLine)
+            If File.Exists(MapCacheFileName) = False Then
+                File.AppendAllText(MapCacheFileName, "IP Address,Longitude,Latitude" + Environment.NewLine)
             End If
 
             Notification_Display("Information", "The node map cache has been configured")
@@ -2133,7 +2106,7 @@ Public Class Form1
 
         Try
             'Read IP locations from text file to array
-            IPLocationLines = System.IO.File.ReadAllLines(MapCacheFileName)
+            IPLocationLines = File.ReadAllLines(MapCacheFileName)
             ReDim IPLocations(2, IPLocationLines.Length - 1)
             For i As Integer = 0 To IPLocationLines.Length - 1
                 IPLocationFields = IPLocationLines(i).Split(",")
@@ -2155,14 +2128,14 @@ Public Class Form1
 
         Try
             'Delete existing Text file
-            If System.IO.File.Exists(MapCacheFileName) Then
-                System.IO.File.Delete(MapCacheFileName)
+            If File.Exists(MapCacheFileName) Then
+                File.Delete(MapCacheFileName)
             End If
 
             'Write new file from array
             For i As Integer = 0 To IPLocations.GetLength(1) - 1
                 Row = IPLocations(0, i) + "," + IPLocations(1, i) + "," + IPLocations(2, i) + Environment.NewLine
-                System.IO.File.AppendAllText(MapCacheFileName, Row)
+                File.AppendAllText(MapCacheFileName, Row)
             Next
 
         Catch
@@ -2386,8 +2359,8 @@ Public Class Form1
 
         Try
             'Read json from text file to global variable
-            If System.IO.File.Exists(JSONFileName) Then
-                json = System.IO.File.ReadAllText(JSONFileName)
+            If File.Exists(JSONFileName) Then
+                json = File.ReadAllText(JSONFileName)
                 Notification_Display("Information", "JSON string successfully read from file")
             Else
                 json = ""
@@ -2404,12 +2377,12 @@ Public Class Form1
 
         Try
             'Delete existing Text file
-            If System.IO.File.Exists(JSONFileName) Then
-                System.IO.File.Delete(JSONFileName)
+            If File.Exists(JSONFileName) Then
+                File.Delete(JSONFileName)
             End If
 
             'Write new file from json Global variable
-            System.IO.File.AppendAllText(JSONFileName, json)
+            File.AppendAllText(JSONFileName, json)
 
             Notification_Display("Information", "JSON string successfully written to file")
         Catch ex As Exception
@@ -2431,7 +2404,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btnClearMapCache_Click(sender As Object, e As EventArgs) Handles btnClearMapCache.Click
+    Private Sub btnClearLocationCache_Click(sender As Object, e As EventArgs) Handles btnClearLocationCache.Click
 
         Try
             'Clear the map cache
@@ -2476,8 +2449,8 @@ Public Class Form1
 
         Try
             'Delete the shortcut to the current application in the designated path
-            If System.IO.File.Exists(ShortCutPath + "\DogeNodes.lnk") Then
-                System.IO.File.Delete(ShortCutPath + "\DogeNodes.lnk")
+            If File.Exists(ShortCutPath + "\DogeNodes.lnk") Then
+                File.Delete(ShortCutPath + "\DogeNodes.lnk")
                 Notification_Display("Information", "Shortcut has been deleted from (" + ShortCutPath + ")")
             End If
 
@@ -3008,4 +2981,205 @@ Public Class Form1
         End Try
 
     End Sub
+
+    Private Sub Configure_Map_Control()
+
+        Try
+            'Configure the map control on the node map tab
+            MapControl1.CacheFolder = "C:\Users\" + Environment.UserName + "\AppData\Local\DogeNodes\MapControl"
+            MapControl1.TileServer = New OpenStreetMapTileServer("starglancer/dogenodes/" + My.Computer.Name)
+            MapControl1.MinZoomLevel = 1
+            MapControl1.MaxZoomLevel = 10
+            MapControl1.ZoomLevel = 1
+            MapControl1.FitToBounds = True
+            MapControl1.ShowThumbnails = True
+
+
+            'Set image used for each node
+            imageMarker = My.Resources.Doge
+
+            Notification_Display("Information", "The Node Map has been configured successfully")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error configuring the node map", ex)
+        End Try
+
+    End Sub
+
+    Private Sub MapControl1_DrawMarker(sender As Object, e As DrawMarkerEventArgs) Handles MapControl1.DrawMarker
+
+        'This intercepts the draw marker process to force the drawing of an image instead
+        Try
+            'Set flag To override drawing of default marker
+            e.Handled = True
+
+            'Set scale to draw the image at (larger image for higher zoom levels)
+            Dim Scale As Integer = 4 + MapControl1.ZoomLevel * 2
+
+            'Draw image
+            If e.Marker.Label = "Highlight" Then
+                'Highlight flag set, so this is the currently selected node in the node status tab
+                e.Graphics.DrawImage(pbxStatus.Image, New Rectangle(e.Point.X - 6 - Scale / 4, e.Point.Y - 6 - Scale / 4, 12 + Scale / 2, 12 + Scale / 2))
+            Else
+                'Normal node
+                e.Graphics.DrawImage(imageMarker, New Rectangle(e.Point.X - Scale / 2, e.Point.Y - Scale / 2, Scale, Scale))
+            End If
+
+            'No success message as this routine is called almost 1000 times every time the map is refreshed
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error drawing the node on the map", ex)
+        End Try
+
+    End Sub
+
+    Private Sub btnClearMapCache_Click(sender As Object, e As EventArgs) Handles btnClearMapCache.Click
+
+        Try
+            Dim MapCacheDirectory As String = "C:\Users\" + Environment.UserName + "\AppData\Local\DogeNodes\MapControl"
+
+            'Get confirmation
+            If Request_Confirmation("This will impair performance whilst the cache rebuilds") = True Then
+
+                'If map cache directory exists, then delete it recursively
+                If Directory.Exists(MapCacheDirectory) = True Then
+                    Directory.Delete(MapCacheDirectory, True)
+                End If
+            End If
+
+            Notification_Display("Information", "The Map Cache has been cleared successfully")
+        Catch
+            'Ignore any errors as some files may not be deleted if in use. This is expected
+            Notification_Display("Information", "The Map Cache has been cleared, but some files could not be deleted")
+        Finally
+            'Update display of map cache size
+            Check_Map_Cache_size()
+        End Try
+
+    End Sub
+
+    Private Sub btnCheckMapCacheSize_Click(sender As Object, e As EventArgs) Handles btnCheckMapCacheSize.Click
+
+        Check_Map_Cache_size()
+
+    End Sub
+
+    Private Sub Check_Map_Cache_size()
+
+        Try
+            Dim MapCacheDirectory As String = "C:\Users\" + Environment.UserName + "\AppData\Local\DogeNodes\MapControl"
+
+            If Directory.Exists(MapCacheDirectory) Then
+                Dim DirInfo As DirectoryInfo = New DirectoryInfo(MapCacheDirectory)
+                Dim Size As String = GetDirectoryFileSize(DirInfo).ToString
+                lblMapCacheSize.Text = Format(Size / 1024 / 1024, "###,0") & " MB"
+            Else
+                lblMapCacheSize.Text = "0 MB"
+            End If
+
+            Notification_Display("Information", "The map cache size has been updated successfully")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error updating the map cache size", ex)
+        End Try
+
+    End Sub
+
+    Private Function GetDirectoryFileSize(DirectoryInfo As DirectoryInfo) As Long
+
+        'Recursive function to get size of directory and all sub directories
+
+        Dim TotalSize As Long = 0
+
+        Try
+            'Add file-size in a parent folder
+            For Each FileInfo As FileInfo In DirectoryInfo.GetFiles()
+                TotalSize += FileInfo.Length
+            Next FileInfo
+
+            'Add file-size in a Sub-Folder (Recursive)
+            For Each DirInfo As DirectoryInfo In DirectoryInfo.GetDirectories()
+                TotalSize += GetDirectoryFileSize(DirInfo)
+            Next DirInfo
+
+            'No success message as its a recursive function and it would generate too many log entries
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error calculating the map cache size", ex)
+        End Try
+
+        'Return total size
+        Return TotalSize
+
+    End Function
+
+    Private Sub MapControl1_MouseClick(sender As Object, e As MouseEventArgs) Handles MapControl1.MouseClick
+
+        'If user right clicks on map it will find the nearest node and display its details on the node status tab
+
+        Dim ClickPoint As GeoPoint
+        Dim ClickLongitude As Single
+        Dim ClickLatitude As Single
+        Dim Point As GeoPoint
+        Dim Longitude As Single
+        Dim Latitude As Single
+        Dim LongDiff As Single
+        Dim LatDiff As Single
+        Dim TotalDiff As Single
+        Dim SmallestTotalDiff As Single
+        Dim IPAddress As String
+        Dim Port As String
+        Dim Label As String = ""
+        Dim Details() As String
+
+        Try
+            'Ignore a left mouse button click
+            If e.Button = MouseButtons.Right Then
+
+                'Get longitude and latitude where the mouse has been right clicked
+                ClickPoint = MapControl1.Mouse
+                ClickLongitude = ClickPoint.Longitude
+                ClickLatitude = ClickPoint.Latitude
+
+                'Check for nearest marker and get its label
+                SmallestTotalDiff = 1000
+                For Each Nodemarker As Marker In MapControl1.Markers
+                    Point = Nodemarker.Point
+                    Longitude = Point.Longitude
+                    Latitude = Point.Latitude
+                    LongDiff = Math.Abs(ClickLongitude - Longitude)
+                    LatDiff = Math.Abs(ClickLatitude - Latitude)
+                    TotalDiff = LongDiff + LatDiff
+                    If TotalDiff < SmallestTotalDiff Then
+                        SmallestTotalDiff = TotalDiff
+                        Label = Nodemarker.Label
+                    End If
+                Next
+
+                'Get details from label
+                If Label <> "" Then
+                    Details = Split(Label, "|")
+                    IPAddress = Details(0)
+                    Port = Details(1)
+                Else
+                    IPAddress = ""
+                    Port = ""
+                End If
+
+                'Set as current node on status tab
+                txtIPAddress.Text = IPAddress
+                txtPort.Text = Port
+
+                'Refresh details on node status tab
+                Populate_NodeStatusTab()
+
+                'Switch to Node Status Tab and move focus away from IPAddress text box
+                TabControl1.SelectedTab = tabNodestatus
+                gbxStatus.Focus()
+
+            End If
+
+            Notification_Display("Information", "Node " + Label + " has been successfully selected from the map")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error selecting a node from the map", ex)
+        End Try
+
+    End Sub
+
 End Class

@@ -61,6 +61,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property Doge() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Doge", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         '''</summary>
         Friend ReadOnly Property Dogecoin1() As System.Drawing.Icon
@@ -146,26 +156,6 @@ Namespace My.Resources
         Friend ReadOnly Property IPAddress() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("IPAddress", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property Map() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Map", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property MapNode() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("MapNode", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
