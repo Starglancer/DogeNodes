@@ -1440,6 +1440,7 @@ Public Class Form1
                 ShowInTaskbar = True
                 Me.CenterToScreen()
                 Me.Visible = True
+                MapControl1.ZoomLevel = 1
                 Notification_Display("Information", "The application window has been displayed")
             End If
 
