@@ -14,13 +14,13 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
 
 ![Node List](https://user-images.githubusercontent.com/124823644/221171148-2a708022-0e5f-4e5e-86f6-311df9ca9e81.png)
 
-![Node Map](https://user-images.githubusercontent.com/124823644/221171161-86b7be96-0e7f-4ccb-9a6f-9b0835c8ba05.png)
+![Node Map](https://user-images.githubusercontent.com/124823644/222127917-39acede4-04c4-4812-bf43-453a081e8218.png)
 
 ![Node Status](https://user-images.githubusercontent.com/124823644/221171183-62a35893-29e6-44a7-a690-67fb15ad748e.png)
 
 ![Settings(1)](https://user-images.githubusercontent.com/124823644/221171210-884bf3f5-0c98-4f80-897d-aa5b2cc0de64.png)
 
-![Settings(2)](https://user-images.githubusercontent.com/124823644/221171231-805b3c27-9d71-4ded-bdcb-ff71fb506904.png)
+![Settings(2)](https://user-images.githubusercontent.com/124823644/222127962-73722d37-829f-4c01-8755-fe5d379031e5.png)
 
 ![Help](https://user-images.githubusercontent.com/124823644/221171250-94c9fdd7-4a93-43fd-a3d4-7787d53f29b0.png)
 
@@ -30,7 +30,7 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  - Summary of total active nodes
  - Breakdown of nodes by country, block height, agent version and network protocol
  - Filterable list of all nodes
- - Global map of filtered node locations
+ - Global map of filtered node locations which can be panned and zoomed
  - Ability to select detailed status of any node 
  - Monitoring of selected node status including pop up alerts and email alerts if any issues arise
  - Highly configurable behaviour including start with windows, minimize to tray and minimise on close
@@ -44,7 +44,6 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  
 ## To Do List
 
-- Allow pan and zoom in map as well as being able to select a node from the map
 - Fix any other bugs identified by users
 - Make enhancements identified by users
  
@@ -55,5 +54,6 @@ Thanks to the following API providers used as the source of data for this applic
 - [Blockchair](https://blockchair.com/)
 - [IP-API](https://ip-api.com/)
 - [Github](https://github.com/)
+- [OpenStreetMap](https://www.openstreetmap.org/)
 
 Thanks to [Advanced Installer](https://www.advancedinstaller.com/) for their excellent installer which has been used from release 1.00 onwards
