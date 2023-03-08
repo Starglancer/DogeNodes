@@ -2217,6 +2217,7 @@ Public Class Form1
                 'Only the header row
                 Percentage = 0
             Else
+                If IPAddress = "" Then CacheIndex += 1 'Correction for fully populated cache
                 Percentage = 100 * (CacheIndex - 1) / (IPLocations.GetLength(1) - 1)
                 lblPercentageNodesValue.Text = Percentage.ToString + "%"
             End If
