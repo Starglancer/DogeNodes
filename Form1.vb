@@ -227,11 +227,11 @@ Public Class Form1
             'Create JSON Object from string
             parsejson = JObject.Parse(json)
 
-            'Update the last updated date in status bar
-            sslLastUpdate.Text = "Last Updated: " + Get_Token("context.cache.since")
-
             'Save Last Updated date
             LastAPIUpdate = Convert.ToDateTime(Get_Token("context.cache.since"))
+
+            'Update the last updated date in status bar in local time
+            sslLastUpdate.Text = "Last Updated: " + LastAPIUpdate.ToLocalTime.ToString
 
             'Create the array for use in port statistics and port filter dropdown
             Create_Port_Array()
@@ -1246,13 +1246,13 @@ Public Class Form1
             Dim Percentage As Integer
 
             'Check progress towards new update
-            Difference = DateDiff(DateInterval.Second, LastAPIUpdate, Date.Now)
+            Difference = DateDiff(DateInterval.Second, LastAPIUpdate, Date.UtcNow)
 
             'Reload data from API into JSON Object if more than 10 minutes since last update
             If Difference > 600 Then
                 Load_JSON()
                 'Get new difference
-                Difference = DateDiff(DateInterval.Second, LastAPIUpdate, Date.Now)
+                Difference = DateDiff(DateInterval.Second, LastAPIUpdate, Date.UtcNow)
             End If
 
             'Display progress in progress bar
