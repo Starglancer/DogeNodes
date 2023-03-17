@@ -44,7 +44,6 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  
 ## To Do List
 
-- Fix issue with high background cpu usage
 - Fix any other bugs identified by users
 - Make enhancements identified by users
  
