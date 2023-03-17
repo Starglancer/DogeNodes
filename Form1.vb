@@ -1424,6 +1424,7 @@ Public Class Form1
         Try
             'Handle the minimize event
             If WindowState = FormWindowState.Minimized Then
+                Recreate_Map_Control()
                 If chkMinimiseToTray.Checked = True Then
                     NotifyIcon1.Visible = True
                     ShowInTaskbar = False
@@ -1440,7 +1441,6 @@ Public Class Form1
                 ShowInTaskbar = True
                 Me.CenterToScreen()
                 Me.Visible = True
-                MapControl1.ZoomLevel = 1
                 Notification_Display("Information", "The application window has been displayed")
             End If
 
@@ -3181,6 +3181,43 @@ Public Class Form1
         Catch ex As Exception
             Notification_Display("Error", "There was an error selecting a node from the map", ex)
         End Try
+
+    End Sub
+
+    Private Sub Recreate_Map_Control()
+
+        'Required as a kludge to overcome issue with high CPU usage of mapcontrol component
+        'It destroys and recreates the map control, killing off any runaway processes
+
+        Try
+            'Destroy old control
+            MapControl1.Dispose()
+
+            'Create new control
+            MapControl1 = New MapControl With {
+                .Location = New Point(37, 21),
+                .Size = New Size(720, 360)
+            }
+
+            'Add to map tab
+            tabNodeMap.Controls.Add(MapControl1)
+
+            'Configure it
+            Configure_Map_Control()
+
+            'Populate it
+            Populate_Node_Map()
+
+            Notification_Display("Information", "The map control has been successfully recreated")
+        Catch ex As Exception
+            Notification_Display("Error", "There was an error recreating the map control", ex)
+        End Try
+
+    End Sub
+
+    Private Sub tabNodeMap_Leave(sender As Object, e As EventArgs) Handles tabNodeMap.Leave
+
+        Recreate_Map_Control()
 
     End Sub
 
