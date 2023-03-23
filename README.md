@@ -44,6 +44,7 @@ A Windows Forms based application to analyse the Dogecoin blockchain network and
  
 ## To Do List
 
+- Enable LiteNodes, GRSNodes and DogeNodes to run side by side on same computer
 - Fix any other bugs identified by users
 - Make enhancements identified by users
  
