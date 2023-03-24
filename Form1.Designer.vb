@@ -203,6 +203,7 @@ Partial Class Form1
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.timTextbox = New System.Windows.Forms.Timer(Me.components)
         Me.hlpDogeNodes = New System.Windows.Forms.HelpProvider()
+        Me.mnuClearLog = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabControl1.SuspendLayout()
         Me.tabSummary.SuspendLayout()
         CType(Me.pbxDogecoin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2038,9 +2039,9 @@ Partial Class Form1
         '
         'TrayMenuStrip
         '
-        Me.TrayMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuSummary, Me.mnuStatistics, Me.mnuNodeList, Me.mnuNodeMap, Me.mnuNodeStatus, Me.mnuSettings, Me.mnuHelp, Me.ToolStripSeparator1, Me.mnuDisplayLog, Me.ToolStripSeparator2, Me.mnuExit})
+        Me.TrayMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuSummary, Me.mnuStatistics, Me.mnuNodeList, Me.mnuNodeMap, Me.mnuNodeStatus, Me.mnuSettings, Me.mnuHelp, Me.ToolStripSeparator1, Me.mnuDisplayLog, Me.mnuClearLog, Me.ToolStripSeparator2, Me.mnuExit})
         Me.TrayMenuStrip.Name = "TrayMenuStrip"
-        Me.TrayMenuStrip.Size = New System.Drawing.Size(139, 214)
+        Me.TrayMenuStrip.Size = New System.Drawing.Size(139, 236)
         '
         'mnuSummary
         '
@@ -2120,6 +2121,12 @@ Partial Class Form1
         'hlpDogeNodes
         '
         Me.hlpDogeNodes.HelpNamespace = "DogeNodes.chm"
+        '
+        'mnuClearLog
+        '
+        Me.mnuClearLog.Name = "mnuClearLog"
+        Me.mnuClearLog.Size = New System.Drawing.Size(138, 22)
+        Me.mnuClearLog.Text = "Clear Log"
         '
         'Form1
         '
@@ -2365,4 +2372,5 @@ Partial Class Form1
     Friend WithEvents lblMapCacheSize As Label
     Friend WithEvents lblMapCache As Label
     Friend WithEvents btnCheckMapCacheSize As Button
+    Friend WithEvents mnuClearLog As ToolStripMenuItem
 End Class
